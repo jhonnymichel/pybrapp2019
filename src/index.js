@@ -1,8 +1,9 @@
 import { CALENDAR_CONFIG } from './config';
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, SafeAreaView, View } from 'react-native';
 // import ReactDOM from 'react-dom';
 import Store from './Store';
+import styles from 'app/styles';
 // import { HashRouter as Router, Route, withRouter, Switch, Redirect } from 'react-router-dom';
 import Schedule from './components/Schedule';
 // import Tabs from './components/Tabs';
@@ -50,30 +51,41 @@ class ScheduleManager extends React.Component{
 
   render() {
     if (!this.state.data) {
-      return <Text>Loading...</Text>
+      return (
+        <View style={styles.body}>
+          <SafeAreaView>
+            <Text>Loading...</Text>
+          </SafeAreaView>
+        </View>
+      )
     }
 
     return (
-      <Store data={this.state.data}>
-        {store => (
-          <Schedule currentPage="schedule" store={store} />
-          // <Router>
-          //   <ScrollToTop>
-          //     <Switch>
-          //       <Route exact path="/" render={() => <Now store={store} />} />
-          //       <Route exact path="/index.html" render={() => <Now store={store} />} />
-          //       <Route exact path="/schedule" render={() => <Schedule key={1} currentPage="schedule" store={store} />} />
-          //       <Route exact path="/my-schedule" render={() => {
-          //         const days = store.actions.filterDays(store.days, true);
-          //         return <Schedule currentPage="my-schedule"  key={2} store={{ ...store, days }} />
-          //       }}/>
-          //       <Route render={() => <Redirect to="/"/>} />
-          //     </Switch>
-          //     <TabsWithRouter/>
-          //   </ScrollToTop>
-          // </Router>
-        )}
-      </Store>
+      <View style={styles.body}>
+        <SafeAreaView>
+
+          <Store data={this.state.data}>
+            {store => (
+              <Schedule currentPage="schedule" store={store} />
+              // <Router>
+              //   <ScrollToTop>
+              //     <Switch>
+              //       <Route exact path="/" render={() => <Now store={store} />} />
+              //       <Route exact path="/index.html" render={() => <Now store={store} />} />
+              //       <Route exact path="/schedule" render={() => <Schedule key={1} currentPage="schedule" store={store} />} />
+              //       <Route exact path="/my-schedule" render={() => {
+              //         const days = store.actions.filterDays(store.days, true);
+              //         return <Schedule currentPage="my-schedule"  key={2} store={{ ...store, days }} />
+              //       }}/>
+              //       <Route render={() => <Redirect to="/"/>} />
+              //     </Switch>
+              //     <TabsWithRouter/>
+              //   </ScrollToTop>
+              // </Router>
+            )}
+          </Store>
+        </SafeAreaView>
+      </View>
     );
   }
 }

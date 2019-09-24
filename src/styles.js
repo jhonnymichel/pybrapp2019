@@ -34,9 +34,11 @@ const categories = StyleSheet.create(Object.keys(categoryColors).reduce((categor
 }), {}));
 
 const body = {
+  flex: 1,
+  height: '100%',
   backgroundColor: darkBlue,
   fontFamily: adventPro(),
-  padding: 20
+  padding: 5
 };
 
 const author = {
@@ -68,7 +70,7 @@ const fixedEventTitle = {
 
 const dateSeparator = {
   padding: 60,
-  width: '100%',
+  flex: 1,
   justifyContent: 'center',
 };
 
@@ -76,27 +78,50 @@ const dateSeparatorText = {
   fontFamily: adventPro(),
   color: yellow,
   fontSize: 30,
+  flex: 1,
+  textAlign: 'center'
 };
 
 const scheduleInfo = {
+  flex: 1,
   paddingLeft: 35,
   paddingRight: 15,
   marginBottom: 20,
 }
 
 const scheduleContainer = {
-  width: '100%',
+  flex: 1,
   flexDirection: 'row',
   flexWrap: 'nowrap',
 }
 
 const dayContainer = {
-  width: '100%',
+  flex: 1,
 }
 
 const eventContainer = {
-  width: '100%',
+  flex: 1,
 }
+
+const timelineIllustration = StyleSheet.create({
+  container: {
+    paddingLeft: 5,
+    paddingRight: 5,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  ball: {
+    width: 16,
+    height: 16,
+    borderRadius: 8,
+    backgroundColor: '#7fc7cf',
+  },
+  line: {
+    backgroundColor: '#7fc7cf',
+    flex: 1,
+    width: 1,
+  }
+})
 
 export default {
   ...StyleSheet.create({
@@ -112,5 +137,6 @@ export default {
     dayContainer,
     eventContainer,
   }),
-  categories
+  categories,
+  timelineIllustration
 }

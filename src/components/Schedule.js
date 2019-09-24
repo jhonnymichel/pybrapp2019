@@ -108,7 +108,7 @@ class Schedule extends React.Component {
             </View> */}
           {/* </View>
         </View> */}
-        <ScrollView style={styles.body}>
+        <ScrollView>
           <Text className="empty-message--small">
             { this.props.currentPage === 'schedule' ?
                 (!store.isListEmpty && <Text> Toque em um evento para adicioná-lo as suas marcações e receber notificações. </Text>) :
