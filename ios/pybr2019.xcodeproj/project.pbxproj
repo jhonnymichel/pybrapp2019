@@ -1,0 +1,1211 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+/* Begin PBXBuildFile section */
+		00E356F31AD99517003FC87E /* pybr2019Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* pybr2019Tests.m */; };
+		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
+		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
+		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		1D5FFC80EE166811D3918D7B /* libPods-pybr2019.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB01A8FCBB92052990754FC5 /* libPods-pybr2019.a */; };
+		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
+		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		2DCD954D1E0B4F2C00145EB5 /* pybr2019Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* pybr2019Tests.m */; };
+		5FAFEABDACA3B695157FFA08 /* libPods-pybr2019-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F207A942F2B4D79B572CA2D3 /* libPods-pybr2019-tvOSTests.a */; };
+		617934ADC620F567FDD63071 /* libPods-pybr2019Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F394608B1C8AEB635AB6609D /* libPods-pybr2019Tests.a */; };
+		CF777D6E5B205988EA9C28F6 /* libPods-pybr2019-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EE0AD6A5760A97FCAD10D50 /* libPods-pybr2019-tvOS.a */; };
+		D11D4874216148209246E96E /* bgevento.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7D6930A2652B4E308634F837 /* bgevento.jpg */; };
+		056A3A4B5FEA4BAD809DE833 /* btnticket.svg in Resources */ = {isa = PBXBuildFile; fileRef = A55C98C294B74EC4839098EB /* btnticket.svg */; };
+		89E3C1ADB9FD43C48DEC86C2 /* closebutton-01.svg in Resources */ = {isa = PBXBuildFile; fileRef = D0922F93F5A2463C9985BC5C /* closebutton-01.svg */; };
+		5DA5B5FB2EDF4E3AB10093BC /* empty.svg in Resources */ = {isa = PBXBuildFile; fileRef = 107668CDA7A146F39245A2BC /* empty.svg */; };
+		8EF12521E0D34DA9B9C61317 /* favicon.ico in Resources */ = {isa = PBXBuildFile; fileRef = 0F9EC92410AC40CF8DEA893E /* favicon.ico */; };
+		9898B68043EC412885D2390D /* flag_br.svg in Resources */ = {isa = PBXBuildFile; fileRef = A1A2B53E277E4696B5E6608F /* flag_br.svg */; };
+		DAAAC3CA231F422586AAD0ED /* flag_ng.svg in Resources */ = {isa = PBXBuildFile; fileRef = 990551C8F36C4A27A10BAB17 /* flag_ng.svg */; };
+		455806BF9C65449889EF859C /* Forte-Outlines.svg in Resources */ = {isa = PBXBuildFile; fileRef = DA49731F70D24046842B9ED3 /* Forte-Outlines.svg */; };
+		BEEE237A1E80450BB4083DD3 /* hamburguer menu-01.svg in Resources */ = {isa = PBXBuildFile; fileRef = E0B101C7570749F887519397 /* hamburguer menu-01.svg */; };
+		26C2804BED874ECAA849F1FE /* holiday-inn.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = BE639289C6564C189D4F7B16 /* holiday-inn.jpeg */; };
+		D31AC9A4FE924AD19667B3EF /* holiday-inn.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2A4FB54EF6C9413B9023A5F6 /* holiday-inn.jpg */; };
+		3BAA255E668D410C8939DAE8 /* holiday-inn.png in Resources */ = {isa = PBXBuildFile; fileRef = 21C1143747F648E384489EB6 /* holiday-inn.png */; };
+		EC789BF107A04844A77F9C4B /* icon-calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = A5DA9358CC5F4EAA8667C52C /* icon-calendar.png */; };
+		D13960D8BD9F4AF98A41951D /* icon-cross.svg in Resources */ = {isa = PBXBuildFile; fileRef = 4B88FFE28E0A4D27B9800E21 /* icon-cross.svg */; };
+		4517332CFAA8493284639F5D /* icon-right.svg in Resources */ = {isa = PBXBuildFile; fileRef = 4C2E91B4A4654B9FA80CFF2A /* icon-right.svg */; };
+		08E8EB8BD14E4051927A0CFF /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E3515DC81D3481D8BCFF8CD /* icon.png */; };
+		88816365F2FB4807ACD93821 /* keynote_pic_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 6291C05F17E54898B7546C4A /* keynote_pic_1.png */; };
+		1D78843686FC4ABC9A24BD9C /* keynote_pic_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2A9EE8E723844E6B89447918 /* keynote_pic_2.jpg */; };
+		FA2ACE1F2FED4D0C82A9A1B0 /* keynote_pic_3.png in Resources */ = {isa = PBXBuildFile; fileRef = A639304734DE44C09A3F2A39 /* keynote_pic_3.png */; };
+		3CE00A950D9A47A09E1808F7 /* keynote_pic_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E6AF70F609C4455B14BD5C2 /* keynote_pic_4.png */; };
+		1BE8AC1B591741B6A1E86273 /* keynote_star.svg in Resources */ = {isa = PBXBuildFile; fileRef = 2F2CE802F5004BCEA70A0027 /* keynote_star.svg */; };
+		105F666F4870451DA881407C /* loading.svg in Resources */ = {isa = PBXBuildFile; fileRef = 949A80FC69C449238560B269 /* loading.svg */; };
+		17047184773C47D2A039CADB /* logo_horizontal.svg in Resources */ = {isa = PBXBuildFile; fileRef = 0B0918DDC124427896E05A4F /* logo_horizontal.svg */; };
+		6C8382B8C7E54602B53BC6A5 /* logo-cabotelecom.svg in Resources */ = {isa = PBXBuildFile; fileRef = 45FBEDB2775C456A90CA5C42 /* logo-cabotelecom.svg */; };
+		861BB7EB1E8341669C600C37 /* logo-evolux.svg in Resources */ = {isa = PBXBuildFile; fileRef = 3ABD6511CF0045EEB399CDFC /* logo-evolux.svg */; };
+		5C0C26B9D1F84C87A93847FC /* logo-facebook.svg in Resources */ = {isa = PBXBuildFile; fileRef = 7009BFED2C0944C880898202 /* logo-facebook.svg */; };
+		E2932DD9B1764520A4004D5E /* logo-globo.svg in Resources */ = {isa = PBXBuildFile; fileRef = 109BBE6A438B48D8A0FFD437 /* logo-globo.svg */; };
+		9F02B2F7911544D988F6821F /* logo-labcodes.svg in Resources */ = {isa = PBXBuildFile; fileRef = 0250DAC86A0F477EA24538F9 /* logo-labcodes.svg */; };
+		49499868BB794A4CB4546188 /* logo-mangailabs.svg in Resources */ = {isa = PBXBuildFile; fileRef = F574539991E74EA3A3F70A1C /* logo-mangailabs.svg */; };
+		AC820F9FBF634A9E8433DE09 /* logo-psf.svg in Resources */ = {isa = PBXBuildFile; fileRef = D26CBF06D4FC44E49E8254AD /* logo-psf.svg */; };
+		426DAD164CBC4E2198DB0C49 /* logo-sebrae.svg in Resources */ = {isa = PBXBuildFile; fileRef = 5B00BE21E5A94A0D9D03987C /* logo-sebrae.svg */; };
+		C477D8491DFE44FA9E3DD810 /* map_pin.svg in Resources */ = {isa = PBXBuildFile; fileRef = 779BC55B992C46E6917F5540 /* map_pin.svg */; };
+		C9E3588CFD984D5DAE008D84 /* Mapa_RN_Logo.svg in Resources */ = {isa = PBXBuildFile; fileRef = 0EDA6B6658B24D74AE0341AA /* Mapa_RN_Logo.svg */; };
+		408630BC8E5C42D18AAAD5E2 /* pybr_facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = B1A325CF56FA4A0CA3533688 /* pybr_facebook.png */; };
+		07EDC1DFE0E94F8F9E65207A /* pybr_twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C8142DA41CB4332BA672A89 /* pybr_twitter.png */; };
+		F5D75FE73ACD401987C8EBBD /* Python14-Cobras-amarelo.svg in Resources */ = {isa = PBXBuildFile; fileRef = 23C81B9CA3544F9C93C2D7E6 /* Python14-Cobras-amarelo.svg */; };
+		D7354B8E9FBC4157BE08854F /* Python14-Cobras-MenuHeader.svg in Resources */ = {isa = PBXBuildFile; fileRef = AA0053CF1AA14DC490E12BF0 /* Python14-Cobras-MenuHeader.svg */; };
+		CABBAF47F62344D391DE985F /* Python14-Cobras-Transparente.svg in Resources */ = {isa = PBXBuildFile; fileRef = 07B2E975647D4604AD78357E /* Python14-Cobras-Transparente.svg */; };
+		644B002DE52843F1ACDEF8BF /* Python14-Icon Blog.svg in Resources */ = {isa = PBXBuildFile; fileRef = 69BD9135312A4F4F9076F36E /* Python14-Icon Blog.svg */; };
+		44F14F942D544D80885A9532 /* Python14-Icon Facebook.svg in Resources */ = {isa = PBXBuildFile; fileRef = 423C119ED40246559B7F1B4D /* Python14-Icon Facebook.svg */; };
+		6AE0823CD62D4BF39C2AE32E /* Python14-Icon Twitter.svg in Resources */ = {isa = PBXBuildFile; fileRef = 425D2ACD21794D8A8DF2C3CB /* Python14-Icon Twitter.svg */; };
+		B4F6D066B3664AE9B6D489FA /* Python14-Icon Youtube.svg in Resources */ = {isa = PBXBuildFile; fileRef = 242A27AEAF0047F88E3D67E5 /* Python14-Icon Youtube.svg */; };
+		1FBEFF1214674D6F8DB1805B /* Python14-Logo Forte Reis Magos-02.svg in Resources */ = {isa = PBXBuildFile; fileRef = B1119C1E8AAB47C593F9E770 /* Python14-Logo Forte Reis Magos-02.svg */; };
+		16D5FEDA5B9847319158A9C2 /* Python14-Logo Forte Reis Magos.svg in Resources */ = {isa = PBXBuildFile; fileRef = 3B2FCDE3C43A48B68C6CB330 /* Python14-Logo Forte Reis Magos.svg */; };
+		C409C347BAB1412C8B8046BB /* Python14-MapaRN-branco.svg in Resources */ = {isa = PBXBuildFile; fileRef = 3DE7942C098345599E2FAF2A /* Python14-MapaRN-branco.svg */; };
+		D696093CA9544903A5C59AF7 /* Python14-MapaRN-cinza-30.svg in Resources */ = {isa = PBXBuildFile; fileRef = E44C9EECD4EA41A18EE0AA99 /* Python14-MapaRN-cinza-30.svg */; };
+		726881B01EC24FBD8E2B7EB8 /* Python14-MapaRN-cinza.svg in Resources */ = {isa = PBXBuildFile; fileRef = 11DF475498DE4CC697010F68 /* Python14-MapaRN-cinza.svg */; };
+		FC59FB8AD55E49DF8BD9D4BF /* Python14-NomedoEvento.svg in Resources */ = {isa = PBXBuildFile; fileRef = 38A9399390214324BC77AAA3 /* Python14-NomedoEvento.svg */; };
+		BF65A4D629074449B15EF8EE /* schedule_picture-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F31B388C8A34481D90707007 /* schedule_picture-1.jpg */; };
+		40E9EB1FADC64F4CACFC3C52 /* AdventPro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18CC71FBD9A74446AEC35F5F /* AdventPro-Bold.ttf */; };
+		031EB5566F9F49A6BED981A9 /* AdventPro-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 54234E82FD3D41FF8FB6B4BC /* AdventPro-ExtraLight.ttf */; };
+		223E4116EFC84BFD9914248C /* AdventPro-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD80E8A4D1B349DA8307AF6E /* AdventPro-Light.ttf */; };
+		7D224E79AFA84C1CACFDB5E9 /* AdventPro-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 941FB0EA745E483B8DCD5D67 /* AdventPro-Medium.ttf */; };
+		EEDC20A7E113467EA2CCFB37 /* AdventPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 30FA111C501540468A9949F0 /* AdventPro-Regular.ttf */; };
+		431A572ACF064BD1BC1F7E78 /* AdventPro-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 034B15A651BA46E0AADC657A /* AdventPro-SemiBold.ttf */; };
+		CBA39601FF50480CB27030B1 /* AdventPro-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0951FED5E0794D6B85E89EC0 /* AdventPro-Thin.ttf */; };
+		DC1AA3ED5EBF41BCAB792641 /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 629253274DFD4775B99F15A7 /* Nunito-Black.ttf */; };
+		0E690E9A55F54935A2D7505F /* Nunito-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD23E18B259340389A651112 /* Nunito-BlackItalic.ttf */; };
+		19BADF40345946FDA7A53499 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 934B954931F84731AAC601F3 /* Nunito-Bold.ttf */; };
+		79981F6ACA8D4D8290DDE677 /* Nunito-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6D11337682A24340B1C93F7F /* Nunito-BoldItalic.ttf */; };
+		D9C2E6A8CC624260BA68A499 /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F28FDAB33E146CBAE48F67D /* Nunito-ExtraBold.ttf */; };
+		7D89F12E167C4A469FAFD950 /* Nunito-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8B2CCCD6D09F4C08B70629DF /* Nunito-ExtraBoldItalic.ttf */; };
+		DC96F2F192564982A24D8DA9 /* Nunito-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F8EBF6400D3440A4AC7A91CC /* Nunito-ExtraLight.ttf */; };
+		0304CAB342E34321BA4D6B41 /* Nunito-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F4358F411BBB4AC692CFE124 /* Nunito-ExtraLightItalic.ttf */; };
+		873DC8111E454714AEC12CBE /* Nunito-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4AFCB9E4F23D44C5B3288728 /* Nunito-Italic.ttf */; };
+		B90324ACEFFE43FC89EC9E03 /* Nunito-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A360969911F543718E689A39 /* Nunito-Light.ttf */; };
+		2FE7090EBAA8443A9AB22ED2 /* Nunito-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3293AF6B36FC477C83F56C25 /* Nunito-LightItalic.ttf */; };
+		7A04CAB3551845F2B361A7CB /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C31D2B97E164813B3543150 /* Nunito-Regular.ttf */; };
+		7F44C427FC43455EA8D6B4B8 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 991FA93DC9E144B8B154C614 /* Nunito-SemiBold.ttf */; };
+		4BB55BA93D544B1289834368 /* Nunito-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1FB82A52BC31450291D4E16D /* Nunito-SemiBoldItalic.ttf */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		00E356F41AD99517003FC87E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
+			remoteInfo = pybr2019;
+		};
+		2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
+			remoteInfo = "pybr2019-tvOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
+		00E356EE1AD99517003FC87E /* pybr2019Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = pybr2019Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* pybr2019Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = pybr2019Tests.m; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* pybr2019.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pybr2019.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = pybr2019/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = pybr2019/AppDelegate.m; sourceTree = "<group>"; };
+		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = pybr2019/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = pybr2019/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = pybr2019/main.m; sourceTree = "<group>"; };
+		1622CEF41089F89A1C29097B /* Pods-pybr2019Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pybr2019Tests.debug.xcconfig"; path = "Target Support Files/Pods-pybr2019Tests/Pods-pybr2019Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		2D02E47B1E0B4A5D006451C7 /* pybr2019-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pybr2019-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D02E4901E0B4A5D006451C7 /* pybr2019-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "pybr2019-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		39E849FE0F16579B3670D495 /* Pods-pybr2019.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pybr2019.release.xcconfig"; path = "Target Support Files/Pods-pybr2019/Pods-pybr2019.release.xcconfig"; sourceTree = "<group>"; };
+		47043CE7AD7C589C9AA16FAB /* Pods-pybr2019-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pybr2019-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-pybr2019-tvOS/Pods-pybr2019-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		5EE0AD6A5760A97FCAD10D50 /* libPods-pybr2019-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-pybr2019-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		716296F76FC10CA8B24843D3 /* Pods-pybr2019.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pybr2019.debug.xcconfig"; path = "Target Support Files/Pods-pybr2019/Pods-pybr2019.debug.xcconfig"; sourceTree = "<group>"; };
+		861F7247408558901E5F6C86 /* Pods-pybr2019-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pybr2019-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-pybr2019-tvOSTests/Pods-pybr2019-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A59E13E4E5CEFD83640530DD /* Pods-pybr2019Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pybr2019Tests.release.xcconfig"; path = "Target Support Files/Pods-pybr2019Tests/Pods-pybr2019Tests.release.xcconfig"; sourceTree = "<group>"; };
+		BB01A8FCBB92052990754FC5 /* libPods-pybr2019.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-pybr2019.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6149477948BF18E599616B5 /* Pods-pybr2019-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pybr2019-tvOS.release.xcconfig"; path = "Target Support Files/Pods-pybr2019-tvOS/Pods-pybr2019-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		F10CF4A7D8DA43D296A46CFD /* Pods-pybr2019-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pybr2019-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-pybr2019-tvOSTests/Pods-pybr2019-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		F207A942F2B4D79B572CA2D3 /* libPods-pybr2019-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-pybr2019-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F394608B1C8AEB635AB6609D /* libPods-pybr2019Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-pybr2019Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D6930A2652B4E308634F837 /* bgevento.jpg */ = {isa = PBXFileReference; name = "bgevento.jpg"; path = "../assets/img/bgevento.jpg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A55C98C294B74EC4839098EB /* btnticket.svg */ = {isa = PBXFileReference; name = "btnticket.svg"; path = "../assets/img/btnticket.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D0922F93F5A2463C9985BC5C /* closebutton-01.svg */ = {isa = PBXFileReference; name = "closebutton-01.svg"; path = "../assets/img/closebutton-01.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		107668CDA7A146F39245A2BC /* empty.svg */ = {isa = PBXFileReference; name = "empty.svg"; path = "../assets/img/empty.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		0F9EC92410AC40CF8DEA893E /* favicon.ico */ = {isa = PBXFileReference; name = "favicon.ico"; path = "../assets/img/favicon.ico"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A1A2B53E277E4696B5E6608F /* flag_br.svg */ = {isa = PBXFileReference; name = "flag_br.svg"; path = "../assets/img/flag_br.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		990551C8F36C4A27A10BAB17 /* flag_ng.svg */ = {isa = PBXFileReference; name = "flag_ng.svg"; path = "../assets/img/flag_ng.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		DA49731F70D24046842B9ED3 /* Forte-Outlines.svg */ = {isa = PBXFileReference; name = "Forte-Outlines.svg"; path = "../assets/img/Forte-Outlines.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E0B101C7570749F887519397 /* hamburguer menu-01.svg */ = {isa = PBXFileReference; name = "hamburguer menu-01.svg"; path = "../assets/img/hamburguer menu-01.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		BE639289C6564C189D4F7B16 /* holiday-inn.jpeg */ = {isa = PBXFileReference; name = "holiday-inn.jpeg"; path = "../assets/img/holiday-inn.jpeg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		2A4FB54EF6C9413B9023A5F6 /* holiday-inn.jpg */ = {isa = PBXFileReference; name = "holiday-inn.jpg"; path = "../assets/img/holiday-inn.jpg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		21C1143747F648E384489EB6 /* holiday-inn.png */ = {isa = PBXFileReference; name = "holiday-inn.png"; path = "../assets/img/holiday-inn.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A5DA9358CC5F4EAA8667C52C /* icon-calendar.png */ = {isa = PBXFileReference; name = "icon-calendar.png"; path = "../assets/img/icon-calendar.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4B88FFE28E0A4D27B9800E21 /* icon-cross.svg */ = {isa = PBXFileReference; name = "icon-cross.svg"; path = "../assets/img/icon-cross.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4C2E91B4A4654B9FA80CFF2A /* icon-right.svg */ = {isa = PBXFileReference; name = "icon-right.svg"; path = "../assets/img/icon-right.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		1E3515DC81D3481D8BCFF8CD /* icon.png */ = {isa = PBXFileReference; name = "icon.png"; path = "../assets/img/icon.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		6291C05F17E54898B7546C4A /* keynote_pic_1.png */ = {isa = PBXFileReference; name = "keynote_pic_1.png"; path = "../assets/img/keynote_pic_1.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		2A9EE8E723844E6B89447918 /* keynote_pic_2.jpg */ = {isa = PBXFileReference; name = "keynote_pic_2.jpg"; path = "../assets/img/keynote_pic_2.jpg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A639304734DE44C09A3F2A39 /* keynote_pic_3.png */ = {isa = PBXFileReference; name = "keynote_pic_3.png"; path = "../assets/img/keynote_pic_3.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		7E6AF70F609C4455B14BD5C2 /* keynote_pic_4.png */ = {isa = PBXFileReference; name = "keynote_pic_4.png"; path = "../assets/img/keynote_pic_4.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		2F2CE802F5004BCEA70A0027 /* keynote_star.svg */ = {isa = PBXFileReference; name = "keynote_star.svg"; path = "../assets/img/keynote_star.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		949A80FC69C449238560B269 /* loading.svg */ = {isa = PBXFileReference; name = "loading.svg"; path = "../assets/img/loading.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		0B0918DDC124427896E05A4F /* logo_horizontal.svg */ = {isa = PBXFileReference; name = "logo_horizontal.svg"; path = "../assets/img/logo_horizontal.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		45FBEDB2775C456A90CA5C42 /* logo-cabotelecom.svg */ = {isa = PBXFileReference; name = "logo-cabotelecom.svg"; path = "../assets/img/logo-cabotelecom.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		3ABD6511CF0045EEB399CDFC /* logo-evolux.svg */ = {isa = PBXFileReference; name = "logo-evolux.svg"; path = "../assets/img/logo-evolux.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		7009BFED2C0944C880898202 /* logo-facebook.svg */ = {isa = PBXFileReference; name = "logo-facebook.svg"; path = "../assets/img/logo-facebook.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		109BBE6A438B48D8A0FFD437 /* logo-globo.svg */ = {isa = PBXFileReference; name = "logo-globo.svg"; path = "../assets/img/logo-globo.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		0250DAC86A0F477EA24538F9 /* logo-labcodes.svg */ = {isa = PBXFileReference; name = "logo-labcodes.svg"; path = "../assets/img/logo-labcodes.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F574539991E74EA3A3F70A1C /* logo-mangailabs.svg */ = {isa = PBXFileReference; name = "logo-mangailabs.svg"; path = "../assets/img/logo-mangailabs.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D26CBF06D4FC44E49E8254AD /* logo-psf.svg */ = {isa = PBXFileReference; name = "logo-psf.svg"; path = "../assets/img/logo-psf.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		5B00BE21E5A94A0D9D03987C /* logo-sebrae.svg */ = {isa = PBXFileReference; name = "logo-sebrae.svg"; path = "../assets/img/logo-sebrae.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		779BC55B992C46E6917F5540 /* map_pin.svg */ = {isa = PBXFileReference; name = "map_pin.svg"; path = "../assets/img/map_pin.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		0EDA6B6658B24D74AE0341AA /* Mapa_RN_Logo.svg */ = {isa = PBXFileReference; name = "Mapa_RN_Logo.svg"; path = "../assets/img/Mapa_RN_Logo.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		B1A325CF56FA4A0CA3533688 /* pybr_facebook.png */ = {isa = PBXFileReference; name = "pybr_facebook.png"; path = "../assets/img/pybr_facebook.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4C8142DA41CB4332BA672A89 /* pybr_twitter.png */ = {isa = PBXFileReference; name = "pybr_twitter.png"; path = "../assets/img/pybr_twitter.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		23C81B9CA3544F9C93C2D7E6 /* Python14-Cobras-amarelo.svg */ = {isa = PBXFileReference; name = "Python14-Cobras-amarelo.svg"; path = "../assets/img/Python14-Cobras-amarelo.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		AA0053CF1AA14DC490E12BF0 /* Python14-Cobras-MenuHeader.svg */ = {isa = PBXFileReference; name = "Python14-Cobras-MenuHeader.svg"; path = "../assets/img/Python14-Cobras-MenuHeader.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		07B2E975647D4604AD78357E /* Python14-Cobras-Transparente.svg */ = {isa = PBXFileReference; name = "Python14-Cobras-Transparente.svg"; path = "../assets/img/Python14-Cobras-Transparente.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		69BD9135312A4F4F9076F36E /* Python14-Icon Blog.svg */ = {isa = PBXFileReference; name = "Python14-Icon Blog.svg"; path = "../assets/img/Python14-Icon Blog.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		423C119ED40246559B7F1B4D /* Python14-Icon Facebook.svg */ = {isa = PBXFileReference; name = "Python14-Icon Facebook.svg"; path = "../assets/img/Python14-Icon Facebook.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		425D2ACD21794D8A8DF2C3CB /* Python14-Icon Twitter.svg */ = {isa = PBXFileReference; name = "Python14-Icon Twitter.svg"; path = "../assets/img/Python14-Icon Twitter.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		242A27AEAF0047F88E3D67E5 /* Python14-Icon Youtube.svg */ = {isa = PBXFileReference; name = "Python14-Icon Youtube.svg"; path = "../assets/img/Python14-Icon Youtube.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		B1119C1E8AAB47C593F9E770 /* Python14-Logo Forte Reis Magos-02.svg */ = {isa = PBXFileReference; name = "Python14-Logo Forte Reis Magos-02.svg"; path = "../assets/img/Python14-Logo Forte Reis Magos-02.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		3B2FCDE3C43A48B68C6CB330 /* Python14-Logo Forte Reis Magos.svg */ = {isa = PBXFileReference; name = "Python14-Logo Forte Reis Magos.svg"; path = "../assets/img/Python14-Logo Forte Reis Magos.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		3DE7942C098345599E2FAF2A /* Python14-MapaRN-branco.svg */ = {isa = PBXFileReference; name = "Python14-MapaRN-branco.svg"; path = "../assets/img/Python14-MapaRN-branco.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E44C9EECD4EA41A18EE0AA99 /* Python14-MapaRN-cinza-30.svg */ = {isa = PBXFileReference; name = "Python14-MapaRN-cinza-30.svg"; path = "../assets/img/Python14-MapaRN-cinza-30.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		11DF475498DE4CC697010F68 /* Python14-MapaRN-cinza.svg */ = {isa = PBXFileReference; name = "Python14-MapaRN-cinza.svg"; path = "../assets/img/Python14-MapaRN-cinza.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		38A9399390214324BC77AAA3 /* Python14-NomedoEvento.svg */ = {isa = PBXFileReference; name = "Python14-NomedoEvento.svg"; path = "../assets/img/Python14-NomedoEvento.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F31B388C8A34481D90707007 /* schedule_picture-1.jpg */ = {isa = PBXFileReference; name = "schedule_picture-1.jpg"; path = "../assets/img/schedule_picture-1.jpg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		18CC71FBD9A74446AEC35F5F /* AdventPro-Bold.ttf */ = {isa = PBXFileReference; name = "AdventPro-Bold.ttf"; path = "../assets/fonts/AdventPro-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		54234E82FD3D41FF8FB6B4BC /* AdventPro-ExtraLight.ttf */ = {isa = PBXFileReference; name = "AdventPro-ExtraLight.ttf"; path = "../assets/fonts/AdventPro-ExtraLight.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		CD80E8A4D1B349DA8307AF6E /* AdventPro-Light.ttf */ = {isa = PBXFileReference; name = "AdventPro-Light.ttf"; path = "../assets/fonts/AdventPro-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		941FB0EA745E483B8DCD5D67 /* AdventPro-Medium.ttf */ = {isa = PBXFileReference; name = "AdventPro-Medium.ttf"; path = "../assets/fonts/AdventPro-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		30FA111C501540468A9949F0 /* AdventPro-Regular.ttf */ = {isa = PBXFileReference; name = "AdventPro-Regular.ttf"; path = "../assets/fonts/AdventPro-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		034B15A651BA46E0AADC657A /* AdventPro-SemiBold.ttf */ = {isa = PBXFileReference; name = "AdventPro-SemiBold.ttf"; path = "../assets/fonts/AdventPro-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		0951FED5E0794D6B85E89EC0 /* AdventPro-Thin.ttf */ = {isa = PBXFileReference; name = "AdventPro-Thin.ttf"; path = "../assets/fonts/AdventPro-Thin.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		629253274DFD4775B99F15A7 /* Nunito-Black.ttf */ = {isa = PBXFileReference; name = "Nunito-Black.ttf"; path = "../assets/fonts/Nunito-Black.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		BD23E18B259340389A651112 /* Nunito-BlackItalic.ttf */ = {isa = PBXFileReference; name = "Nunito-BlackItalic.ttf"; path = "../assets/fonts/Nunito-BlackItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		934B954931F84731AAC601F3 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; name = "Nunito-Bold.ttf"; path = "../assets/fonts/Nunito-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		6D11337682A24340B1C93F7F /* Nunito-BoldItalic.ttf */ = {isa = PBXFileReference; name = "Nunito-BoldItalic.ttf"; path = "../assets/fonts/Nunito-BoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		6F28FDAB33E146CBAE48F67D /* Nunito-ExtraBold.ttf */ = {isa = PBXFileReference; name = "Nunito-ExtraBold.ttf"; path = "../assets/fonts/Nunito-ExtraBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		8B2CCCD6D09F4C08B70629DF /* Nunito-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; name = "Nunito-ExtraBoldItalic.ttf"; path = "../assets/fonts/Nunito-ExtraBoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F8EBF6400D3440A4AC7A91CC /* Nunito-ExtraLight.ttf */ = {isa = PBXFileReference; name = "Nunito-ExtraLight.ttf"; path = "../assets/fonts/Nunito-ExtraLight.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F4358F411BBB4AC692CFE124 /* Nunito-ExtraLightItalic.ttf */ = {isa = PBXFileReference; name = "Nunito-ExtraLightItalic.ttf"; path = "../assets/fonts/Nunito-ExtraLightItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4AFCB9E4F23D44C5B3288728 /* Nunito-Italic.ttf */ = {isa = PBXFileReference; name = "Nunito-Italic.ttf"; path = "../assets/fonts/Nunito-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A360969911F543718E689A39 /* Nunito-Light.ttf */ = {isa = PBXFileReference; name = "Nunito-Light.ttf"; path = "../assets/fonts/Nunito-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		3293AF6B36FC477C83F56C25 /* Nunito-LightItalic.ttf */ = {isa = PBXFileReference; name = "Nunito-LightItalic.ttf"; path = "../assets/fonts/Nunito-LightItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		7C31D2B97E164813B3543150 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; name = "Nunito-Regular.ttf"; path = "../assets/fonts/Nunito-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		991FA93DC9E144B8B154C614 /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; name = "Nunito-SemiBold.ttf"; path = "../assets/fonts/Nunito-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		1FB82A52BC31450291D4E16D /* Nunito-SemiBoldItalic.ttf */ = {isa = PBXFileReference; name = "Nunito-SemiBoldItalic.ttf"; path = "../assets/fonts/Nunito-SemiBoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		00E356EB1AD99517003FC87E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				617934ADC620F567FDD63071 /* libPods-pybr2019Tests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13B07F8C1A680F5B00A75B9A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D5FFC80EE166811D3918D7B /* libPods-pybr2019.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D02E4781E0B4A5D006451C7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF777D6E5B205988EA9C28F6 /* libPods-pybr2019-tvOS.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D02E48D1E0B4A5D006451C7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FAFEABDACA3B695157FFA08 /* libPods-pybr2019-tvOSTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		00E356EF1AD99517003FC87E /* pybr2019Tests */ = {
+			isa = PBXGroup;
+			children = (
+				00E356F21AD99517003FC87E /* pybr2019Tests.m */,
+				00E356F01AD99517003FC87E /* Supporting Files */,
+			);
+			path = pybr2019Tests;
+			sourceTree = "<group>";
+		};
+		00E356F01AD99517003FC87E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				00E356F11AD99517003FC87E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		13B07FAE1A68108700A75B9A /* pybr2019 */ = {
+			isa = PBXGroup;
+			children = (
+				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
+				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
+				13B07FB01A68108700A75B9A /* AppDelegate.m */,
+				13B07FB51A68108700A75B9A /* Images.xcassets */,
+				13B07FB61A68108700A75B9A /* Info.plist */,
+				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
+				13B07FB71A68108700A75B9A /* main.m */,
+			);
+			name = pybr2019;
+			sourceTree = "<group>";
+		};
+		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
+				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
+				BB01A8FCBB92052990754FC5 /* libPods-pybr2019.a */,
+				5EE0AD6A5760A97FCAD10D50 /* libPods-pybr2019-tvOS.a */,
+				F207A942F2B4D79B572CA2D3 /* libPods-pybr2019-tvOSTests.a */,
+				F394608B1C8AEB635AB6609D /* libPods-pybr2019Tests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		83CBB9F61A601CBA00E9B192 = {
+			isa = PBXGroup;
+			children = (
+				13B07FAE1A68108700A75B9A /* pybr2019 */,
+				832341AE1AAA6A7D00B99B32 /* Libraries */,
+				00E356EF1AD99517003FC87E /* pybr2019Tests */,
+				83CBBA001A601CBA00E9B192 /* Products */,
+				2D16E6871FA4F8E400B85C8A /* Frameworks */,
+				F8430683B438E3EF94E1FA30 /* Pods */,
+				BBBED63F22E14FE5BEC04F7A /* Resources */,
+			);
+			indentWidth = 2;
+			sourceTree = "<group>";
+			tabWidth = 2;
+			usesTabs = 0;
+		};
+		83CBBA001A601CBA00E9B192 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				13B07F961A680F5B00A75B9A /* pybr2019.app */,
+				00E356EE1AD99517003FC87E /* pybr2019Tests.xctest */,
+				2D02E47B1E0B4A5D006451C7 /* pybr2019-tvOS.app */,
+				2D02E4901E0B4A5D006451C7 /* pybr2019-tvOSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F8430683B438E3EF94E1FA30 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				716296F76FC10CA8B24843D3 /* Pods-pybr2019.debug.xcconfig */,
+				39E849FE0F16579B3670D495 /* Pods-pybr2019.release.xcconfig */,
+				47043CE7AD7C589C9AA16FAB /* Pods-pybr2019-tvOS.debug.xcconfig */,
+				E6149477948BF18E599616B5 /* Pods-pybr2019-tvOS.release.xcconfig */,
+				861F7247408558901E5F6C86 /* Pods-pybr2019-tvOSTests.debug.xcconfig */,
+				F10CF4A7D8DA43D296A46CFD /* Pods-pybr2019-tvOSTests.release.xcconfig */,
+				1622CEF41089F89A1C29097B /* Pods-pybr2019Tests.debug.xcconfig */,
+				A59E13E4E5CEFD83640530DD /* Pods-pybr2019Tests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		BBBED63F22E14FE5BEC04F7A /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				7D6930A2652B4E308634F837 /* bgevento.jpg */,
+				A55C98C294B74EC4839098EB /* btnticket.svg */,
+				D0922F93F5A2463C9985BC5C /* closebutton-01.svg */,
+				107668CDA7A146F39245A2BC /* empty.svg */,
+				0F9EC92410AC40CF8DEA893E /* favicon.ico */,
+				A1A2B53E277E4696B5E6608F /* flag_br.svg */,
+				990551C8F36C4A27A10BAB17 /* flag_ng.svg */,
+				DA49731F70D24046842B9ED3 /* Forte-Outlines.svg */,
+				E0B101C7570749F887519397 /* hamburguer menu-01.svg */,
+				BE639289C6564C189D4F7B16 /* holiday-inn.jpeg */,
+				2A4FB54EF6C9413B9023A5F6 /* holiday-inn.jpg */,
+				21C1143747F648E384489EB6 /* holiday-inn.png */,
+				A5DA9358CC5F4EAA8667C52C /* icon-calendar.png */,
+				4B88FFE28E0A4D27B9800E21 /* icon-cross.svg */,
+				4C2E91B4A4654B9FA80CFF2A /* icon-right.svg */,
+				1E3515DC81D3481D8BCFF8CD /* icon.png */,
+				6291C05F17E54898B7546C4A /* keynote_pic_1.png */,
+				2A9EE8E723844E6B89447918 /* keynote_pic_2.jpg */,
+				A639304734DE44C09A3F2A39 /* keynote_pic_3.png */,
+				7E6AF70F609C4455B14BD5C2 /* keynote_pic_4.png */,
+				2F2CE802F5004BCEA70A0027 /* keynote_star.svg */,
+				949A80FC69C449238560B269 /* loading.svg */,
+				0B0918DDC124427896E05A4F /* logo_horizontal.svg */,
+				45FBEDB2775C456A90CA5C42 /* logo-cabotelecom.svg */,
+				3ABD6511CF0045EEB399CDFC /* logo-evolux.svg */,
+				7009BFED2C0944C880898202 /* logo-facebook.svg */,
+				109BBE6A438B48D8A0FFD437 /* logo-globo.svg */,
+				0250DAC86A0F477EA24538F9 /* logo-labcodes.svg */,
+				F574539991E74EA3A3F70A1C /* logo-mangailabs.svg */,
+				D26CBF06D4FC44E49E8254AD /* logo-psf.svg */,
+				5B00BE21E5A94A0D9D03987C /* logo-sebrae.svg */,
+				779BC55B992C46E6917F5540 /* map_pin.svg */,
+				0EDA6B6658B24D74AE0341AA /* Mapa_RN_Logo.svg */,
+				B1A325CF56FA4A0CA3533688 /* pybr_facebook.png */,
+				4C8142DA41CB4332BA672A89 /* pybr_twitter.png */,
+				23C81B9CA3544F9C93C2D7E6 /* Python14-Cobras-amarelo.svg */,
+				AA0053CF1AA14DC490E12BF0 /* Python14-Cobras-MenuHeader.svg */,
+				07B2E975647D4604AD78357E /* Python14-Cobras-Transparente.svg */,
+				69BD9135312A4F4F9076F36E /* Python14-Icon Blog.svg */,
+				423C119ED40246559B7F1B4D /* Python14-Icon Facebook.svg */,
+				425D2ACD21794D8A8DF2C3CB /* Python14-Icon Twitter.svg */,
+				242A27AEAF0047F88E3D67E5 /* Python14-Icon Youtube.svg */,
+				B1119C1E8AAB47C593F9E770 /* Python14-Logo Forte Reis Magos-02.svg */,
+				3B2FCDE3C43A48B68C6CB330 /* Python14-Logo Forte Reis Magos.svg */,
+				3DE7942C098345599E2FAF2A /* Python14-MapaRN-branco.svg */,
+				E44C9EECD4EA41A18EE0AA99 /* Python14-MapaRN-cinza-30.svg */,
+				11DF475498DE4CC697010F68 /* Python14-MapaRN-cinza.svg */,
+				38A9399390214324BC77AAA3 /* Python14-NomedoEvento.svg */,
+				F31B388C8A34481D90707007 /* schedule_picture-1.jpg */,
+				18CC71FBD9A74446AEC35F5F /* AdventPro-Bold.ttf */,
+				54234E82FD3D41FF8FB6B4BC /* AdventPro-ExtraLight.ttf */,
+				CD80E8A4D1B349DA8307AF6E /* AdventPro-Light.ttf */,
+				941FB0EA745E483B8DCD5D67 /* AdventPro-Medium.ttf */,
+				30FA111C501540468A9949F0 /* AdventPro-Regular.ttf */,
+				034B15A651BA46E0AADC657A /* AdventPro-SemiBold.ttf */,
+				0951FED5E0794D6B85E89EC0 /* AdventPro-Thin.ttf */,
+				629253274DFD4775B99F15A7 /* Nunito-Black.ttf */,
+				BD23E18B259340389A651112 /* Nunito-BlackItalic.ttf */,
+				934B954931F84731AAC601F3 /* Nunito-Bold.ttf */,
+				6D11337682A24340B1C93F7F /* Nunito-BoldItalic.ttf */,
+				6F28FDAB33E146CBAE48F67D /* Nunito-ExtraBold.ttf */,
+				8B2CCCD6D09F4C08B70629DF /* Nunito-ExtraBoldItalic.ttf */,
+				F8EBF6400D3440A4AC7A91CC /* Nunito-ExtraLight.ttf */,
+				F4358F411BBB4AC692CFE124 /* Nunito-ExtraLightItalic.ttf */,
+				4AFCB9E4F23D44C5B3288728 /* Nunito-Italic.ttf */,
+				A360969911F543718E689A39 /* Nunito-Light.ttf */,
+				3293AF6B36FC477C83F56C25 /* Nunito-LightItalic.ttf */,
+				7C31D2B97E164813B3543150 /* Nunito-Regular.ttf */,
+				991FA93DC9E144B8B154C614 /* Nunito-SemiBold.ttf */,
+				1FB82A52BC31450291D4E16D /* Nunito-SemiBoldItalic.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		00E356ED1AD99517003FC87E /* pybr2019Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "pybr2019Tests" */;
+			buildPhases = (
+				170474172A7B66BA6DF8CF74 /* [CP] Check Pods Manifest.lock */,
+				00E356EA1AD99517003FC87E /* Sources */,
+				00E356EB1AD99517003FC87E /* Frameworks */,
+				00E356EC1AD99517003FC87E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				00E356F51AD99517003FC87E /* PBXTargetDependency */,
+			);
+			name = pybr2019Tests;
+			productName = pybr2019Tests;
+			productReference = 00E356EE1AD99517003FC87E /* pybr2019Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		13B07F861A680F5B00A75B9A /* pybr2019 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "pybr2019" */;
+			buildPhases = (
+				8088165D69A801944D2B465A /* [CP] Check Pods Manifest.lock */,
+				FD10A7F022414F080027D42C /* Start Packager */,
+				13B07F871A680F5B00A75B9A /* Sources */,
+				13B07F8C1A680F5B00A75B9A /* Frameworks */,
+				13B07F8E1A680F5B00A75B9A /* Resources */,
+				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = pybr2019;
+			productName = pybr2019;
+			productReference = 13B07F961A680F5B00A75B9A /* pybr2019.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2D02E47A1E0B4A5D006451C7 /* pybr2019-tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "pybr2019-tvOS" */;
+			buildPhases = (
+				36522B592C8482BFCC09E7D9 /* [CP] Check Pods Manifest.lock */,
+				FD10A7F122414F3F0027D42C /* Start Packager */,
+				2D02E4771E0B4A5D006451C7 /* Sources */,
+				2D02E4781E0B4A5D006451C7 /* Frameworks */,
+				2D02E4791E0B4A5D006451C7 /* Resources */,
+				2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "pybr2019-tvOS";
+			productName = "pybr2019-tvOS";
+			productReference = 2D02E47B1E0B4A5D006451C7 /* pybr2019-tvOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2D02E48F1E0B4A5D006451C7 /* pybr2019-tvOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "pybr2019-tvOSTests" */;
+			buildPhases = (
+				4BCD3FDF8941CBDE7E4DB3DC /* [CP] Check Pods Manifest.lock */,
+				2D02E48C1E0B4A5D006451C7 /* Sources */,
+				2D02E48D1E0B4A5D006451C7 /* Frameworks */,
+				2D02E48E1E0B4A5D006451C7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */,
+			);
+			name = "pybr2019-tvOSTests";
+			productName = "pybr2019-tvOSTests";
+			productReference = 2D02E4901E0B4A5D006451C7 /* pybr2019-tvOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		83CBB9F71A601CBA00E9B192 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 940;
+				ORGANIZATIONNAME = Facebook;
+				TargetAttributes = {
+					00E356ED1AD99517003FC87E = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = 13B07F861A680F5B00A75B9A;
+					};
+					2D02E47A1E0B4A5D006451C7 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+					};
+					2D02E48F1E0B4A5D006451C7 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 2D02E47A1E0B4A5D006451C7;
+					};
+				};
+			};
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "pybr2019" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 83CBB9F61A601CBA00E9B192;
+			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				13B07F861A680F5B00A75B9A /* pybr2019 */,
+				00E356ED1AD99517003FC87E /* pybr2019Tests */,
+				2D02E47A1E0B4A5D006451C7 /* pybr2019-tvOS */,
+				2D02E48F1E0B4A5D006451C7 /* pybr2019-tvOSTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		00E356EC1AD99517003FC87E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13B07F8E1A680F5B00A75B9A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				D11D4874216148209246E96E /* bgevento.jpg in Resources */,
+				056A3A4B5FEA4BAD809DE833 /* btnticket.svg in Resources */,
+				89E3C1ADB9FD43C48DEC86C2 /* closebutton-01.svg in Resources */,
+				5DA5B5FB2EDF4E3AB10093BC /* empty.svg in Resources */,
+				8EF12521E0D34DA9B9C61317 /* favicon.ico in Resources */,
+				9898B68043EC412885D2390D /* flag_br.svg in Resources */,
+				DAAAC3CA231F422586AAD0ED /* flag_ng.svg in Resources */,
+				455806BF9C65449889EF859C /* Forte-Outlines.svg in Resources */,
+				BEEE237A1E80450BB4083DD3 /* hamburguer menu-01.svg in Resources */,
+				26C2804BED874ECAA849F1FE /* holiday-inn.jpeg in Resources */,
+				D31AC9A4FE924AD19667B3EF /* holiday-inn.jpg in Resources */,
+				3BAA255E668D410C8939DAE8 /* holiday-inn.png in Resources */,
+				EC789BF107A04844A77F9C4B /* icon-calendar.png in Resources */,
+				D13960D8BD9F4AF98A41951D /* icon-cross.svg in Resources */,
+				4517332CFAA8493284639F5D /* icon-right.svg in Resources */,
+				08E8EB8BD14E4051927A0CFF /* icon.png in Resources */,
+				88816365F2FB4807ACD93821 /* keynote_pic_1.png in Resources */,
+				1D78843686FC4ABC9A24BD9C /* keynote_pic_2.jpg in Resources */,
+				FA2ACE1F2FED4D0C82A9A1B0 /* keynote_pic_3.png in Resources */,
+				3CE00A950D9A47A09E1808F7 /* keynote_pic_4.png in Resources */,
+				1BE8AC1B591741B6A1E86273 /* keynote_star.svg in Resources */,
+				105F666F4870451DA881407C /* loading.svg in Resources */,
+				17047184773C47D2A039CADB /* logo_horizontal.svg in Resources */,
+				6C8382B8C7E54602B53BC6A5 /* logo-cabotelecom.svg in Resources */,
+				861BB7EB1E8341669C600C37 /* logo-evolux.svg in Resources */,
+				5C0C26B9D1F84C87A93847FC /* logo-facebook.svg in Resources */,
+				E2932DD9B1764520A4004D5E /* logo-globo.svg in Resources */,
+				9F02B2F7911544D988F6821F /* logo-labcodes.svg in Resources */,
+				49499868BB794A4CB4546188 /* logo-mangailabs.svg in Resources */,
+				AC820F9FBF634A9E8433DE09 /* logo-psf.svg in Resources */,
+				426DAD164CBC4E2198DB0C49 /* logo-sebrae.svg in Resources */,
+				C477D8491DFE44FA9E3DD810 /* map_pin.svg in Resources */,
+				C9E3588CFD984D5DAE008D84 /* Mapa_RN_Logo.svg in Resources */,
+				408630BC8E5C42D18AAAD5E2 /* pybr_facebook.png in Resources */,
+				07EDC1DFE0E94F8F9E65207A /* pybr_twitter.png in Resources */,
+				F5D75FE73ACD401987C8EBBD /* Python14-Cobras-amarelo.svg in Resources */,
+				D7354B8E9FBC4157BE08854F /* Python14-Cobras-MenuHeader.svg in Resources */,
+				CABBAF47F62344D391DE985F /* Python14-Cobras-Transparente.svg in Resources */,
+				644B002DE52843F1ACDEF8BF /* Python14-Icon Blog.svg in Resources */,
+				44F14F942D544D80885A9532 /* Python14-Icon Facebook.svg in Resources */,
+				6AE0823CD62D4BF39C2AE32E /* Python14-Icon Twitter.svg in Resources */,
+				B4F6D066B3664AE9B6D489FA /* Python14-Icon Youtube.svg in Resources */,
+				1FBEFF1214674D6F8DB1805B /* Python14-Logo Forte Reis Magos-02.svg in Resources */,
+				16D5FEDA5B9847319158A9C2 /* Python14-Logo Forte Reis Magos.svg in Resources */,
+				C409C347BAB1412C8B8046BB /* Python14-MapaRN-branco.svg in Resources */,
+				D696093CA9544903A5C59AF7 /* Python14-MapaRN-cinza-30.svg in Resources */,
+				726881B01EC24FBD8E2B7EB8 /* Python14-MapaRN-cinza.svg in Resources */,
+				FC59FB8AD55E49DF8BD9D4BF /* Python14-NomedoEvento.svg in Resources */,
+				BF65A4D629074449B15EF8EE /* schedule_picture-1.jpg in Resources */,
+				40E9EB1FADC64F4CACFC3C52 /* AdventPro-Bold.ttf in Resources */,
+				031EB5566F9F49A6BED981A9 /* AdventPro-ExtraLight.ttf in Resources */,
+				223E4116EFC84BFD9914248C /* AdventPro-Light.ttf in Resources */,
+				7D224E79AFA84C1CACFDB5E9 /* AdventPro-Medium.ttf in Resources */,
+				EEDC20A7E113467EA2CCFB37 /* AdventPro-Regular.ttf in Resources */,
+				431A572ACF064BD1BC1F7E78 /* AdventPro-SemiBold.ttf in Resources */,
+				CBA39601FF50480CB27030B1 /* AdventPro-Thin.ttf in Resources */,
+				DC1AA3ED5EBF41BCAB792641 /* Nunito-Black.ttf in Resources */,
+				0E690E9A55F54935A2D7505F /* Nunito-BlackItalic.ttf in Resources */,
+				19BADF40345946FDA7A53499 /* Nunito-Bold.ttf in Resources */,
+				79981F6ACA8D4D8290DDE677 /* Nunito-BoldItalic.ttf in Resources */,
+				D9C2E6A8CC624260BA68A499 /* Nunito-ExtraBold.ttf in Resources */,
+				7D89F12E167C4A469FAFD950 /* Nunito-ExtraBoldItalic.ttf in Resources */,
+				DC96F2F192564982A24D8DA9 /* Nunito-ExtraLight.ttf in Resources */,
+				0304CAB342E34321BA4D6B41 /* Nunito-ExtraLightItalic.ttf in Resources */,
+				873DC8111E454714AEC12CBE /* Nunito-Italic.ttf in Resources */,
+				B90324ACEFFE43FC89EC9E03 /* Nunito-Light.ttf in Resources */,
+				2FE7090EBAA8443A9AB22ED2 /* Nunito-LightItalic.ttf in Resources */,
+				7A04CAB3551845F2B361A7CB /* Nunito-Regular.ttf in Resources */,
+				7F44C427FC43455EA8D6B4B8 /* Nunito-SemiBold.ttf in Resources */,
+				4BB55BA93D544B1289834368 /* Nunito-SemiBoldItalic.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D02E4791E0B4A5D006451C7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D02E48E1E0B4A5D006451C7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Bundle React Native code and images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+		};
+		170474172A7B66BA6DF8CF74 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-pybr2019Tests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Bundle React Native Code And Images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+		};
+		36522B592C8482BFCC09E7D9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-pybr2019-tvOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4BCD3FDF8941CBDE7E4DB3DC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-pybr2019-tvOSTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8088165D69A801944D2B465A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-pybr2019-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FD10A7F022414F080027D42C /* Start Packager */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Start Packager";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > \"${SRCROOT}/../node_modules/react-native/scripts/.packager.env\"\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open \"$SRCROOT/../node_modules/react-native/scripts/launchPackager.command\" || echo \"Can't start packager automatically\"\n  fi\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FD10A7F122414F3F0027D42C /* Start Packager */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Start Packager";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > \"${SRCROOT}/../node_modules/react-native/scripts/.packager.env\"\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open \"$SRCROOT/../node_modules/react-native/scripts/launchPackager.command\" || echo \"Can't start packager automatically\"\n  fi\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		00E356EA1AD99517003FC87E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00E356F31AD99517003FC87E /* pybr2019Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13B07F871A680F5B00A75B9A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				13B07FC11A68108700A75B9A /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D02E4771E0B4A5D006451C7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */,
+				2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D02E48C1E0B4A5D006451C7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DCD954D1E0B4F2C00145EB5 /* pybr2019Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 13B07F861A680F5B00A75B9A /* pybr2019 */;
+			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
+		};
+		2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2D02E47A1E0B4A5D006451C7 /* pybr2019-tvOS */;
+			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		13B07FB11A68108700A75B9A /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				13B07FB21A68108700A75B9A /* Base */,
+			);
+			name = LaunchScreen.xib;
+			path = pybr2019;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		00E356F61AD99517003FC87E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1622CEF41089F89A1C29097B /* Pods-pybr2019Tests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = pybr2019Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
+					"$(inherited)",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/pybr2019.app/pybr2019";
+			};
+			name = Debug;
+		};
+		00E356F71AD99517003FC87E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A59E13E4E5CEFD83640530DD /* Pods-pybr2019Tests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COPY_PHASE_STRIP = NO;
+				INFOPLIST_FILE = pybr2019Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
+					"$(inherited)",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/pybr2019.app/pybr2019";
+			};
+			name = Release;
+		};
+		13B07F941A680F5B00A75B9A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 716296F76FC10CA8B24843D3 /* Pods-pybr2019.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = NO;
+				INFOPLIST_FILE = pybr2019/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = pybr2019;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		13B07F951A680F5B00A75B9A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 39E849FE0F16579B3670D495 /* Pods-pybr2019.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = pybr2019/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = pybr2019;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		2D02E4971E0B4A5E006451C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 47043CE7AD7C589C9AA16FAB /* Pods-pybr2019-tvOS.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "pybr2019-tvOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.pybr2019-tvOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.2;
+			};
+			name = Debug;
+		};
+		2D02E4981E0B4A5E006451C7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E6149477948BF18E599616B5 /* Pods-pybr2019-tvOS.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "pybr2019-tvOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.pybr2019-tvOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.2;
+			};
+			name = Release;
+		};
+		2D02E4991E0B4A5E006451C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 861F7247408558901E5F6C86 /* Pods-pybr2019-tvOSTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "pybr2019-tvOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.pybr2019-tvOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/pybr2019-tvOS.app/pybr2019-tvOS";
+				TVOS_DEPLOYMENT_TARGET = 10.1;
+			};
+			name = Debug;
+		};
+		2D02E49A1E0B4A5E006451C7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F10CF4A7D8DA43D296A46CFD /* Pods-pybr2019-tvOSTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "pybr2019-tvOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.pybr2019-tvOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/pybr2019-tvOS.app/pybr2019-tvOS";
+				TVOS_DEPLOYMENT_TARGET = 10.1;
+			};
+			name = Release;
+		};
+		83CBBA201A601CBA00E9B192 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		83CBBA211A601CBA00E9B192 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "pybr2019Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00E356F61AD99517003FC87E /* Debug */,
+				00E356F71AD99517003FC87E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "pybr2019" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				13B07F941A680F5B00A75B9A /* Debug */,
+				13B07F951A680F5B00A75B9A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "pybr2019-tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D02E4971E0B4A5E006451C7 /* Debug */,
+				2D02E4981E0B4A5E006451C7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "pybr2019-tvOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D02E4991E0B4A5E006451C7 /* Debug */,
+				2D02E49A1E0B4A5E006451C7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "pybr2019" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83CBBA201A601CBA00E9B192 /* Debug */,
+				83CBBA211A601CBA00E9B192 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 83CBB9F71A601CBA00E9B192 /* Project object */;
+}
