@@ -2,7 +2,6 @@ import React from 'react';
 import { View, Text, ScrollView, Button } from 'react-native'
 import map from 'lodash/map';
 import reduce from 'lodash/reduce';
-import classNames from 'classnames';
 // import DayMenu from './DayMenu';
 import DaySeparator from './DaySeparator';
 // import ScrollNavigation from 'scroll-navigation-menu';
@@ -13,59 +12,29 @@ import { getFormattedTime } from 'app/utils';
 import { StoreContext } from '../Store';
 import styles from 'app/styles';
 import SafeAreaView from 'react-native-safe-area-view';
+import { SectionList } from 'react-native';
 // import { FilterBox, CategoryFilter, EventTypeFilter } from './filters';
 
 class Schedule extends React.Component {
   static contextType = StoreContext;
 
-  renderDay(day, label) {
-    if (day.length) {
-      return (
-        <View id={`day${label}`} >
-          <DaySeparator day={label}/>
-          {day.map(events => (
-            <Events
-              favorites={this.context.favorites}
-              scheduleInDate={events}
-              toggleFavorite={this.context.actions.toggleFavorite}
-              key={getFormattedTime(events.date)}
-            />
-          ))}
-        </View>
-      )
-    }
-  }
-
-  componentWillUnmount() {
-    console.log('vai desmontar');
-  }
-
-  componentDidMount() {
-    console.log('montando');
-    this.amountOfDays = 0;
-    if (this.context.days) {
-      for (let key in this.context.days) {
-        this.amountOfDays += this.context.days[key].length;
-      }
-    }
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (this.context.days && this.props.currentPage!=='my-schedule') {
-      let items = 0;
-      for (let key in this.context.days) {
-        items += this.context.days[key].length;
-      }
-
-      if (items !== this.amountOfDays) {
-        this.amountOfDays = items;
-        // this.anchors.scrollTo('.schedule-page');
-      }
-    }
+  renderDay = (events) => {
+    return (
+      <Events
+        favorites={this.context.favorites}
+        scheduleInDate={events.item}
+        toggleFavorite={this.context.actions.toggleFavorite}
+      />
+    );
   }
 
   render() {
     const store = this.context;
+    const days = map(store.days, (data, title) => ({
+      title,
+      data
+    }));
+    console.log(days);
     return (
       <SafeAreaView style={styles.body}>
         {/* <View className="filters-container">
@@ -122,11 +91,16 @@ class Schedule extends React.Component {
           {this.props.currentPage === 'my-schedule' && !store.favorites.length && <EmptyList message="Você ainda não marcou nenhuma palestra. Na aba Palestras você pode fazer isso."/>}
           {store.isListEmpty && <EmptyList message="Nenhum resultado encontrado. Altere os termos de sua pesquisa e cheque os filtros aplicados."/>}
           {store.isError && <EmptyList message="Houve um problema ao carregar os dados. Verifique sua conexão com a internet"/>}
-          {!store.isError && map(store.days, (day, label) => (
-            <React.Fragment key={label}>
-              {this.renderDay(day, label)}
-            </React.Fragment>
-            ))}
+          {!store.isError &&
+            <SectionList
+              sections={days}
+              renderItem={this.renderDay}
+              renderSectionHeader={({ section: { title } }) => (
+                <DaySeparator key={title} day={title}/>
+              )}
+              keyExtractor={(events) => getFormattedTime(events.date)}
+            />
+          }
           <Text className="schedule_subtitle" style={{marginBottom: 100}}>
             * Programação sujeita a alteração sem aviso prévio *
           </Text>

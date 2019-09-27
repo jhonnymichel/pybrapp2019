@@ -2,15 +2,16 @@ import { CALENDAR_CONFIG } from './config';
 import React from 'react';
 import { Text, SafeAreaView, View } from 'react-native';
 import { createAppContainer } from 'react-navigation';
-import { createBottomTabNavigator } from 'react-navigation-tabs';
 // import ReactDOM from 'react-dom';
 import Store from './Store';
 import styles from 'app/styles';
 import Schedule from './components/Schedule';
-// import Tabs from './components/Tabs';
+import Now from './components/Now';
+import Tabs from './components/Tabs';
 // import Now from './components/Now';
 
-const AppNavigator = createBottomTabNavigator({
+const AppNavigator = Tabs({
+  Now: Now,
   Schedule: {
     screen: () => <Schedule currentPage="schedule" />
   }

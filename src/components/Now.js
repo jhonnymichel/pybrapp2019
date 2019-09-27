@@ -1,7 +1,10 @@
 import React from 'react';
 import Events from './Events';
+import { Text, View, ScrollView, AppState, Image, StyleSheet } from 'react-native';
 import moment from 'moment-timezone';
-//import logo from 'img/logo_horizontal.svg';
+import { StoreContext } from 'app/Store';
+import styles from 'app/styles';
+import logo from '../../assets/img/logo_horizontal.svg';
 
 function EventsOrEmpty(props) {
   if (props.scheduleInDate) {
@@ -9,9 +12,9 @@ function EventsOrEmpty(props) {
   }
 
   return (
-    <h3 className="empty-message--small">
+    <Text>
       {props.emptyMessage}
-    </h3>
+    </Text>
   )
 }
 
@@ -22,18 +25,24 @@ class Now extends React.Component {
     this.state = {
       now: [], next: []
     };
-
-    this.setupInterval = this.setupInterval.bind(this);
-    this.setupInterval();
-
-    document.addEventListener('pause', () => {
-      clearInterval(this.setupInterval);
-    });
-
-    document.addEventListener('resume', this.setupInterval);
   }
 
-  setupInterval() {
+  componentDidMount() {
+    this.setupInterval('active');
+    AppState.addEventListener('change', this.setupInterval);
+  }
+
+  componentWillUnmount() {
+    AppState.removeEventListener('change', this.setupInterval);
+    this.setupInterval('inactive');
+  }
+
+  setupInterval = (appState) => {
+    if (appState.match(/inactive|background/)) {
+      clearInterval(this.intervalId);
+      return;
+    }
+
     this.setState({
       now: Now.getNow(this.props.store.fullSchedule),
       next: Now.getNext(this.props.store.fullSchedule),
@@ -45,10 +54,6 @@ class Now extends React.Component {
         next: Now.getNext(this.props.store.fullSchedule),
       })
     }, 5 * 60 * 1000);
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.intervalId);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -78,17 +83,17 @@ class Now extends React.Component {
       }
     }
   }
-  
+
   static getNext(days) {
-    const today = moment().tz('America/Fortaleza').date();
+    const today = moment().tz('America/Sao_Paulo').date();
     const day = days[today];
     if (day) {
-      const currentDate = moment().tz('America/Fortaleza').toDate().getTime();
+      const currentDate = moment().tz('America/Sao_Paulo').toDate().getTime();
       for (let eventKey = 0; eventKey < day.length; eventKey++) {
         if (eventKey+1 < day.length) {
           const { date } = day[eventKey];
           const { date: nextDate } = day[eventKey+1]
-  
+
           if (currentDate >= date.getTime() && currentDate < nextDate.getTime()) {
             return day[eventKey+1];
           }
@@ -100,33 +105,34 @@ class Now extends React.Component {
   render(){
     const { store: { favorites, actions: { toggleFavorite }} } = this.props;
     return (
-      <div>
-        <div className="app-bar">
-          <h2>Python Brasil 14</h2>
-        </div>
-        <div className="app-bar-compensator" aria-hidden="true">
-        </div>
-        {/* <img src={logo} width="70%" style={{maxWidth: 300, display: 'block', margin: '10px auto'}} height="auto" alt="Python Brasil 2018, edição 14 Logo"/> */}
-        <h3 className="day-separator tab-link">
+      <ScrollView>
+        <Image
+          source={logo}
+          alt="Python Brasil 2018, edição 14 Logo"
+        />
+        <Text style={styles.dateSeparatorText}>
           Rolando agora
-        </h3>
+        </Text>
         <EventsOrEmpty emptyMessage="Nada rolando agora :(" scheduleInDate={this.state.now} favorites={favorites} toggleFavorite={toggleFavorite}/>
-        <h3 className="day-separator tab-link">
+        <Text className="day-separator tab-link">
           Em seguida
-        </h3>
+        </Text>
         <EventsOrEmpty emptyMessage="Isso é tudo por hoje. Hora de curtir o happy hour!" scheduleInDate={this.state.next} favorites={favorites} toggleFavorite={toggleFavorite} />
-        <div className="intern-page-content event-button-area">
-          <div className="sponsor-button snake-button">
-            <Link to="/schedule" className="pybr-button">
-              <span>Monte sua</span> programação
-            </Link>
-          </div>
-        </div>
-      </div>
+        <View className="intern-page-content event-button-area">
+          <View className="sponsor-button snake-button">
+            <Text className="pybr-button">
+              Monte sua programação
+            </Text>
+          </View>
+        </View>
+      </ScrollView>
     );
 
   }
 }
 
-
-export default Now;
+export default (props) => (
+  <StoreContext.Consumer>
+    {store => <Now { ...props} store={store}/>}
+  </StoreContext.Consumer>
+);

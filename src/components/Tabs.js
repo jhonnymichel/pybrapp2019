@@ -1,29 +1,30 @@
 import React from 'react';
-import classNames from 'classnames';
-import { Link } from 'react-router-dom';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
-const TabItem = ({ link, location, icon, children: text }) => (
-  <Link
-    to={link}
-    className={classNames('tab-item', {'active': link === location.pathname})}
-  >
-    <i className="material-icons">{icon}</i>
-    <label>{text}</label>
-  </Link>
-)
+function getIcon(navigation, focused, tintColor) {
+  const { routeName } = navigation.state;
+  const icons = {
+    Schedule: 'ios-calendar',
+    Now: 'ios-time'
+  }
+  return <Ionicons name={icons[routeName]} size={25} color={tintColor} />;
+}
 
-const Tabs = ({ location }) => (
-  <menu className="tabs">
-    <TabItem link="/" location={location} icon="schedule">
-      Agora
-    </TabItem>
-    <TabItem link="/schedule" location={location} icon="date_range">
-      Programação
-    </TabItem>
-    <TabItem link="/my-schedule" location={location} icon="bookmark">
-      Marcados
-    </TabItem>
-  </menu>
-)
+function getNavigationBar(routes) {
+  return createBottomTabNavigator(routes,
+    {
+      defaultNavigationOptions: ({ navigation }) => ({
+        tabBarIcon: ({ focused, tintColor }) => getIcon(navigation, focused, tintColor),
+      }),
+      tabBarOptions: {
+        activeTintColor: '#7fc7cf',
+        inactiveTintColor: 'white',
+        activeBackgroundColor: '#0D273C',
+        inactiveBackgroundColor: '#0D273C',
+      },
+    }
+  );
+}
 
-export default Tabs;
+export default getNavigationBar;
