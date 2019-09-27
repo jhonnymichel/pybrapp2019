@@ -5,6 +5,8 @@ import every from 'lodash/every';
 import mapValues from 'lodash/mapValues';
 import moment from 'moment-timezone';
 
+export const StoreContext = React.createContext();
+
 class Store extends React.Component {
   constructor(props) {
     super(props);
@@ -258,15 +260,19 @@ class Store extends React.Component {
     const { days, favorites } = this.state;
     const filteredDays = this.filterDays(days);
     const isListEmpty = !days.isError && every(filteredDays, day => !day.length);
-    return this.props.children({
-      ...this.state,
-      isError: days.isError,
-      isListEmpty,
-      favorites,
-      fullSchedule: days,
-      days: filteredDays,
-      actions: this.actions
-    });
+    return (
+      <StoreContext.Provider value={{
+        ...this.state,
+        isError: days.isError,
+        isListEmpty,
+        favorites,
+        fullSchedule: days,
+        days: filteredDays,
+        actions: this.actions
+      }}>
+        {this.props.children}
+      </StoreContext.Provider>
+    );
   }
 }
 

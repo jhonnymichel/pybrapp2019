@@ -1,8 +1,7 @@
 import React from 'react';
 import Events from './Events';
 import moment from 'moment-timezone';
-import logo from 'img/logo_horizontal.svg';
-import { Link } from 'react-router-dom';
+//import logo from 'img/logo_horizontal.svg';
 
 function EventsOrEmpty(props) {
   if (props.scheduleInDate) {
@@ -107,7 +106,7 @@ class Now extends React.Component {
         </div>
         <div className="app-bar-compensator" aria-hidden="true">
         </div>
-        <img src={logo} width="70%" style={{maxWidth: 300, display: 'block', margin: '10px auto'}} height="auto" alt="Python Brasil 2018, edição 14 Logo"/>
+        {/* <img src={logo} width="70%" style={{maxWidth: 300, display: 'block', margin: '10px auto'}} height="auto" alt="Python Brasil 2018, edição 14 Logo"/> */}
         <h3 className="day-separator tab-link">
           Rolando agora
         </h3>

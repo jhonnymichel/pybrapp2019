@@ -5,6 +5,7 @@ const weights = [ 'Bold', 'ExtraLight', 'Light', 'Medium', 'Regular', 'SemiBold'
 
 const yellow = '#efc780';
 const darkBlue = '#102e46';
+const lightBlue = '#7fc7cf';
 const white = 'white';
 
 const font = (f) => (weight = 'Regular') => `${f}-${weight}`;
@@ -38,7 +39,7 @@ const body = {
   height: '100%',
   backgroundColor: darkBlue,
   fontFamily: adventPro(),
-  padding: 5
+  padding: 10
 };
 
 const author = {
@@ -59,7 +60,7 @@ const title = {
   flexDirection: 'row',
   color: yellow,
   fontSize: 18,
-  fontFamily: adventPro(),
+  fontFamily: adventPro('Bold'),
   paddingBottom: 8,
 };
 
@@ -75,7 +76,7 @@ const dateSeparator = {
 };
 
 const dateSeparatorText = {
-  fontFamily: adventPro(),
+  fontFamily: adventPro('Bold'),
   color: yellow,
   fontSize: 30,
   flex: 1,
@@ -105,21 +106,33 @@ const eventContainer = {
 
 const timelineIllustration = StyleSheet.create({
   container: {
-    paddingLeft: 5,
-    paddingRight: 5,
+    paddingLeft: 10,
+    paddingRight: 10,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   ball: {
     width: 16,
     height: 16,
     borderRadius: 8,
-    backgroundColor: '#7fc7cf',
+    backgroundColor: lightBlue,
   },
   line: {
-    backgroundColor: '#7fc7cf',
+    backgroundColor: lightBlue,
     flex: 1,
     width: 1,
+  }
+});
+
+const time = StyleSheet.create({
+  container: {
+    width: 50,
+    alignItems: 'flex-end',
+  },
+  text: {
+    fontFamily: adventPro('Bold'),
+    color: white,
+    fontSize: 16,
   }
 })
 
@@ -138,5 +151,6 @@ export default {
     eventContainer,
   }),
   categories,
-  timelineIllustration
+  timelineIllustration,
+  time
 }

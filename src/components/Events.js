@@ -94,8 +94,8 @@ const EventTypes = (event, date, favorites=[], toggleFavorite) => {
 
 const Events = ({ scheduleInDate, favorites, toggleFavorite }) => (
   <View style={styles.scheduleContainer}>
-    <View style={{}}>
-      <Text>  {getFormattedTime(scheduleInDate.date)}</Text>
+    <View style={styles.time.container}>
+      <Text style={styles.time.text}>{getFormattedTime(scheduleInDate.date)}</Text>
     </View>
     <View style={styles.timelineIllustration.container}>
       <View style={styles.timelineIllustration.ball}></View>

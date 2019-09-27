@@ -10,10 +10,14 @@ import Events from './Events';
 // import Transition from 'react-transition-group/Transition';
 import EmptyList from './EmptyList';
 import { getFormattedTime } from 'app/utils';
+import { StoreContext } from '../Store';
 import styles from 'app/styles';
+import SafeAreaView from 'react-native-safe-area-view';
 // import { FilterBox, CategoryFilter, EventTypeFilter } from './filters';
 
 class Schedule extends React.Component {
+  static contextType = StoreContext;
+
   renderDay(day, label) {
     if (day.length) {
       return (
@@ -21,9 +25,9 @@ class Schedule extends React.Component {
           <DaySeparator day={label}/>
           {day.map(events => (
             <Events
-              favorites={this.props.store.favorites}
+              favorites={this.context.favorites}
               scheduleInDate={events}
-              toggleFavorite={this.props.store.actions.toggleFavorite}
+              toggleFavorite={this.context.actions.toggleFavorite}
               key={getFormattedTime(events.date)}
             />
           ))}
@@ -39,18 +43,18 @@ class Schedule extends React.Component {
   componentDidMount() {
     console.log('montando');
     this.amountOfDays = 0;
-    if (this.props.store.days) {
-      for (let key in this.props.store.days) {
-        this.amountOfDays += this.props.store.days[key].length;
+    if (this.context.days) {
+      for (let key in this.context.days) {
+        this.amountOfDays += this.context.days[key].length;
       }
     }
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.props.store.days && this.props.currentPage!=='my-schedule') {
+    if (this.context.days && this.props.currentPage!=='my-schedule') {
       let items = 0;
-      for (let key in this.props.store.days) {
-        items += this.props.store.days[key].length;
+      for (let key in this.context.days) {
+        items += this.context.days[key].length;
       }
 
       if (items !== this.amountOfDays) {
@@ -61,9 +65,9 @@ class Schedule extends React.Component {
   }
 
   render() {
-    const { store } = this.props;
+    const store = this.context;
     return (
-      <React.Fragment>
+      <SafeAreaView style={styles.body}>
         {/* <View className="filters-container">
           <View
             className="filters"
@@ -127,7 +131,7 @@ class Schedule extends React.Component {
             * Programação sujeita a alteração sem aviso prévio *
           </Text>
         </ScrollView>
-    </React.Fragment>
+    </SafeAreaView>
 
     )
   }
