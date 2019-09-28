@@ -4,7 +4,6 @@ import { Text, View, ScrollView, AppState, Image, StyleSheet } from 'react-nativ
 import moment from 'moment-timezone';
 import { StoreContext } from 'app/Store';
 import styles from 'app/styles';
-import logo from '../../assets/img/logo_horizontal.svg';
 
 function EventsOrEmpty(props) {
   if (props.scheduleInDate) {
@@ -12,9 +11,11 @@ function EventsOrEmpty(props) {
   }
 
   return (
-    <Text>
-      {props.emptyMessage}
-    </Text>
+    <View style={styles.emptyMessage.container}>
+      <Text style={styles.emptyMessage.text}>
+        {props.emptyMessage}
+      </Text>
+    </View>
   )
 }
 
@@ -64,10 +65,11 @@ class Now extends React.Component {
   }
 
   static getNow(days) {
-    const today = moment().tz('America/Fortaleza').date();
+    //('2018-10-20T14:20')
+    const today = moment('2018-10-20T14:20').tz('America/Sao_Paulo').date();
     const day = days[today];
     if (day) {
-      const currentDate = moment().tz('America/Fortaleza').toDate().getTime();
+      const currentDate = moment('2018-10-20T14:20').tz('America/Sao_Paulo').toDate().getTime();
       for (let eventKey = 0; eventKey < day.length; eventKey++) {
         const { date } = day[eventKey];
         let nextDate;
@@ -85,10 +87,10 @@ class Now extends React.Component {
   }
 
   static getNext(days) {
-    const today = moment().tz('America/Sao_Paulo').date();
+    const today = moment('2018-10-20T14:20').tz('America/Sao_Paulo').date();
     const day = days[today];
     if (day) {
-      const currentDate = moment().tz('America/Sao_Paulo').toDate().getTime();
+      const currentDate = moment('2018-10-20T14:20').tz('America/Sao_Paulo').toDate().getTime();
       for (let eventKey = 0; eventKey < day.length; eventKey++) {
         if (eventKey+1 < day.length) {
           const { date } = day[eventKey];
@@ -105,16 +107,12 @@ class Now extends React.Component {
   render(){
     const { store: { favorites, actions: { toggleFavorite }} } = this.props;
     return (
-      <ScrollView>
-        <Image
-          source={logo}
-          alt="Python Brasil 2018, edição 14 Logo"
-        />
+      <ScrollView style={styles.body}>
         <Text style={styles.dateSeparatorText}>
           Rolando agora
         </Text>
         <EventsOrEmpty emptyMessage="Nada rolando agora :(" scheduleInDate={this.state.now} favorites={favorites} toggleFavorite={toggleFavorite}/>
-        <Text className="day-separator tab-link">
+        <Text style={styles.dateSeparatorText}>
           Em seguida
         </Text>
         <EventsOrEmpty emptyMessage="Isso é tudo por hoje. Hora de curtir o happy hour!" scheduleInDate={this.state.next} favorites={favorites} toggleFavorite={toggleFavorite} />

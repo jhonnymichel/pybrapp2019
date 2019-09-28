@@ -1,14 +1,26 @@
 import React from 'react';
 import { View, TouchableWithoutFeedback, Text } from 'react-native';
-import classNames from 'classnames';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import { getFormattedTime } from 'app/utils';
-import styles from 'app/styles';
+import styles, { lightBlue } from 'app/styles';
+
+const Location = ({ children }) => (
+  <View style={styles.location.container}>
+    <Ionicons name="ios-pin" size={17} color={lightBlue} />
+    <Text style={styles.location.text}>{children}</Text>
+  </View>
+);
+
+const Category = ({ event }) => event.details.category ? (
+  <View style={styles.categories[event.details.category.toLowerCase().replace(/\s/g, '-')]}>
+    <Text style={styles.categories.text}>
+      {event.details.category}
+    </Text>
+  </View>
+) : null;
 
 const EventTypes = (event, date, favorites=[], toggleFavorite) => {
   const isFavorite = favorites.includes(event.id);
-  const classes = classNames({
-    'favorite': isFavorite
-  })
   return {
     ['Eventos Fixos']: (
       <TouchableWithoutFeedback style={styles.eventContainer}>
@@ -17,28 +29,24 @@ const EventTypes = (event, date, favorites=[], toggleFavorite) => {
     ),
     ['Palestra']: (
       <View style={styles.eventContainer}>
-        <Text style={styles.title}>
-          {event.summary}
-          {event.details.category &&
-            <Text style={styles.categories[event.details.category.toLowerCase().replace(/\s/g, '-')]}>
-              {event.details.category}
-            </Text>
-          }
-        </Text>
+        <View style={styles.title.container}>
+          <Text style={styles.title.text}>
+            {event.summary}
+          </Text>
+          <Category event={event}/>
+        </View>
         <Text style={styles.author}>
           {event.details.name}
         </Text>
         <Text style={styles.authorTitle}>
           {event.details.title}
         </Text>
-        <Text style={styles.text}>
-          <Text style={styles.text}>location_on</Text>{event.location}
-        </Text>
+        <Location>{event.location}</Location>
       </View>
     ),
     ['Tutorial']: (
       <View style={styles.eventContainer}>
-        <Text style={styles.title}>
+        <Text style={styles.title.text}>
           {event.summary}
         </Text>
         <Text style={styles.author}>
@@ -50,43 +58,35 @@ const EventTypes = (event, date, favorites=[], toggleFavorite) => {
         <Text style={styles.authorTitle}>
           {event.details.title}
         </Text>
-        <Text style={styles.text}>
-          <Text style={styles.text}>location_on</Text>{event.location}
-        </Text>
+        <Location>{event.location}</Location>
       </View>
     ),
     ['Keynote']: (
       <View style={styles.eventContainer}>
-        <Text style={styles.text}>
-          {event.summary}
-          {event.details.category &&
-            <Text style={styles.categories[event.details.category.toLowerCase().replace(/\s/g, '-')]}>
-              {event.details.category}
-            </Text>
-          }
-        </Text>
-        <Text style={styles.text}>
+        <View style={styles.title.container}>
+          <Text style={styles.title.text}>
+            {event.summary}
+          </Text>
+          <Category event={event}/>
+        </View>
+        <Text style={styles.author}>
           {event.details.name}
         </Text>
-        <Text style={styles.text}>
+        <Text style={styles.authorTitle}>
           {event.details.title}
         </Text>
-        <Text style={styles.text}>
-          <Text style={styles.text}>location_on</Text>{event.location}
-        </Text>
+        <Location>{event.location}</Location>
       </View>
     ),
     ['Sprints']: (
       <View style={styles.eventContainer}>
-        <Text style={styles.title}>
+        <Text style={styles.title.text}>
           {event.summary}
         </Text>
         <Text style={styles.author}>
           {event.details.description}
         </Text>
-        <Text style={styles.text}>
-          <Text style={styles.text}>location_on</Text>{event.location}
-        </Text>
+        <Location>{event.location}</Location>
       </View>
     )
   }
