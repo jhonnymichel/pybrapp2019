@@ -1,14 +1,21 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 
-const weights = [ 'Bold', 'ExtraLight', 'Light', 'Medium', 'Regular', 'SemiBold', 'Thin' ];
-
+const weights = [
+  'Bold',
+  'ExtraLight',
+  'Light',
+  'Medium',
+  'Regular',
+  'SemiBold',
+  'Thin',
+];
 
 export const yellow = '#efc780';
 export const darkBlue = '#102e46';
 export const lightBlue = '#7fc7cf';
 export const white = 'white';
 
-const font = (f) => (weight = 'Regular') => `${f}-${weight}`;
+const font = f => (weight = 'Regular') => `${f}-${weight}`;
 const nunito = font('Nunito');
 const adventPro = font('AdventPro');
 
@@ -18,39 +25,47 @@ const categoryColors = {
   web: '#f5bc8b',
   'data-science': '#ce9bc4',
   pessoas: '#8b9ffc',
-}
+};
 
-const categories = StyleSheet.create(Object.keys(categoryColors).reduce((categories, category) => ({
-  ...categories,
-  [category]: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingTop: 2, paddingRight: 5, paddingBottom: 2, paddingLeft: 5,
-    borderRadius: 2,
-    marginLeft: 5,
-    backgroundColor: categoryColors[category]
-  }
-}), {
-  text: {
-    textAlign: 'center',
-    fontFamily: nunito(),
-    fontSize: 10,
-    color: '#102e46',
-  }
-}));
+const categories = StyleSheet.create(
+  Object.keys(categoryColors).reduce(
+    (categories, category) => ({
+      ...categories,
+      [category]: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingTop: 2,
+        paddingRight: 5,
+        paddingBottom: 2,
+        paddingLeft: 5,
+        borderRadius: 2,
+        marginLeft: 5,
+        backgroundColor: categoryColors[category],
+      },
+    }),
+    {
+      text: {
+        textAlign: 'center',
+        fontFamily: nunito(),
+        fontSize: 10,
+        color: '#102e46',
+      },
+    },
+  ),
+);
 
 const body = {
   flex: 1,
   height: '100%',
   backgroundColor: darkBlue,
   fontFamily: adventPro(),
-  padding: 10
+  padding: 10,
 };
 
 const author = {
   color: white,
   fontFamily: nunito(),
-  fontSize: 14
+  fontSize: 14,
 };
 
 const authorTitle = {
@@ -73,14 +88,14 @@ const title = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     alignItems: 'flex-end',
-  }
+  },
 });
 
 const fixedEventTitle = {
   ...title.text,
   paddingBottom: 8,
-  color: white
-}
+  color: white,
+};
 
 const dateSeparator = {
   padding: 60,
@@ -93,7 +108,7 @@ const dateSeparatorText = {
   color: yellow,
   fontSize: 30,
   flex: 1,
-  textAlign: 'center'
+  textAlign: 'center',
 };
 
 const scheduleInfo = {
@@ -101,22 +116,25 @@ const scheduleInfo = {
   paddingLeft: 35,
   paddingRight: 15,
   marginBottom: 20,
-}
+};
 
 const scheduleContainer = {
   flex: 1,
   flexDirection: 'row',
   flexWrap: 'nowrap',
-}
+};
 
 const dayContainer = {
   flex: 1,
-}
+};
 
 const eventContainer = {
   flex: 1,
+  height: 160,
+  maxHeight: 160,
+  overflow: 'hidden',
   paddingBottom: 22,
-}
+};
 
 const timelineIllustration = StyleSheet.create({
   container: {
@@ -135,7 +153,7 @@ const timelineIllustration = StyleSheet.create({
     backgroundColor: lightBlue,
     flex: 1,
     width: 1,
-  }
+  },
 });
 
 const time = StyleSheet.create({
@@ -147,7 +165,7 @@ const time = StyleSheet.create({
     fontFamily: adventPro('Bold'),
     color: white,
     fontSize: 16,
-  }
+  },
 });
 
 const emptyMessage = StyleSheet.create({
@@ -161,7 +179,7 @@ const emptyMessage = StyleSheet.create({
     fontSize: 14,
     textAlign: 'center',
     color: lightBlue,
-  }
+  },
 });
 
 const location = StyleSheet.create({
@@ -173,9 +191,34 @@ const location = StyleSheet.create({
     paddingLeft: 5,
     color: yellow,
     fontSize: 14,
-    textTransform: 'uppercase'
-  }
-})
+    textTransform: 'uppercase',
+  },
+});
+
+const dayMenu = StyleSheet.create({
+  container: {
+    width: '100%',
+    flexDirection: 'row',
+    flexWrap: 'nowrap',
+    backgroundColor: 'red',
+  },
+  button: {
+    padding: 5,
+    flex: 1,
+  },
+  text: {
+    fontFamily: adventPro('SemiBold'),
+    fontSize: 20,
+    color: white,
+    textAlign: 'center',
+  },
+});
+
+const schedulePage = StyleSheet.create({
+  scrollView: {
+    flex: 1,
+  },
+});
 
 export default {
   ...StyleSheet.create({
@@ -195,5 +238,7 @@ export default {
   categories,
   timelineIllustration,
   time,
-  location
-}
+  location,
+  dayMenu,
+  schedulePage,
+};

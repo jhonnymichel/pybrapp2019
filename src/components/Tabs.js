@@ -18,6 +18,12 @@ function getNavigationBar(routes) {
         tabBarIcon: ({ focused, tintColor }) => getIcon(navigation, focused, tintColor),
       }),
       tabBarOptions: {
+        style: {
+          backgroundColor: '#0D273C'
+        },
+        tabStyle: {
+          backgroundColor: '#0D273C'
+        },
         activeTintColor: '#7fc7cf',
         inactiveTintColor: 'white',
         activeBackgroundColor: '#0D273C',

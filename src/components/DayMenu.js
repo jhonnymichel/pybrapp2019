@@ -1,21 +1,17 @@
 import React from 'react';
-import { View, TouchableNativeFeedback } from 'react-native';
-import classNames from 'classnames';
+import { View, Text, TouchableOpacity } from 'react-native';
+import styles from 'app/styles';
 
-const DayMenu = ({ days }) => (
-  <View className="accordion-tabs schedule_category_days">
-    {Object.keys(days).map(day => (
-      <View key={day} className="tab-header-and-content">
-        <TouchableNativeFeedback
-          href={`#day${day}`}
-          className={classNames('tab-link', {
-            'disabled': !days[day].length,
-            'scroll': days[day].length
-          })}
-        >
+const DayMenu = ({ days, scrollTo }) => (
+  <View style={styles.dayMenu.container}>
+    {Object.keys(days).map((day, index) => (
+      <TouchableOpacity key={day} style={styles.dayMenu.button}
+        onPress={() => scrollTo(index)}
+      >
+        <Text style={styles.dayMenu.text}>
           {day}
-        </TouchableNativeFeedback>
-      </View>
+        </Text>
+      </TouchableOpacity>
     ))}
   </View>
 );
