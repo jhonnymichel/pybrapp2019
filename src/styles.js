@@ -130,10 +130,6 @@ const dayContainer = {
 
 const eventContainer = {
   flex: 1,
-  height: 160,
-  maxHeight: 160,
-  overflow: 'hidden',
-  paddingBottom: 22,
 };
 
 const timelineIllustration = StyleSheet.create({

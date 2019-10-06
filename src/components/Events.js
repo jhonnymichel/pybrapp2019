@@ -27,12 +27,13 @@ const EventTypes = (event, date, favorites = [], toggleFavorite) => {
   const isFavorite = favorites.includes(event.id);
   return {
     ['Eventos Fixos']: (
-      <TouchableWithoutFeedback style={styles.eventContainer}>
+      <TouchableWithoutFeedback
+        style={{...styles.eventContainer, height: event.layout.height}}>
         <Text style={styles.fixedEventTitle}>{event.summary}</Text>
       </TouchableWithoutFeedback>
     ),
     ['Palestra']: (
-      <View style={styles.eventContainer}>
+      <View style={{...styles.eventContainer, height: event.layout.height}}>
         <View style={styles.title.container}>
           <Text style={styles.title.text}>{event.summary}</Text>
           <Category event={event} />
@@ -43,7 +44,7 @@ const EventTypes = (event, date, favorites = [], toggleFavorite) => {
       </View>
     ),
     ['Tutorial']: (
-      <View style={styles.eventContainer}>
+      <View style={{...styles.eventContainer, height: event.layout.height}}>
         <Text style={styles.title.text}>{event.summary}</Text>
         <Text style={styles.author}>Duração: {event.details.duration}</Text>
         <Text style={styles.author}>{event.details.name}</Text>
@@ -52,7 +53,7 @@ const EventTypes = (event, date, favorites = [], toggleFavorite) => {
       </View>
     ),
     ['Keynote']: (
-      <View style={styles.eventContainer}>
+      <View style={{...styles.eventContainer, height: event.layout.height}}>
         <View style={styles.title.container}>
           <Text style={styles.title.text}>{event.summary}</Text>
           <Category event={event} />
@@ -63,7 +64,7 @@ const EventTypes = (event, date, favorites = [], toggleFavorite) => {
       </View>
     ),
     ['Sprints']: (
-      <View style={styles.eventContainer}>
+      <View style={{...styles.eventContainer, height: event.layout.height}}>
         <Text style={styles.title.text}>{event.summary}</Text>
         <Text style={styles.author}>{event.details.description}</Text>
         <Location>{event.location}</Location>

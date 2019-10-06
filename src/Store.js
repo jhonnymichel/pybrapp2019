@@ -4,8 +4,11 @@ import defaultTo from 'lodash/defaultTo';
 import every from 'lodash/every';
 import mapValues from 'lodash/mapValues';
 import moment from 'moment-timezone';
+import {Dimensions} from 'react-native';
+import styles from 'app/styles';
 
 export const StoreContext = React.createContext();
+const screenWidth = Math.round(Dimensions.get('window').width);
 
 class Store extends React.Component {
   constructor(props) {
@@ -14,7 +17,7 @@ class Store extends React.Component {
 
     try {
       favorites = JSON.parse(localStorage.getItem('favoriteTalks')) || [];
-    } catch(e) {
+    } catch (e) {
       favorites = [];
     }
 
@@ -22,8 +25,8 @@ class Store extends React.Component {
       ...this.reduceCalendarData(props.data),
       searchFilter: '',
       favorites,
-      isShowingAdvancedFilters: false
-    }
+      isShowingAdvancedFilters: false,
+    };
 
     this.actions = {
       onCategoryFilterChange: this.onFilterChange.bind(this, 'categoryFilter'),
@@ -33,24 +36,29 @@ class Store extends React.Component {
       toggleFavorite: this.toggleFavorite.bind(this),
       onSearchFilterChange: this.onSearchFilterChange.bind(this),
       checkSearchMatch: this.checkSearchMatch.bind(this),
-    }
+    };
   }
 
   getId(eventId) {
     try {
-      JSON.parse(localStorage.getItem('eventNotificationMap') || "{}");
-    } catch(e) {
+      JSON.parse(localStorage.getItem('eventNotificationMap') || '{}');
+    } catch (e) {
       localStorage.removeItem('eventNotificationMap');
     }
-    const eventNotificationMap = JSON.parse(localStorage.getItem('eventNotificationMap') || "{}") || {};
+    const eventNotificationMap =
+      JSON.parse(localStorage.getItem('eventNotificationMap') || '{}') || {};
     if (eventNotificationMap[eventId]) {
       return eventNotificationMap[eventId];
     }
-    const id = Number(localStorage.getItem('notificationIdIncrementor') || 1) + 1;
+    const id =
+      Number(localStorage.getItem('notificationIdIncrementor') || 1) + 1;
     localStorage.setItem('notificationIdIncrementor', id);
 
     eventNotificationMap[eventId] = id;
-    localStorage.setItem('eventNotificationMap', JSON.stringify(eventNotificationMap));
+    localStorage.setItem(
+      'eventNotificationMap',
+      JSON.stringify(eventNotificationMap),
+    );
 
     return id;
   }
@@ -59,14 +67,14 @@ class Store extends React.Component {
     if (event.details.eventType === 'Eventos Fixos') {
       return {
         title: `${event.summary}`,
-        text: 'Começa em 5 minutos.'
-      }
+        text: 'Começa em 5 minutos.',
+      };
     }
 
     return {
       title: `${event.details.eventType}: ${event.summary}`,
-      text: `Começa em 5 minutos na ${event.location}`
-    }
+      text: `Começa em 5 minutos na ${event.location}`,
+    };
   }
 
   scheduleNotification(event, date) {
@@ -100,15 +108,11 @@ class Store extends React.Component {
     //     favorites.splice(favorites.indexOf(id), 1);
     //     this.cancelNotification(id);
     //   }
-
     //   localStorage.setItem('favoriteTalks', JSON.stringify(favorites));
-
     //   this.setState({ favorites });
-
     // } catch(e) {
     //   console.error('Não foi possível salvar favoritos', e.message);
     // }
-
   }
 
   reduceCalendarData(data) {
@@ -116,10 +120,10 @@ class Store extends React.Component {
     const eventTypes = ['Eventos Fixos', 'Sprints'];
     const talksCategories = [];
 
-      if (data.isError) {
-        days.isError = true;
-      } else {
-        data.items.forEach(event => {
+    if (data.isError) {
+      days.isError = true;
+    } else {
+      data.items.forEach(event => {
         const startDateTime = get(event, 'start.dateTime');
         if (!startDateTime) {
           return;
@@ -133,17 +137,15 @@ class Store extends React.Component {
           summary: event.summary,
           location: event.location,
           details: {
-            eventType: event.summary === 'Sprints' ? event.summary : 'Eventos Fixos'
-          }
-        }
+            eventType:
+              event.summary === 'Sprints' ? event.summary : 'Eventos Fixos',
+          },
+        };
 
         if (event.description) {
-          const [
-            name,
-            title,
-            eventType,
-            ...params
-          ] = event.description.split('|').map(i => i.trim());
+          const [name, title, eventType, ...params] = event.description
+            .split('|')
+            .map(i => i.trim());
 
           pybrEvent.details = {
             name,
@@ -151,31 +153,94 @@ class Store extends React.Component {
             eventType,
           };
 
-          switch(eventType) {
+          switch (eventType) {
             case 'Palestra':
-              const [ category ] = params;
+              const [category] = params;
               pybrEvent.details.category = category;
-              !talksCategories.includes(category) && talksCategories.push(category);
+              !talksCategories.includes(category) &&
+                talksCategories.push(category);
               break;
             case 'Tutorial':
-              const [ duration, requirements, description ] = params;
-              pybrEvent.details = { ...pybrEvent.details, duration, requirements, description }
+              const [duration, requirements, description] = params;
+              pybrEvent.details = {
+                ...pybrEvent.details,
+                duration,
+                requirements,
+                description,
+              };
               break;
             case undefined:
-              pybrEvent.details = { eventType: 'Sprints', description: name };
+              pybrEvent.details = {eventType: 'Sprints', description: name};
               break;
           }
-          if (eventType && !eventTypes.includes(eventType)) eventTypes.push(eventType);
+          if (eventType && !eventTypes.includes(eventType))
+            eventTypes.push(eventType);
         }
-        const eventsOnSameTime = days[dayOfEvent].find(h => h.date.getTime() == pybrEvent.date.getTime());
+        const eventsOnSameTime = days[dayOfEvent].find(
+          h => h.date.getTime() == pybrEvent.date.getTime(),
+        );
         if (!eventsOnSameTime) {
           days[dayOfEvent].push({
             date: pybrEvent.date,
-            events: [pybrEvent]
-          })
+            events: [pybrEvent],
+          });
         } else {
           eventsOnSameTime.events.push(pybrEvent);
         }
+        const {
+          body,
+          time: {container: time},
+          timelineIllustration: {container, ball},
+        } = styles;
+
+        const baseHeight = 120;
+        const officeHeightPerLine = 19.333;
+        const titleHeightPerLine = 21.5;
+
+        const badgeWidth = 50;
+        const pixelsPerCharTitle = 8;
+        const pixelsPerCharOffice = 6;
+        const eventContainerWidth =
+          screenWidth -
+          body.padding -
+          time.width -
+          container.paddingLeft -
+          container.paddingRight -
+          ball.width -
+          badgeWidth;
+
+        const titleLines = Math.floor(
+          (pybrEvent.summary.length * pixelsPerCharTitle) / eventContainerWidth,
+        );
+
+        const authorLines = pybrEvent.details.title
+          ? Math.floor(
+              (pybrEvent.details.title.length * pixelsPerCharOffice) /
+                eventContainerWidth,
+            )
+          : 0;
+
+        const nameLines = pybrEvent.details.name
+          ? Math.floor(
+              (pybrEvent.details.name.length * pixelsPerCharOffice) /
+                eventContainerWidth,
+            )
+          : 0;
+
+        if (
+          pybrEvent.details.title &&
+          pybrEvent.details.title.includes('Consultora')
+        ) {
+          console.log('kessia', authorLines);
+        }
+
+        pybrEvent.layout = {
+          height:
+            baseHeight +
+            authorLines * officeHeightPerLine +
+            nameLines * officeHeightPerLine +
+            titleLines * titleHeightPerLine,
+        };
       });
       for (const day in days) {
         days[day].sort(this.sortByDate);
@@ -185,9 +250,9 @@ class Store extends React.Component {
       days,
       eventTypes,
       talksCategories,
-      categoryFilter: [ ...talksCategories ],
-      typeFilter: [ ...eventTypes ]
-    }
+      categoryFilter: [...talksCategories],
+      typeFilter: [...eventTypes],
+    };
   }
 
   sortByDate(eventA, eventB) {
@@ -201,40 +266,48 @@ class Store extends React.Component {
   onFilterChange(filterType, filter) {
     const state = this.state;
     if (state[filterType].includes(filter)) {
-      this.setState((state) => ({
+      this.setState(state => ({
         ...state,
-        [filterType]: state[filterType].filter(f => f !== filter)
-      }))
+        [filterType]: state[filterType].filter(f => f !== filter),
+      }));
     } else {
-      this.setState((state) => ({
+      this.setState(state => ({
         ...state,
-        [filterType]: [ ...state[filterType], filter ]
-      }))
+        [filterType]: [...state[filterType], filter],
+      }));
     }
   }
 
   onSearchFilterChange(e) {
     this.setState({
-      searchFilter: e.target.value
-    })
+      searchFilter: e.target.value,
+    });
   }
 
   checkSearchMatch(event) {
     const searchRegex = new RegExp(this.state.searchFilter.toLowerCase(), 'i');
-    return defaultTo(get(event, 'details.title'), '').match(searchRegex)
-      || defaultTo(get(event, 'details.name'), '').match(searchRegex)
-      || defaultTo(get(event, 'summary'), '').match(searchRegex);
+    return (
+      defaultTo(get(event, 'details.title'), '').match(searchRegex) ||
+      defaultTo(get(event, 'details.name'), '').match(searchRegex) ||
+      defaultTo(get(event, 'summary'), '').match(searchRegex)
+    );
   }
 
-  filterEvents(acc, { date, events }) {
-    const rooms = ['Sala Tapioca', 'Sala Rapadura', 'Sala Macaxeira', 'Sala Jerimum']
-      .reverse();
-    const filteredEvents = events.filter(event => (
-      this.state.typeFilter.includes(event.details.eventType)
-        && (this.onlySaved ? this.state.favorites.includes(event.id) : true)
-        && (!event.details.category || this.state.categoryFilter.includes(event.details.category))
-        && (!this.state.searchFilter || this.checkSearchMatch(event))
-    ));
+  filterEvents(acc, {date, events}) {
+    const rooms = [
+      'Sala Tapioca',
+      'Sala Rapadura',
+      'Sala Macaxeira',
+      'Sala Jerimum',
+    ].reverse();
+    const filteredEvents = events.filter(
+      event =>
+        this.state.typeFilter.includes(event.details.eventType) &&
+        (this.onlySaved ? this.state.favorites.includes(event.id) : true) &&
+        (!event.details.category ||
+          this.state.categoryFilter.includes(event.details.category)) &&
+        (!this.state.searchFilter || this.checkSearchMatch(event)),
+    );
 
     filteredEvents.sort((a, b) => {
       const roomA = rooms.indexOf(a.location);
@@ -245,31 +318,34 @@ class Store extends React.Component {
       }
 
       return roomA > roomB ? 1 : -1;
-    })
-    if (filteredEvents.length)
-      return [ ...acc, { date, events: filteredEvents } ];
+    });
+    if (filteredEvents.length) return [...acc, {date, events: filteredEvents}];
     return acc;
   }
 
   filterDays(days, onlySaved) {
     this.onlySaved = !!onlySaved;
-    return days.isError ? {} : mapValues(days, day => day.reduce(this.actions.filterEvents, []));
+    return days.isError
+      ? {}
+      : mapValues(days, day => day.reduce(this.actions.filterEvents, []));
   }
 
   render() {
-    const { days, favorites } = this.state;
+    const {days, favorites} = this.state;
     const filteredDays = this.filterDays(days);
-    const isListEmpty = !days.isError && every(filteredDays, day => !day.length);
+    const isListEmpty =
+      !days.isError && every(filteredDays, day => !day.length);
     return (
-      <StoreContext.Provider value={{
-        ...this.state,
-        isError: days.isError,
-        isListEmpty,
-        favorites,
-        fullSchedule: days,
-        days: filteredDays,
-        actions: this.actions
-      }}>
+      <StoreContext.Provider
+        value={{
+          ...this.state,
+          isError: days.isError,
+          isListEmpty,
+          favorites,
+          fullSchedule: days,
+          days: filteredDays,
+          actions: this.actions,
+        }}>
         {this.props.children}
       </StoreContext.Provider>
     );

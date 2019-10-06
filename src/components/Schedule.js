@@ -39,7 +39,7 @@ class Schedule extends React.Component {
           case 'Eventos Fixos':
             return 38.5 + height;
           default:
-            return 160 + height;
+            return event.layout.height + height;
         }
       }, 0),
 
