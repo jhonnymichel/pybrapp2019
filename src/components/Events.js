@@ -36,11 +36,13 @@ const EventTypes = (event, date, favorites = [], toggleFavorite) => {
       <View style={{...styles.eventContainer, height: event.layout.height}}>
         <View style={styles.title.container}>
           <Text style={styles.title.text}>{event.summary}</Text>
-          <Category event={event} />
         </View>
         <Text style={styles.author}>{event.details.name}</Text>
         <Text style={styles.authorTitle}>{event.details.title}</Text>
-        <Location>{event.location}</Location>
+        <View style={styles.title.container}>
+          <Location>{event.location}</Location>
+          <Category event={event} />
+        </View>
       </View>
     ),
     ['Tutorial']: (
@@ -56,11 +58,13 @@ const EventTypes = (event, date, favorites = [], toggleFavorite) => {
       <View style={{...styles.eventContainer, height: event.layout.height}}>
         <View style={styles.title.container}>
           <Text style={styles.title.text}>{event.summary}</Text>
-          <Category event={event} />
         </View>
         <Text style={styles.author}>{event.details.name}</Text>
         <Text style={styles.authorTitle}>{event.details.title}</Text>
-        <Location>{event.location}</Location>
+        <View style={styles.title.container}>
+          <Category event={event} />
+          <Location>{event.location}</Location>
+        </View>
       </View>
     ),
     ['Sprints']: (
