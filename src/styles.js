@@ -201,8 +201,11 @@ const dayMenu = StyleSheet.create({
     backgroundColor: darkBlue,
   },
   button: {
-    padding: 8,
     flex: 1,
+    justifyContent: 'center',
+    height: 60,
+    paddingLeft: 8,
+    paddingRight: 8,
   },
   text: {
     fontFamily: adventPro('SemiBold'),
