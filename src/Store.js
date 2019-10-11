@@ -363,7 +363,7 @@ class Store extends React.Component {
 
   reduceCalendarData(data) {
     const days = {};
-    const eventTypes = ['Eventos Fixos', 'Sprints'];
+    const eventTypes = [];
     const talksCategories = [];
 
     if (data.isError) {
@@ -382,16 +382,18 @@ class Store extends React.Component {
           date: new Date(startDateTime),
           summary: event.summary,
           location: event.location,
-          details: {
-            eventType:
-              event.summary === 'Sprints' ? event.summary : 'Eventos Fixos',
-          },
+          details: {},
         };
 
-        if (event.description) {
-          const [name, title, eventType, ...params] = event.description
-            .split('|')
-            .map(i => i.trim());
+        if (event.extendedProperties) {
+          const {
+            author: name,
+            type: eventType,
+            category,
+            duration,
+            description,
+            requirements,
+          } = event.extendedProperties.private;
 
           pybrEvent.details = {
             name,
@@ -400,14 +402,13 @@ class Store extends React.Component {
           };
 
           switch (eventType) {
-            case 'Palestra':
-              const [category] = params;
+            case 'keynote':
+            case 'talk':
               pybrEvent.details.category = category;
               !talksCategories.includes(category) &&
                 talksCategories.push(category);
               break;
-            case 'Tutorial':
-              const [duration, requirements, description] = params;
+            case 'tutorial':
               pybrEvent.details = {
                 ...pybrEvent.details,
                 duration,
@@ -441,12 +442,16 @@ class Store extends React.Component {
           timelineIllustration: {container, ball},
         } = styles;
 
-        const baseHeight = 120;
+        const baseHeights = {
+          tutorial: 103.7,
+          keynote: 84.3,
+          talk: 103.7,
+          coffee: 49.7,
+          lunch: 49.7,
+        };
         const officeHeightPerLine = 19.333;
         const titleHeightPerLine = 21.5;
 
-        const pixelsPerCharTitle = 7;
-        const pixelsPerCharOffice = 7;
         const eventContainerWidth =
           screenWidth -
           body.padding * 2 -
@@ -479,11 +484,9 @@ class Store extends React.Component {
             ).lines
           : 0;
 
-        console.log(pybrEvent.summary, titleLines);
-
         pybrEvent.layout = {
           height:
-            baseHeight +
+            baseHeights[pybrEvent.details.eventType] +
             authorLines * officeHeightPerLine +
             nameLines * officeHeightPerLine +
             titleLines * titleHeightPerLine,

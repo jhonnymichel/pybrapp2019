@@ -1,7 +1,7 @@
-import { CALENDAR_CONFIG } from './config';
+import {CALENDAR_CONFIG} from './config';
 import React from 'react';
-import { Text, SafeAreaView, View, StyleSheet } from 'react-native';
-import { createAppContainer } from 'react-navigation';
+import {Text, SafeAreaView, View, StyleSheet} from 'react-native';
+import {createAppContainer} from 'react-navigation';
 // import ReactDOM from 'react-dom';
 import Store from './Store';
 import styles from 'app/styles';
@@ -13,24 +13,27 @@ import Tabs from './components/Tabs';
 const AppNavigator = Tabs({
   Now: Now,
   Schedule: {
-    screen: () => <Schedule currentPage="schedule" />
-  }
+    screen: () => <Schedule currentPage="schedule" />,
+  },
 });
 
 const App = createAppContainer(AppNavigator);
 
-class ScheduleManager extends React.Component{
+class ScheduleManager extends React.Component {
   getSchedule() {
-    const { apiKey, calendarId } = CALENDAR_CONFIG;
-    const url =  encodeURI(`https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?key=${apiKey}`);
+    const {apiKey, calendarId} = CALENDAR_CONFIG;
+    const url = encodeURI(
+      `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?key=${apiKey}&maxResults=9999&timeZone=America/Sao_Paulo`,
+    );
 
-    return new Promise((resolve) => {
-      fetch(url).then((r) => r.ok ? r.json() : Promise.reject())
+    return new Promise(resolve => {
+      fetch(url)
+        .then(r => (r.ok ? r.json() : Promise.reject(r)))
         .then(r => {
           resolve(r);
         })
-        .catch(e => {
-          resolve({isError: true})
+        .catch(r => {
+          r.json().then(r => console.log(r));
         });
     });
   }
@@ -39,7 +42,7 @@ class ScheduleManager extends React.Component{
     super(props);
     this.state = {};
     this.getSchedule().then(data => {
-      this.setState({ data });
+      this.setState({data});
     });
   }
 
@@ -51,7 +54,7 @@ class ScheduleManager extends React.Component{
             <Text>Loading...</Text>
           </SafeAreaView>
         </View>
-      )
+      );
     }
 
     return (

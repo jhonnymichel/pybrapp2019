@@ -4,10 +4,31 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import {getFormattedTime} from 'app/utils';
 import styles, {lightBlue} from 'app/styles';
 
-const Location = ({children}) => (
+function getEventType(type) {
+  const types = {
+    'Eventos Fixos': ['lunch', 'coffee'],
+    Palestra: ['talk'],
+    Tutorial: ['tutorial'],
+    Keynote: ['keynote'],
+  };
+
+  for (let t of Object.keys(types)) {
+    const rawTypes = types[t];
+    if (rawTypes.includes(type)) {
+      return t;
+    }
+  }
+
+  return null;
+}
+
+const Location = ({children, prefix = 'Sala'}) => (
   <View style={styles.location.container}>
     <Ionicons name="ios-pin" size={17} color={lightBlue} />
-    <Text style={styles.location.text}>{children}</Text>
+    <Text style={styles.location.text}>
+      {prefix && `${prefix} `}
+      {children}
+    </Text>
   </View>
 );
 
@@ -27,10 +48,9 @@ const EventTypes = (event, date, favorites = [], toggleFavorite) => {
   const isFavorite = favorites.includes(event.id);
   return {
     ['Eventos Fixos']: (
-      <TouchableWithoutFeedback
-        style={{...styles.eventContainer, height: event.layout.height}}>
+      <View style={{...styles.eventContainer, height: event.layout.height}}>
         <Text style={styles.fixedEventTitle}>{event.summary}</Text>
-      </TouchableWithoutFeedback>
+      </View>
     ),
     ['Palestra']: (
       <View style={{...styles.eventContainer, height: event.layout.height}}>
@@ -38,7 +58,6 @@ const EventTypes = (event, date, favorites = [], toggleFavorite) => {
           <Text style={styles.title.text}>{event.summary}</Text>
         </View>
         <Text style={styles.author}>{event.details.name}</Text>
-        <Text style={styles.authorTitle}>{event.details.title}</Text>
         <View style={styles.title.container}>
           <Location>{event.location}</Location>
           <Category event={event} />
@@ -47,22 +66,21 @@ const EventTypes = (event, date, favorites = [], toggleFavorite) => {
     ),
     ['Tutorial']: (
       <View style={{...styles.eventContainer, height: event.layout.height}}>
-        <Text style={styles.title.text}>{event.summary}</Text>
-        <Text style={styles.author}>Duração: {event.details.duration}</Text>
+        <View style={styles.title.container}>
+          <Text style={styles.title.text}>{event.summary}</Text>
+        </View>
         <Text style={styles.author}>{event.details.name}</Text>
-        <Text style={styles.authorTitle}>{event.details.title}</Text>
-        <Location>{event.location}</Location>
+        <View style={styles.title.container}>
+          <Location prefix={null}>{event.location}</Location>
+        </View>
       </View>
     ),
     ['Keynote']: (
       <View style={{...styles.eventContainer, height: event.layout.height}}>
         <View style={styles.title.container}>
-          <Text style={styles.title.text}>{event.summary}</Text>
+          <Text style={styles.title.text}>{event.details.name}</Text>
         </View>
-        <Text style={styles.author}>{event.details.name}</Text>
-        <Text style={styles.authorTitle}>{event.details.title}</Text>
         <View style={styles.title.container}>
-          <Category event={event} />
           <Location>{event.location}</Location>
         </View>
       </View>
@@ -93,7 +111,7 @@ const Events = ({scheduleInDate, favorites, toggleFavorite}) => (
         <View key={event.id}>
           {
             EventTypes(event, scheduleInDate.date, favorites, toggleFavorite)[
-              event.details.eventType
+              getEventType(event.details.eventType)
             ]
           }
         </View>

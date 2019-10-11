@@ -130,6 +130,7 @@ const dayContainer = {
 
 const eventContainer = {
   flex: 1,
+  paddingBottom: 20,
 };
 
 const timelineIllustration = StyleSheet.create({
@@ -182,6 +183,7 @@ const location = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
+    paddingTop: 8,
   },
   text: {
     paddingLeft: 5,
@@ -196,16 +198,22 @@ const dayMenu = StyleSheet.create({
     width: '100%',
     flexDirection: 'row',
     flexWrap: 'nowrap',
-    backgroundColor: 'red',
+    backgroundColor: darkBlue,
   },
   button: {
-    padding: 5,
+    padding: 8,
     flex: 1,
   },
   text: {
     fontFamily: adventPro('SemiBold'),
-    fontSize: 20,
+    fontSize: 22,
     color: white,
+    textAlign: 'center',
+  },
+  textHighlight: {
+    fontFamily: adventPro('SemiBold'),
+    fontSize: 22,
+    color: yellow,
     textAlign: 'center',
   },
 });

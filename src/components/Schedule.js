@@ -20,6 +20,7 @@ import sectionListGetItemLayout from 'react-native-section-list-get-item-layout'
 class Schedule extends React.Component {
   static contextType = StoreContext;
   sectionList = React.createRef({});
+  state = {};
 
   renderDay = events => {
     return (
@@ -29,6 +30,16 @@ class Schedule extends React.Component {
         toggleFavorite={this.context.actions.toggleFavorite}
       />
     );
+  };
+
+  changeHighlightedDay = ({viewableItems}) => {
+    const lastItem = viewableItems.pop();
+    const currentDay = lastItem.section.title;
+    if (currentDay !== this.state.currentDay) {
+      this.setState({
+        currentDay: lastItem.section.title,
+      });
+    }
   };
 
   getItemLayout = sectionListGetItemLayout({
@@ -51,7 +62,6 @@ class Schedule extends React.Component {
   scrollTo = sectionIndex => {
     const scrollTo = this.sectionList.current.scrollToLocation;
     if (scrollTo) {
-      console.log(sectionIndex);
       this.sectionList.current.scrollToLocation({sectionIndex, itemIndex: 0});
     }
   };
@@ -64,7 +74,11 @@ class Schedule extends React.Component {
     }));
     return (
       <SafeAreaView style={styles.body}>
-        <DayMenu days={store.days} scrollTo={this.scrollTo} />
+        <DayMenu
+          days={store.days}
+          currentDay={this.state.currentDay}
+          scrollTo={this.scrollTo}
+        />
         {/* <View className="filters-container">
           <View
             className="filters"
@@ -125,6 +139,7 @@ class Schedule extends React.Component {
               sections={days}
               ref={this.sectionList}
               renderItem={this.renderDay}
+              onViewableItemsChanged={this.changeHighlightedDay}
               getItemLayout={this.getItemLayout}
               renderSectionHeader={({section: {title}}) => (
                 <DaySeparator key={title} day={title} />
