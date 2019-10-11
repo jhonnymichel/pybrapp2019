@@ -201,6 +201,8 @@ class Store extends React.Component {
           body,
           title,
           authorTitle,
+          location,
+          eventContainer,
           time: {container: time},
           timelineIllustration: {container, ball},
         } = styles;
@@ -213,16 +215,40 @@ class Store extends React.Component {
           container.paddingRight -
           ball.width;
         rnTextSize;
-        const flattenedHeight = await rnTextSize.measure({
+        const titleHeight = await rnTextSize.measure({
           text: pybrEvent.summary,
           width: eventContainerWidth,
           fontFamily: title.text.fontFamily,
           fontSize: title.text.fontSize,
         });
+        let authorHeight = {height: 0};
+        if (pybrEvent.details.name) {
+          authorHeight = await rnTextSize.measure({
+            text: pybrEvent.details.name,
+            width: eventContainerWidth,
+            fontFamily: authorTitle.fontFamily,
+            fontSize: authorTitle.fontSize,
+          });
+        }
 
-        console.log(pybrEvent.summary, flattenedHeight.height);
+        console.log(
+          authorHeight.height,
+          titleHeight.height,
+          authorTitle.paddingBottom,
+          eventContainer.paddingBottom,
+          location.container.paddingTop,
+          title.container.paddingBottom,
+        );
+
         pybrEvent.layout = {
-          height: 1000,
+          height:
+            26.7 +
+            authorHeight.height +
+            titleHeight.height +
+            authorTitle.paddingBottom +
+            eventContainer.paddingBottom +
+            location.container.paddingTop +
+            title.container.paddingBottom,
         };
       });
       for (const day in days) {
