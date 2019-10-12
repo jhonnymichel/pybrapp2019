@@ -58,7 +58,7 @@ const EventTypes = (event, date, favorites = [], toggleFavorite) => {
           <Text style={styles.title.text}>{event.summary}</Text>
         </View>
         <Text style={styles.author}>{event.details.name}</Text>
-        <View style={styles.title.container}>
+        <View style={styles.footer.container}>
           <Location>{event.location}</Location>
           <Category event={event} />
         </View>
@@ -70,7 +70,7 @@ const EventTypes = (event, date, favorites = [], toggleFavorite) => {
           <Text style={styles.title.text}>{event.summary}</Text>
         </View>
         <Text style={styles.author}>{event.details.name}</Text>
-        <View style={styles.title.container}>
+        <View style={styles.footer.container}>
           <Location prefix={null}>{event.location}</Location>
         </View>
       </View>
@@ -80,7 +80,7 @@ const EventTypes = (event, date, favorites = [], toggleFavorite) => {
         <View style={styles.title.container}>
           <Text style={styles.title.text}>{event.details.name}</Text>
         </View>
-        <View style={styles.title.container}>
+        <View style={styles.footer.container}>
           <Location>{event.location}</Location>
         </View>
       </View>

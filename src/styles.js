@@ -91,9 +91,15 @@ const title = StyleSheet.create({
   },
 });
 
+const footer = StyleSheet.create({
+  container: {
+    ...title.container,
+    paddingBottom: 0,
+  },
+});
+
 const fixedEventTitle = {
   ...title.text,
-  paddingBottom: 8,
   color: white,
 };
 
@@ -248,4 +254,5 @@ export default {
   location,
   dayMenu,
   schedulePage,
+  footer,
 };

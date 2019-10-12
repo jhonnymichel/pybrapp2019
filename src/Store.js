@@ -125,6 +125,7 @@ class Store extends React.Component {
   }
 
   async reduceCalendarData(data) {
+    console.log(data);
     const days = {};
     const eventTypes = [];
     const talksCategories = [];
@@ -214,41 +215,70 @@ class Store extends React.Component {
           container.paddingLeft -
           container.paddingRight -
           ball.width;
-        rnTextSize;
-        const titleHeight = await rnTextSize.measure({
+
+        const measurements = {
+          textsToMeasure: [],
+          containerPaddings: [],
+        };
+
+        measurements.textsToMeasure.push({
           text: pybrEvent.summary,
           width: eventContainerWidth,
           fontFamily: title.text.fontFamily,
           fontSize: title.text.fontSize,
         });
-        let authorHeight = {height: 0};
-        if (pybrEvent.details.name) {
-          authorHeight = await rnTextSize.measure({
-            text: pybrEvent.details.name,
-            width: eventContainerWidth,
-            fontFamily: authorTitle.fontFamily,
-            fontSize: authorTitle.fontSize,
-          });
+
+        switch (pybrEvent.details.eventType) {
+          case 'coffee':
+          case 'lunch':
+            measurements.containerPaddings = [
+              eventContainer.paddingBottom,
+              title.container.paddingBottom,
+            ];
+            break;
+          case 'keynote':
+            measurements.containerPaddings = [
+              18.7, // location height
+              eventContainer.paddingBottom,
+              location.container.paddingTop,
+              title.container.paddingBottom,
+            ];
+            break;
+          case 'tutorial':
+          case 'talk':
+            measurements.containerPaddings = [
+              18.7, // location height
+              eventContainer.paddingBottom,
+              location.container.paddingTop,
+              title.container.paddingBottom,
+            ];
+            measurements.textsToMeasure.push({
+              text: pybrEvent.details.name,
+              width: eventContainerWidth,
+              fontFamily: authorTitle.fontFamily,
+              fontSize: authorTitle.fontSize,
+            });
+            break;
+          default:
+            measurements.containerPaddings = [
+              eventContainer.paddingBottom,
+              title.container.paddingBottom,
+            ];
+            break;
+        }
+        let textHeights = 0;
+
+        for (let textParams of measurements.textsToMeasure) {
+          textHeights += (await rnTextSize.measure(textParams)).height;
         }
 
-        console.log(
-          authorHeight.height,
-          titleHeight.height,
-          authorTitle.paddingBottom,
-          eventContainer.paddingBottom,
-          location.container.paddingTop,
-          title.container.paddingBottom,
+        const containerHeight = measurements.containerPaddings.reduce(
+          (height, padding) => height + padding,
+          0,
         );
 
         pybrEvent.layout = {
-          height:
-            26.7 +
-            authorHeight.height +
-            titleHeight.height +
-            authorTitle.paddingBottom +
-            eventContainer.paddingBottom +
-            location.container.paddingTop +
-            title.container.paddingBottom,
+          height: textHeights + containerHeight,
         };
       });
       for (const day in days) {

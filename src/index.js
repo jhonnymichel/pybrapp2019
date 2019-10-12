@@ -23,7 +23,7 @@ class ScheduleManager extends React.Component {
   getSchedule() {
     const {apiKey, calendarId} = CALENDAR_CONFIG;
     const url = encodeURI(
-      `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?key=${apiKey}&maxResults=9999&timeZone=America/Sao_Paulo`,
+      `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?key=${apiKey}&singleEvents=true&maxResults=9999&timeZone=America/Sao_Paulo`,
     );
 
     return new Promise(resolve => {
