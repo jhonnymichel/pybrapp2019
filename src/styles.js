@@ -233,6 +233,29 @@ const schedulePage = StyleSheet.create({
   },
 });
 
+const filters = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    paddingBottom: 10,
+  },
+  searchIcon: {
+    paddingRight: 10,
+  },
+  inputContainer: {
+    flex: 1,
+  },
+  input: {
+    color: white,
+    borderBottomWidth: 1,
+    borderStyle: 'solid',
+    borderColor: white,
+    fontSize: 16,
+    fontFamily: nunito(),
+    paddingBottom: 5,
+    height: 30,
+  },
+});
+
 export default {
   ...StyleSheet.create({
     body,
@@ -255,4 +278,5 @@ export default {
   dayMenu,
   schedulePage,
   footer,
+  filters,
 };

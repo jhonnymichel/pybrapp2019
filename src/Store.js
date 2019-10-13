@@ -317,9 +317,9 @@ class Store extends React.Component {
     }
   }
 
-  onSearchFilterChange(e) {
+  onSearchFilterChange(text) {
     this.setState({
-      searchFilter: e.target.value,
+      searchFilter: text,
     });
   }
 

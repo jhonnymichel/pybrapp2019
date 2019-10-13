@@ -14,7 +14,7 @@ import styles from 'app/styles';
 import SafeAreaView from 'react-native-safe-area-view';
 import {SectionList} from 'react-native';
 import sectionListGetItemLayout from 'react-native-section-list-get-item-layout';
-
+import {FilterBox} from './filters';
 // import { FilterBox, CategoryFilter, EventTypeFilter } from './filters';
 
 class Schedule extends React.Component {
@@ -79,18 +79,19 @@ class Schedule extends React.Component {
           currentDay={this.state.currentDay}
           scrollTo={this.scrollTo}
         />
+        <FilterBox
+          value={store.searchFilter}
+          onClick={store.actions.toggleAdvancedFilters}
+          onChange={store.actions.onSearchFilterChange}
+          isPopoverOpened={store.isShowingAdvancedFilters}
+        />
+
         {/* <View className="filters-container">
           <View
             className="filters"
           >
 
-            <FilterBox
-              animationState={ animationState }
-              value={store.searchFilter}
-              onClick={store.actions.toggleAdvancedFilters}
-              onChange={store.actions.onSearchFilterChange}
-              isPopoverOpened={store.isShowingAdvancedFilters}
-            >
+
             </FilterBox>
           </View>
           <View className="advanced-filters" aria-hidden={!store.isShowingAdvancedFilters} aria-modal="true" style={{
@@ -141,9 +142,9 @@ class Schedule extends React.Component {
               renderItem={this.renderDay}
               onViewableItemsChanged={this.changeHighlightedDay}
               getItemLayout={this.getItemLayout}
-              renderSectionHeader={({section: {title}}) => (
-                <DaySeparator key={title} day={title} />
-              )}
+              renderSectionHeader={({section: {data, title}}) =>
+                data.length ? <DaySeparator key={title} day={title} /> : null
+              }
               ListHeaderComponent={
                 <Text className="empty-message--small">
                   {this.props.currentPage === 'schedule'
