@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, TextInput} from 'react-native';
+import {View, TextInput, TouchableOpacity, Text} from 'react-native';
 import styles, {white} from 'app/styles';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -24,6 +24,12 @@ export class FilterBox extends React.Component {
             onChangeText={onChange}
             value={value}
           />
+        </View>
+        <View>
+          <TouchableOpacity style={styles.filters.button}>
+            <Ionicons name="ios-options" size={25} color={white} />
+            <Text style={styles.filters.buttonText}>Filtros</Text>
+          </TouchableOpacity>
         </View>
       </View>
     );

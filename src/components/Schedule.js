@@ -86,18 +86,20 @@ class Schedule extends React.Component {
       data,
     }));
     return (
-      <SafeAreaView style={styles.body}>
-        <DayMenu
-          days={store.days}
-          currentDay={this.state.currentDay}
-          scrollTo={this.scrollTo}
-        />
-        <FilterBox
-          value={store.searchFilter}
-          onClick={store.actions.toggleAdvancedFilters}
-          onChange={store.actions.onSearchFilterChange}
-          isPopoverOpened={store.isShowingAdvancedFilters}
-        />
+      <SafeAreaView style={styles.schedulePage.container}>
+        <View style={styles.schedulePage.header}>
+          <DayMenu
+            days={store.days}
+            currentDay={this.state.currentDay}
+            scrollTo={this.scrollTo}
+          />
+          <FilterBox
+            value={store.searchFilter}
+            onClick={store.actions.toggleAdvancedFilters}
+            onChange={store.actions.onSearchFilterChange}
+            isPopoverOpened={store.isShowingAdvancedFilters}
+          />
+        </View>
 
         {/* <View className="filters-container">
           <View

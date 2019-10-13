@@ -56,10 +56,10 @@ const categories = StyleSheet.create(
 
 const body = {
   flex: 1,
-  height: '100%',
-  backgroundColor: darkBlue,
-  fontFamily: adventPro(),
   padding: 10,
+  height: '100%',
+  backgroundColor: '#0D273C',
+  fontFamily: adventPro(),
 };
 
 const author = {
@@ -204,12 +204,11 @@ const dayMenu = StyleSheet.create({
     width: '100%',
     flexDirection: 'row',
     flexWrap: 'nowrap',
-    backgroundColor: darkBlue,
   },
   button: {
     flex: 1,
     justifyContent: 'center',
-    height: 60,
+    height: 50,
     paddingLeft: 8,
     paddingRight: 8,
   },
@@ -235,15 +234,29 @@ const dayMenu = StyleSheet.create({
 });
 
 const schedulePage = StyleSheet.create({
+  container: {
+    ...body,
+    padding: 0,
+  },
+  header: {
+    backgroundColor: '#0D273C',
+    padding: 10,
+    paddingBottom: 5,
+    borderBottomWidth: 1,
+    borderColor: 'rgba(255,255,255,0.2)',
+  },
   scrollView: {
     flex: 1,
+    backgroundColor: darkBlue,
+    paddingLeft: 10,
+    paddingRight: 10,
   },
 });
 
 const filters = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    paddingBottom: 10,
+    alignItems: 'center',
   },
   searchIcon: {
     paddingRight: 10,
@@ -258,8 +271,19 @@ const filters = StyleSheet.create({
     borderColor: white,
     fontSize: 16,
     fontFamily: nunito(),
-    paddingBottom: 5,
     height: 30,
+  },
+  button: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  buttonText: {
+    textAlign: 'center',
+    fontSize: 11,
+    color: white,
+    paddingLeft: 15,
+    paddingRight: 15,
+    fontFamily: nunito(),
   },
 });
 
