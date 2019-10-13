@@ -287,6 +287,49 @@ const filters = StyleSheet.create({
   },
 });
 
+const filtersModal = StyleSheet.create({
+  checkboxContainer: {
+    padding: 5,
+  },
+  checkbox: {
+    height: 30,
+    borderRadius: 25,
+    paddingLeft: 10,
+    paddingRight: 10,
+    backgroundColor: lightBlue,
+    justifyContent: 'center',
+    borderColor: lightBlue,
+    borderWidth: 1,
+  },
+  checkboxEmpty: {
+    height: 30,
+    borderRadius: 25,
+    paddingLeft: 10,
+    paddingRight: 10,
+    borderColor: lightBlue,
+    justifyContent: 'center',
+    borderWidth: 1,
+  },
+  checkboxText: {
+    fontFamily: nunito('SemiBold'),
+    fontSize: 16,
+    color: white,
+    textAlign: 'center',
+  },
+  checkboxTextEmpty: {
+    fontFamily: nunito('SemiBold'),
+    fontSize: 16,
+    color: lightBlue,
+    textAlign: 'center',
+  },
+  group: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+  },
+});
+
 export default {
   ...StyleSheet.create({
     body,
@@ -310,4 +353,5 @@ export default {
   schedulePage,
   footer,
   filters,
+  filtersModal,
 };

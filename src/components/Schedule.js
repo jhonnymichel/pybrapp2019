@@ -14,14 +14,14 @@ import styles from 'app/styles';
 import SafeAreaView from 'react-native-safe-area-view';
 import {SectionList} from 'react-native';
 import sectionListGetItemLayout from 'react-native-section-list-get-item-layout';
-import {FilterBox} from './filters';
+import {FilterBox, FilterModal} from './filters';
 import {white} from '../styles';
 // import { FilterBox, CategoryFilter, EventTypeFilter } from './filters';
 
 class Schedule extends React.Component {
   static contextType = StoreContext;
   sectionList = React.createRef({});
-  state = {};
+  state = {isFilterModalOpen: false};
 
   renderDay = events => {
     return (
@@ -58,14 +58,7 @@ class Schedule extends React.Component {
   getItemLayout = sectionListGetItemLayout({
     // The height of the row with rowData at the given sectionIndex and rowIndex
     getItemHeight: (rowData, sectionIndex, rowIndex) =>
-      rowData.events.reduce((height, event) => {
-        switch (event.details.eventType) {
-          case 'Eventos Fixos':
-            return 38.5 + height;
-          default:
-            return event.layout.height + height;
-        }
-      }, 0),
+      rowData.events.reduce((height, event) => event.layout.height + height, 0),
 
     // These four properties are optional
     getSectionHeaderHeight: () => 156, // The height of your section headers
@@ -77,6 +70,12 @@ class Schedule extends React.Component {
     if (scrollTo) {
       this.sectionList.current.scrollToLocation({sectionIndex, itemIndex: 0});
     }
+  };
+
+  toggleAdvancedFilters = () => {
+    this.setState(state => ({
+      isFilterModalOpen: !state.isFilterModalOpen,
+    }));
   };
 
   render() {
@@ -95,12 +94,16 @@ class Schedule extends React.Component {
           />
           <FilterBox
             value={store.searchFilter}
-            onClick={store.actions.toggleAdvancedFilters}
+            onClick={this.toggleAdvancedFilters}
             onChange={store.actions.onSearchFilterChange}
             isPopoverOpened={store.isShowingAdvancedFilters}
           />
         </View>
-
+        <FilterModal
+          store={store}
+          visible={this.state.isFilterModalOpen}
+          onRequestClose={this.toggleAdvancedFilters}
+        />
         {/* <View className="filters-container">
           <View
             className="filters"
@@ -154,6 +157,7 @@ class Schedule extends React.Component {
             <SectionList
               sections={days}
               ref={this.sectionList}
+              initialNumToRender={2}
               renderItem={this.renderDay}
               onViewableItemsChanged={this.changeHighlightedDay}
               getItemLayout={this.getItemLayout}

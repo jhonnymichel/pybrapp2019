@@ -125,7 +125,6 @@ class Store extends React.Component {
   }
 
   async reduceCalendarData(data) {
-    console.log(data);
     const days = {};
     const eventTypes = [];
     const talksCategories = [];
@@ -285,6 +284,7 @@ class Store extends React.Component {
         days[day].sort(this.sortByDate);
       }
     }
+
     return {
       days,
       eventTypes,
@@ -374,6 +374,7 @@ class Store extends React.Component {
     const filteredDays = this.filterDays(days);
     const isListEmpty =
       !days.isError && every(filteredDays, day => !day.length);
+
     return (
       <StoreContext.Provider
         value={{
@@ -384,7 +385,8 @@ class Store extends React.Component {
           fullSchedule: days,
           days: filteredDays,
           actions: this.actions,
-        }}>
+        }}
+      >
         {this.props.children}
       </StoreContext.Provider>
     );
