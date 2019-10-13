@@ -15,6 +15,7 @@ import SafeAreaView from 'react-native-safe-area-view';
 import {SectionList} from 'react-native';
 import sectionListGetItemLayout from 'react-native-section-list-get-item-layout';
 import {FilterBox} from './filters';
+import {white} from '../styles';
 // import { FilterBox, CategoryFilter, EventTypeFilter } from './filters';
 
 class Schedule extends React.Component {
@@ -33,8 +34,20 @@ class Schedule extends React.Component {
   };
 
   changeHighlightedDay = ({viewableItems}) => {
-    const lastItem = viewableItems.pop();
-    const currentDay = lastItem.section.title;
+    const {isListEmpty} = this.context;
+    if (isListEmpty) {
+      return;
+    }
+    let lastItem = viewableItems.pop();
+    let currentDay = lastItem.section.title;
+    while (true) {
+      if (lastItem.section.data.length) {
+        break;
+      }
+
+      lastItem = viewableItems.pop();
+      currentDay = lastItem.section.title;
+    }
     if (currentDay !== this.state.currentDay) {
       this.setState({
         currentDay: lastItem.section.title,

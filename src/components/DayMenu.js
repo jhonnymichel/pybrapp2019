@@ -8,12 +8,15 @@ const DayMenu = ({days, currentDay, scrollTo}) => (
       <TouchableOpacity
         key={day}
         style={styles.dayMenu.button}
+        disabled={!days[day].length}
         onPress={() => scrollTo(index)}>
         <Text
           style={
-            day == currentDay
-              ? styles.dayMenu.textHighlight
-              : styles.dayMenu.text
+            days[day].length
+              ? day == currentDay
+                ? styles.dayMenu.textHighlight
+                : styles.dayMenu.text
+              : styles.dayMenu.textDisabled
           }>
           {day}
         </Text>

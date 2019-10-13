@@ -225,6 +225,13 @@ const dayMenu = StyleSheet.create({
     color: yellow,
     textAlign: 'center',
   },
+  textDisabled: {
+    fontFamily: adventPro('SemiBold'),
+    fontSize: 22,
+    color: white,
+    opacity: 0.5,
+    textAlign: 'center',
+  },
 });
 
 const schedulePage = StyleSheet.create({
