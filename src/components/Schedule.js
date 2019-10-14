@@ -39,6 +39,9 @@ class Schedule extends React.Component {
       return;
     }
     let lastItem = viewableItems.pop();
+    if (!lastItem) {
+      return;
+    }
     let currentDay = lastItem.section.title;
     while (true) {
       if (lastItem.section.data.length) {

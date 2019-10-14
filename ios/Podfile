@@ -31,6 +31,8 @@ target 'pybr2019' do
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
 
+  pod 'react-native-blur', :path => '../node_modules/@react-native-community/blur'
+
   target 'pybr2019Tests' do
     inherit! :search_paths
     # Pods for testing

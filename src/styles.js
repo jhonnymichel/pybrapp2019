@@ -13,7 +13,8 @@ const weights = [
 export const yellow = '#efc780';
 export const darkBlue = '#102e46';
 export const lightBlue = '#7fc7cf';
-export const white = 'white';
+export const white = '#FFFFFF';
+export const darkestBlue = '#0D273C';
 
 const font = f => (weight = 'Regular') => `${f}-${weight}`;
 const nunito = font('Nunito');
@@ -58,7 +59,7 @@ const body = {
   flex: 1,
   padding: 10,
   height: '100%',
-  backgroundColor: '#0D273C',
+  backgroundColor: darkestBlue,
   fontFamily: adventPro(),
 };
 
@@ -239,7 +240,7 @@ const schedulePage = StyleSheet.create({
     padding: 0,
   },
   header: {
-    backgroundColor: '#0D273C',
+    backgroundColor: darkestBlue,
     padding: 10,
     paddingBottom: 5,
     borderBottomWidth: 1,
@@ -288,6 +289,26 @@ const filters = StyleSheet.create({
 });
 
 const filtersModal = StyleSheet.create({
+  wrapper: {
+    padding: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+  },
+  container: {
+    borderRadius: 4,
+    backgroundColor: `${white}CC`,
+    margin: 'auto',
+    padding: 10,
+  },
+  footer: {
+    marginTop: 10,
+    paddingTop: 10,
+    borderTopWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.4)',
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+  },
   checkboxContainer: {
     padding: 5,
   },
@@ -330,6 +351,14 @@ const filtersModal = StyleSheet.create({
   },
 });
 
+const absolute = {
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  right: 0,
+  bottom: 0,
+};
+
 export default {
   ...StyleSheet.create({
     body,
@@ -342,6 +371,7 @@ export default {
     scheduleContainer,
     dayContainer,
     eventContainer,
+    absolute,
   }),
   title,
   emptyMessage,

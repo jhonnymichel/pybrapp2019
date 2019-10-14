@@ -1,7 +1,15 @@
 import React from 'react';
-import {View, TextInput, TouchableOpacity, Text, Modal} from 'react-native';
+import {
+  View,
+  TextInput,
+  TouchableOpacity,
+  Text,
+  Modal,
+  Button,
+} from 'react-native';
 import styles, {white} from 'app/styles';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {BlurView, VibrancyView} from '@react-native-community/blur';
 
 export class FilterBox extends React.Component {
   constructor(props) {
@@ -88,24 +96,29 @@ const CategoryFilter = ({categories, onChange, filter}) => (
 
 export const FilterModal = ({visible, onRequestClose, store}) => (
   <Modal
-    animationType="slide"
+    animationType="fade"
     transparent={true}
     visible={visible}
     onRequestClose={onRequestClose}
   >
-    <View>
-      {/* <Text>Categoria</Text>
+    <View style={styles.filtersModal.wrapper}>
+      <View style={{...styles.filtersModal.container, zIndex: 999}}>
+        {/* <Text>Categoria</Text>
       <CategoryFilter
         categories={store.talksCategories}
         filter={store.categoryFilter}
         onChange={store.actions.onCategoryFilterChange}
       /> */}
-      <Text>Tipo</Text>
-      <EventTypeFilter
-        types={store.eventTypes}
-        filter={store.typeFilter}
-        onChange={store.actions.onTypeFilterChange}
-      />
+        <EventTypeFilter
+          types={store.eventTypes}
+          filter={store.typeFilter}
+          onChange={store.actions.onTypeFilterChange}
+        />
+        <View style={styles.filtersModal.footer}>
+          <Button title="Ok" onPress={onRequestClose} />
+        </View>
+      </View>
+      <BlurView style={styles.absolute} blurType="light" blurAmount={5} />
     </View>
   </Modal>
 );
