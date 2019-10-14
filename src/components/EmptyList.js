@@ -1,13 +1,14 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import {Text, View} from 'react-native';
+import styles from 'app/styles';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import {darkestBlue} from '../styles';
 // import Loading from 'img/loading.svg';
 
-const EmptyList = ({ message }) => (
-  <View className="empty-list">
-    {/* <img src={Loading} alt="Lista vazia" width="75px" height="auto"/> */}
-    <Text className="empty-message--small">
-      { message }
-    </Text>
+const EmptyList = ({message}) => (
+  <View style={styles.emptyList.container}>
+    <Ionicons name="ios-calendar" size={200} color={darkestBlue} />
+    <Text style={styles.emptyList.text}>{message}</Text>
   </View>
 );
 

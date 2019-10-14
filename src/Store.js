@@ -132,7 +132,7 @@ class Store extends React.Component {
     if (data.isError) {
       days.isError = true;
     } else {
-      data.items.forEach(async event => {
+      for (let event of data.items) {
         const startDateTime = get(event, 'start.dateTime');
         if (!startDateTime) {
           return;
@@ -270,7 +270,6 @@ class Store extends React.Component {
         for (let textParams of measurements.textsToMeasure) {
           textHeights += (await rnTextSize.measure(textParams)).height;
         }
-
         const containerHeight = measurements.containerPaddings.reduce(
           (height, padding) => height + padding,
           0,
@@ -279,7 +278,7 @@ class Store extends React.Component {
         pybrEvent.layout = {
           height: textHeights + containerHeight,
         };
-      });
+      }
       for (const day in days) {
         days[day].sort(this.sortByDate);
       }

@@ -39,7 +39,8 @@ const Category = ({event}) =>
         styles.categories[
           event.details.category.toLowerCase().replace(/\s/g, '-')
         ]
-      }>
+      }
+    >
       <Text style={styles.categories.text}>{event.details.category}</Text>
     </View>
   ) : null;

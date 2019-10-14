@@ -39,17 +39,17 @@ class Schedule extends React.Component {
       return;
     }
     let lastItem = viewableItems.pop();
-    if (!lastItem) {
-      return;
-    }
-    let currentDay = lastItem.section.title;
+    let currentDay;
     while (true) {
+      if (!lastItem) {
+        return;
+      }
+      currentDay = lastItem.section.title;
       if (lastItem.section.data.length) {
         break;
       }
 
       lastItem = viewableItems.pop();
-      currentDay = lastItem.section.title;
     }
     if (currentDay !== this.state.currentDay) {
       this.setState({
@@ -87,6 +87,11 @@ class Schedule extends React.Component {
       title,
       data,
     }));
+    const errorMessage =
+      store.isListEmpty ||
+      store.isError ||
+      (this.props.currentPage === 'my-schedule' && store.favorites.length);
+
     return (
       <SafeAreaView style={styles.schedulePage.container}>
         <View style={styles.schedulePage.header}>
@@ -156,7 +161,7 @@ class Schedule extends React.Component {
           {store.isError && (
             <EmptyList message="Houve um problema ao carregar os dados. Verifique sua conexão com a internet" />
           )}
-          {!store.isError && (
+          {!errorMessage && (
             <SectionList
               sections={days}
               ref={this.sectionList}
@@ -168,7 +173,7 @@ class Schedule extends React.Component {
                 data.length ? <DaySeparator key={title} day={title} /> : null
               }
               ListHeaderComponent={
-                <Text className="empty-message--small">
+                <Text>
                   {this.props.currentPage === 'schedule'
                     ? !store.isListEmpty && (
                         <Text>

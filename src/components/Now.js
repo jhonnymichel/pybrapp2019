@@ -46,7 +46,6 @@ class Now extends React.Component {
       clearInterval(this.intervalId);
       return;
     }
-
     this.setState({
       now: Now.getNow(this.props.store.fullSchedule),
       next: Now.getNext(this.props.store.fullSchedule),
@@ -68,13 +67,13 @@ class Now extends React.Component {
   }
 
   static getNow(days) {
-    //('2018-10-20T14:20')
-    const today = moment('2018-10-20T14:20')
+    //('2019-10-24T10:20')
+    const today = moment('2019-10-24T10:20')
       .tz('America/Sao_Paulo')
       .date();
     const day = days[today];
     if (day) {
-      const currentDate = moment('2018-10-20T14:20')
+      const currentDate = moment('2019-10-24T10:20')
         .tz('America/Sao_Paulo')
         .toDate()
         .getTime();
@@ -95,12 +94,12 @@ class Now extends React.Component {
   }
 
   static getNext(days) {
-    const today = moment('2018-10-20T14:20')
+    const today = moment('2019-10-24T10:20')
       .tz('America/Sao_Paulo')
       .date();
     const day = days[today];
     if (day) {
-      const currentDate = moment('2018-10-20T14:20')
+      const currentDate = moment('2019-10-24T10:20')
         .tz('America/Sao_Paulo')
         .toDate()
         .getTime();

@@ -359,6 +359,19 @@ const absolute = {
   bottom: 0,
 };
 
+const emptyList = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  text: {
+    color: white,
+    fontSize: 20,
+    textAlign: 'center',
+  },
+});
+
 export default {
   ...StyleSheet.create({
     body,
@@ -384,4 +397,5 @@ export default {
   footer,
   filters,
   filtersModal,
+  emptyList,
 };
