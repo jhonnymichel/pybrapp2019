@@ -10,6 +10,34 @@ import Toast from 'react-native-root-toast';
 import styles from 'app/styles';
 import AsyncStorage from '@react-native-community/async-storage';
 import rnTextSize from 'react-native-text-size';
+import PushNotification from 'react-native-push-notification';
+import PushNotificationIOS from '@react-native-community/push-notification-ios';
+
+PushNotification.configure({
+  // (required) Called when a remote or local notification is opened or received
+  onNotification: function(notification) {
+    console.log('NOTIFICATION:', notification);
+
+    // process the notification
+  },
+
+  // IOS ONLY (optional): default: all - Permissions to register.
+  permissions: {
+    alert: true,
+    sound: true,
+  },
+
+  // Should the initial notification be popped automatically
+  // default: true
+  popInitialNotification: true,
+
+  /**
+   * (optional) default: true
+   * - Specified if permissions (ios) and token (android and ios) will requested or not,
+   * - if not, you must call PushNotificationsHandler.requestPermissions() later
+   */
+  //requestPermissions: true,
+});
 
 export const StoreContext = React.createContext();
 const screenWidth = Math.round(Dimensions.get('window').width);
@@ -58,23 +86,26 @@ class Store extends React.Component {
     return favorites;
   }
 
-  getId(eventId) {
+  async getId(eventId) {
     try {
-      JSON.parse(localStorage.getItem('eventNotificationMap') || '{}');
+      JSON.parse((await AsyncStorage.getItem('eventNotificationMap')) || '{}');
     } catch (e) {
-      localStorage.removeItem('eventNotificationMap');
+      await AsyncStorage.removeItem('eventNotificationMap');
     }
     const eventNotificationMap =
-      JSON.parse(localStorage.getItem('eventNotificationMap') || '{}') || {};
+      JSON.parse(
+        (await AsyncStorage.getItem('eventNotificationMap')) || '{}',
+      ) || {};
     if (eventNotificationMap[eventId]) {
       return eventNotificationMap[eventId];
     }
     const id =
-      Number(localStorage.getItem('notificationIdIncrementor') || 1) + 1;
-    localStorage.setItem('notificationIdIncrementor', id);
+      Number((await AsyncStorage.getItem('notificationIdIncrementor')) || 1) +
+      1;
+    await AsyncStorage.setItem('notificationIdIncrementor', id);
 
     eventNotificationMap[eventId] = id;
-    localStorage.setItem(
+    await AsyncStorage.setItem(
       'eventNotificationMap',
       JSON.stringify(eventNotificationMap),
     );
@@ -86,32 +117,38 @@ class Store extends React.Component {
     if (event.details.eventType === 'Eventos Fixos') {
       return {
         title: `${event.summary}`,
-        text: 'Começa em 5 minutos.',
+        message: 'Começa em 5 minutos.',
       };
     }
 
     return {
       title: `${event.details.eventType}: ${event.summary}`,
-      text: `Começa em 5 minutos na ${event.location}`,
+      message: `Começa em 5 minutos na ${event.location}`,
     };
   }
 
-  scheduleNotification(event, date) {
-    // const tzDate = moment(date).tz('America/Fortaleza');
-    // cordova.plugins.notification.local.schedule([{
-    //   id: this.getId(event.id),
-    //   ...this.getNotificationContent(event),
-    //   foreground: true,
-    //   trigger: { at: tzDate.subtract(5, 'minutes').toDate() }
-    // }]);
+  async scheduleNotification(event, date) {
+    PushNotification.requestPermissions();
+    const tzDate = moment().tz('America/Sao_Paulo');
+
+    PushNotification.localNotificationSchedule({
+      id: await this.getId(event.id),
+      ...this.getNotificationContent(event),
+      foreground: true,
+      date: tzDate.add(10, 'seconds').toDate(),
+    });
+
+    console.log('scheduled');
   }
 
-  cancelNotification(id) {
-    // const eventNotificationMap = JSON.parse(localStorage.getItem('eventNotificationMap') || "{}");
-    // const notificationId = eventNotificationMap[id];
-    // if (notificationId) {
-    //   cordova.plugins.notification.local.cancel(notificationId);
-    // }
+  async cancelNotification(id) {
+    const eventNotificationMap = JSON.parse(
+      (await AsyncStorage.getItem('eventNotificationMap')) || '{}',
+    );
+    const notificationId = eventNotificationMap[id];
+    if (notificationId) {
+      PushNotification.cancelLocalNotifications({id});
+    }
   }
 
   toggleFavorite = async (event, date) => {
@@ -119,15 +156,14 @@ class Store extends React.Component {
     let isAdding = true;
     try {
       const favorites = await this.getFavorites();
+      debugger;
       if (!favorites.includes(id)) {
         favorites.push(id);
-        // window.plugins.toast.showShortBottom('Adicionado aos eventos salvos.');
-        // this.scheduleNotification(event, date);
+        this.scheduleNotification(event, date);
       } else {
         isAdding = false;
-        // window.plugins.toast.showShortBottom('Removido dos eventos salvos.');
         favorites.splice(favorites.indexOf(id), 1);
-        // this.cancelNotification(id);
+        this.cancelNotification(id);
       }
       await AsyncStorage.setItem('favoriteTalks', JSON.stringify(favorites));
       this.setState({favorites});
