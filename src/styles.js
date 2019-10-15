@@ -140,6 +140,7 @@ const eventContainer = {
   paddingBottom: 20,
   paddingLeft: 0,
   paddingRight: 10,
+  backgroundColor: darkBlue,
 };
 const eventContainerFavorite = {
   ...eventContainer,

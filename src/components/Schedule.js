@@ -21,13 +21,11 @@ import {white} from '../styles';
 class Schedule extends React.Component {
   static contextType = StoreContext;
   sectionList = React.createRef({});
-  state = {isFilterModalOpen: false, isSwiping: false};
+  state = {isFilterModalOpen: false};
 
   renderDay = events => {
     return (
       <Events
-        onSwipeStart={this.onSwipeStart}
-        onSwipeRelease={this.onSwipeRelease}
         favorites={this.context.favorites}
         scheduleInDate={events.item}
         toggleFavorite={this.context.actions.toggleFavorite}
@@ -83,14 +81,6 @@ class Schedule extends React.Component {
     }));
   };
 
-  onSwipeRelease = () => {
-    this.setState({isSwiping: false});
-  };
-
-  onSwipeStart = () => {
-    this.setState({isSwiping: true});
-  };
-
   render() {
     const store = this.context;
     const days = map(store.days, (data, title) => ({
@@ -135,7 +125,6 @@ class Schedule extends React.Component {
           )}
           {!errorMessage && (
             <SectionList
-              scrollEnabled={!this.state.isSwiping}
               sections={days}
               ref={this.sectionList}
               initialNumToRender={2}

@@ -5,6 +5,8 @@ import every from 'lodash/every';
 import mapValues from 'lodash/mapValues';
 import moment from 'moment-timezone';
 import {Dimensions} from 'react-native';
+import Toast from 'react-native-root-toast';
+
 import styles from 'app/styles';
 import AsyncStorage from '@react-native-community/async-storage';
 import rnTextSize from 'react-native-text-size';
@@ -114,6 +116,7 @@ class Store extends React.Component {
 
   toggleFavorite = async (event, date) => {
     const {id} = event;
+    let isAdding = true;
     try {
       const favorites = await this.getFavorites();
       if (!favorites.includes(id)) {
@@ -121,16 +124,34 @@ class Store extends React.Component {
         // window.plugins.toast.showShortBottom('Adicionado aos eventos salvos.');
         // this.scheduleNotification(event, date);
       } else {
+        isAdding = false;
         // window.plugins.toast.showShortBottom('Removido dos eventos salvos.');
         favorites.splice(favorites.indexOf(id), 1);
         // this.cancelNotification(id);
       }
       await AsyncStorage.setItem('favoriteTalks', JSON.stringify(favorites));
       this.setState({favorites});
+      const message = isAdding
+        ? 'Evento salvo como favorito!'
+        : 'Evento removido dos favoritos.';
+      Toast.show(message, {
+        duration: Toast.durations.LONG,
+        position: Toast.positions.BOTTOM,
+        shadow: false,
+        animation: true,
+        hideOnPress: true,
+        delay: 0,
+      });
     } catch (e) {
-      console.error('Não foi possível salvar favoritos', e.message);
+      Toast.show('Não foi possível salvar sua ação. Algo deu errado :(', {
+        duration: Toast.durations.LONG,
+        position: Toast.positions.BOTTOM,
+        shadow: false,
+        animation: true,
+        hideOnPress: true,
+        delay: 0,
+      });
     }
-    console.log(await this.getFavorites());
   };
 
   async reduceCalendarData(data) {

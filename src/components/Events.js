@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   View,
-  TouchableWithoutFeedback,
+  TouchableOpacity,
   Text,
   StyleSheet,
   Animated,
@@ -10,7 +10,7 @@ import {
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {getFormattedTime} from 'app/utils';
 import styles, {lightBlue} from 'app/styles';
-import Swipeable from 'react-native-swipeable';
+import Swipeable from 'react-native-gesture-handler/Swipeable';
 
 function getEventType(type) {
   const types = {
@@ -54,28 +54,14 @@ const Category = ({event}) =>
   ) : null;
 
 const FavoriteBadge = ({isFavorite}) => {
-  const [fadeAnimation] = React.useState(
-    new Animated.Value(Number(isFavorite)),
-  );
-
-  React.useLayoutEffect(() => {
-    Animated.timing(fadeAnimation, {
-      toValue: Number(!isFavorite),
-      duration: 500,
-      easing: Easing.bezier(0.16, 0.53, 0.06, 1.36),
-      useNativeDriver: true,
-    }).start();
-  }, [isFavorite]);
-
   return (
-    <Animated.View style={{marginLeft: 'auto', opacity: fadeAnimation}}>
+    <View style={{marginLeft: 'auto'}}>
       <Ionicons name="ios-bookmark" size={20} color={lightBlue} />
-    </Animated.View>
+    </View>
   );
 };
 
-const EventTypes = (event, date, favorites = [], toggleFavorite) => {
-  const isFavorite = favorites.includes(event.id);
+const EventTypes = (event, date, isFavorite) => {
   return {
     ['Eventos Fixos']: (
       <>
@@ -140,13 +126,13 @@ const swipeStyles = StyleSheet.create({
   },
   rightSwipeItem: {
     flex: 1,
-    alignItems: 'flex-start',
+    alignItems: 'flex-end',
     justifyContent: 'center',
-    paddingLeft: 20,
+    paddingRight: 20,
   },
 });
 
-const FavoriteButton = ({active}) => {
+const FavoriteButton = ({active, onPress}) => {
   const [scaleAnimation] = React.useState(new Animated.Value(1));
 
   React.useEffect(() => {
@@ -159,7 +145,8 @@ const FavoriteButton = ({active}) => {
   }, [active]);
 
   return (
-    <View
+    <TouchableOpacity
+      onPress={onPress}
       style={[
         swipeStyles.rightSwipeItem,
         {
@@ -170,19 +157,52 @@ const FavoriteButton = ({active}) => {
       <Animated.View style={{transform: [{scale: scaleAnimation}]}}>
         <Ionicons name="ios-bookmark" size={30} />
       </Animated.View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
-function Events({
-  scheduleInDate,
-  favorites,
-  toggleFavorite,
-  onSwipeStart,
-  onSwipeRelease,
-}) {
-  const [swipeActionToggled, setSwipeActionToggled] = React.useState(false);
+class Event extends React.Component {
+  swipeableRef = React.createRef(null);
 
+  onFavoriteButtonPress = async () => {
+    const {event, scheduleInDate, toggleFavorite} = this.props;
+    await toggleFavorite(event, scheduleInDate.date);
+    setTimeout(() => {
+      this.swipeableRef.current.close();
+    }, 300);
+  };
+
+  renderRightActions = () => {
+    const {isFavorite, toggleFavorite} = this.props;
+    return (
+      <FavoriteButton
+        active={isFavorite}
+        onPress={this.onFavoriteButtonPress}
+      />
+    );
+  };
+
+  render() {
+    const {event, scheduleInDate, isFavorite} = this.props;
+    return (
+      <Swipeable
+        ref={this.swipeableRef}
+        key={event.id}
+        renderRightActions={this.renderRightActions}
+      >
+        <View style={{...styles.eventContainer, height: event.layout.height}}>
+          {
+            EventTypes(event, scheduleInDate.date, isFavorite)[
+              getEventType(event.details.eventType)
+            ]
+          }
+        </View>
+      </Swipeable>
+    );
+  }
+}
+
+function Events({scheduleInDate, favorites, toggleFavorite}) {
   return (
     <View style={styles.scheduleContainer}>
       <View style={styles.time.container}>
@@ -196,37 +216,12 @@ function Events({
       </View>
       <View style={styles.dayContainer}>
         {scheduleInDate.events.map(event => (
-          <Swipeable
+          <Event
             key={event.id}
-            rightActionActivationDistance={125}
-            rightContent={<FavoriteButton active={swipeActionToggled} />}
-            onRightActionActivate={() => setSwipeActionToggled(true)}
-            onRightActionDeactivate={() => setSwipeActionToggled(false)}
-            onRightActionComplete={() => {
-              onSwipeRelease();
-              toggleFavorite(event, scheduleInDate.date);
-            }}
-            // onSwipeRelease={onSwipeRelease}
-            onSwipeStart={onSwipeStart}
-          >
-            <View
-              style={{
-                ...(favorites.includes(event.id)
-                  ? styles.eventContainer
-                  : styles.eventContainerFavorite),
-                height: event.layout.height,
-              }}
-            >
-              {
-                EventTypes(
-                  event,
-                  scheduleInDate.date,
-                  favorites,
-                  toggleFavorite,
-                )[getEventType(event.details.eventType)]
-              }
-            </View>
-          </Swipeable>
+            {...{scheduleInDate, toggleFavorite}}
+            isFavorite={favorites.includes(event.id)}
+            event={event}
+          />
         ))}
       </View>
     </View>
