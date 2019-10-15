@@ -156,9 +156,9 @@ class Store extends React.Component {
     let isAdding = true;
     try {
       const favorites = await this.getFavorites();
-      debugger;
       if (!favorites.includes(id)) {
         favorites.push(id);
+
         this.scheduleNotification(event, date);
       } else {
         isAdding = false;
