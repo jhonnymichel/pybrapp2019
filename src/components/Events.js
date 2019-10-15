@@ -177,7 +177,7 @@ const FavoriteButton = ({active, onPress}) => {
   );
 };
 
-class Event extends React.Component {
+class Event extends React.PureComponent {
   swipeableRef = React.createRef(null);
 
   onFavoriteButtonPress = async () => {
@@ -219,30 +219,33 @@ class Event extends React.Component {
   }
 }
 
-function Events({scheduleInDate, favorites, toggleFavorite}) {
-  return (
-    <View style={styles.scheduleContainer}>
-      <View style={styles.time.container}>
-        <Text style={styles.time.text}>
-          {getFormattedTime(scheduleInDate.date)}
-        </Text>
+class Events extends React.PureComponent {
+  render() {
+    const {scheduleInDate, favorites, toggleFavorite} = this.props;
+    return (
+      <View style={styles.scheduleContainer}>
+        <View style={styles.time.container}>
+          <Text style={styles.time.text}>
+            {getFormattedTime(scheduleInDate.date)}
+          </Text>
+        </View>
+        <View style={styles.timelineIllustration.container}>
+          <View style={styles.timelineIllustration.ball} />
+          <View style={styles.timelineIllustration.line} />
+        </View>
+        <View style={styles.dayContainer}>
+          {scheduleInDate.events.map(event => (
+            <Event
+              key={event.id}
+              {...{scheduleInDate, toggleFavorite}}
+              isFavorite={favorites.includes(event.id)}
+              event={event}
+            />
+          ))}
+        </View>
       </View>
-      <View style={styles.timelineIllustration.container}>
-        <View style={styles.timelineIllustration.ball} />
-        <View style={styles.timelineIllustration.line} />
-      </View>
-      <View style={styles.dayContainer}>
-        {scheduleInDate.events.map(event => (
-          <Event
-            key={event.id}
-            {...{scheduleInDate, toggleFavorite}}
-            isFavorite={favorites.includes(event.id)}
-            event={event}
-          />
-        ))}
-      </View>
-    </View>
-  );
+    );
+  }
 }
 
 export default Events;
