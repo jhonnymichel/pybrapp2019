@@ -138,6 +138,11 @@ const dayContainer = {
 const eventContainer = {
   flex: 1,
   paddingBottom: 20,
+  paddingLeft: 0,
+  paddingRight: 10,
+};
+const eventContainerFavorite = {
+  ...eventContainer,
 };
 
 const timelineIllustration = StyleSheet.create({
@@ -146,6 +151,8 @@ const timelineIllustration = StyleSheet.create({
     paddingRight: 10,
     justifyContent: 'center',
     alignItems: 'center',
+    zIndex: 999,
+    backgroundColor: darkBlue,
   },
   ball: {
     width: 16,
@@ -163,6 +170,8 @@ const timelineIllustration = StyleSheet.create({
 const time = StyleSheet.create({
   container: {
     width: 50,
+    backgroundColor: darkBlue,
+    zIndex: 999,
     alignItems: 'flex-end',
   },
   text: {
@@ -249,8 +258,6 @@ const schedulePage = StyleSheet.create({
   scrollView: {
     flex: 1,
     backgroundColor: darkBlue,
-    paddingLeft: 10,
-    paddingRight: 10,
   },
 });
 
@@ -384,6 +391,7 @@ export default {
     scheduleContainer,
     dayContainer,
     eventContainer,
+    eventContainerFavorite,
     absolute,
   }),
   title,

@@ -21,11 +21,13 @@ import {white} from '../styles';
 class Schedule extends React.Component {
   static contextType = StoreContext;
   sectionList = React.createRef({});
-  state = {isFilterModalOpen: false};
+  state = {isFilterModalOpen: false, isSwiping: false};
 
   renderDay = events => {
     return (
       <Events
+        onSwipeStart={this.onSwipeStart}
+        onSwipeRelease={this.onSwipeRelease}
         favorites={this.context.favorites}
         scheduleInDate={events.item}
         toggleFavorite={this.context.actions.toggleFavorite}
@@ -81,6 +83,14 @@ class Schedule extends React.Component {
     }));
   };
 
+  onSwipeRelease = () => {
+    this.setState({isSwiping: false});
+  };
+
+  onSwipeStart = () => {
+    this.setState({isSwiping: true});
+  };
+
   render() {
     const store = this.context;
     const days = map(store.days, (data, title) => ({
@@ -112,44 +122,6 @@ class Schedule extends React.Component {
           visible={this.state.isFilterModalOpen}
           onRequestClose={this.toggleAdvancedFilters}
         />
-        {/* <View className="filters-container">
-          <View
-            className="filters"
-          >
-
-
-            </FilterBox>
-          </View>
-          <View className="advanced-filters" aria-hidden={!store.isShowingAdvancedFilters} aria-modal="true" style={{
-            ...this.filtersStyles.default,
-            ...this.filtersStyles[animationState]
-          }}> */}
-        {/* <View className="app-bar">
-              <Button
-                onClick={store.actions.toggleAdvancedFilters}
-                className="back-button"
-              >
-                <Text className="material-icons">arrow_back_ios</Text>
-              </Button>
-              <Text>Filtrar</Text>
-            </View> */}
-        {/* <View className="advanced-filters-wrapper">
-              <Text>Categoria</Text>
-
-              <CategoryFilter
-                categories={store.talksCategories}
-                filter={store.categoryFilter}
-                onChange={store.actions.onCategoryFilterChange}
-              />
-              <Text>Tipo</Text>
-              <EventTypeFilter
-                types={store.eventTypes}
-                filter={store.typeFilter}
-                onChange={store.actions.onTypeFilterChange}
-              />
-            </View> */}
-        {/* </View>
-        </View> */}
         <View style={styles.schedulePage.scrollView}>
           {this.props.currentPage === 'my-schedule' &&
             !store.favorites.length && (
@@ -163,6 +135,7 @@ class Schedule extends React.Component {
           )}
           {!errorMessage && (
             <SectionList
+              scrollEnabled={!this.state.isSwiping}
               sections={days}
               ref={this.sectionList}
               initialNumToRender={2}

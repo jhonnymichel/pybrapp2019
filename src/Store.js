@@ -6,6 +6,7 @@ import mapValues from 'lodash/mapValues';
 import moment from 'moment-timezone';
 import {Dimensions} from 'react-native';
 import styles from 'app/styles';
+import AsyncStorage from '@react-native-community/async-storage';
 import rnTextSize from 'react-native-text-size';
 
 export const StoreContext = React.createContext();
@@ -14,18 +15,11 @@ const screenWidth = Math.round(Dimensions.get('window').width);
 class Store extends React.Component {
   constructor(props) {
     super(props);
-    let favorites;
-
-    try {
-      favorites = JSON.parse(localStorage.getItem('favoriteTalks')) || [];
-    } catch (e) {
-      favorites = [];
-    }
 
     this.state = {
       days: {},
       searchFilter: '',
-      favorites,
+      favorites: [],
       isShowingAdvancedFilters: false,
     };
 
@@ -34,18 +28,32 @@ class Store extends React.Component {
       onTypeFilterChange: this.onFilterChange.bind(this, 'typeFilter'),
       filterDays: this.filterDays.bind(this),
       filterEvents: this.filterEvents.bind(this),
-      toggleFavorite: this.toggleFavorite.bind(this),
+      toggleFavorite: this.toggleFavorite,
       onSearchFilterChange: this.onSearchFilterChange.bind(this),
       checkSearchMatch: this.checkSearchMatch.bind(this),
     };
   }
 
   async componentDidMount() {
+    const favorites = await this.getFavorites();
     const calendarData = await this.reduceCalendarData(this.props.data);
     this.setState({
       ...this.state,
       ...calendarData,
+      favorites,
     });
+  }
+
+  async getFavorites() {
+    let favorites;
+
+    try {
+      favorites = JSON.parse(await AsyncStorage.getItem('favoriteTalks')) || [];
+    } catch (e) {
+      favorites = [];
+    }
+
+    return favorites;
   }
 
   getId(eventId) {
@@ -104,25 +112,26 @@ class Store extends React.Component {
     // }
   }
 
-  toggleFavorite(event, date) {
-    // const { id } = event;
-    // try {
-    //   const favorites = JSON.parse(localStorage.getItem('favoriteTalks')) || [];
-    //   if (!favorites.includes(id)) {
-    //     favorites.push(id);
-    //     window.plugins.toast.showShortBottom('Adicionado aos eventos salvos.');
-    //     this.scheduleNotification(event, date);
-    //   } else {
-    //     window.plugins.toast.showShortBottom('Removido dos eventos salvos.');
-    //     favorites.splice(favorites.indexOf(id), 1);
-    //     this.cancelNotification(id);
-    //   }
-    //   localStorage.setItem('favoriteTalks', JSON.stringify(favorites));
-    //   this.setState({ favorites });
-    // } catch(e) {
-    //   console.error('Não foi possível salvar favoritos', e.message);
-    // }
-  }
+  toggleFavorite = async (event, date) => {
+    const {id} = event;
+    try {
+      const favorites = await this.getFavorites();
+      if (!favorites.includes(id)) {
+        favorites.push(id);
+        // window.plugins.toast.showShortBottom('Adicionado aos eventos salvos.');
+        // this.scheduleNotification(event, date);
+      } else {
+        // window.plugins.toast.showShortBottom('Removido dos eventos salvos.');
+        favorites.splice(favorites.indexOf(id), 1);
+        // this.cancelNotification(id);
+      }
+      await AsyncStorage.setItem('favoriteTalks', JSON.stringify(favorites));
+      this.setState({favorites});
+    } catch (e) {
+      console.error('Não foi possível salvar favoritos', e.message);
+    }
+    console.log(await this.getFavorites());
+  };
 
   async reduceCalendarData(data) {
     const days = {};
@@ -209,7 +218,8 @@ class Store extends React.Component {
 
         const eventContainerWidth =
           screenWidth -
-          body.padding * 2 -
+          eventContainer.paddingLeft -
+          eventContainer.paddingRight -
           time.width -
           container.paddingLeft -
           container.paddingRight -
