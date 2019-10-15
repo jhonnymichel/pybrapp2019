@@ -54,10 +54,26 @@ const Category = ({event}) =>
   ) : null;
 
 const FavoriteBadge = ({isFavorite}) => {
+  const [fade] = React.useState(new Animated.Value(Number(!isFavorite)));
+  const isFirstRender = React.useRef({value: true});
+
+  React.useLayoutEffect(() => {
+    let duration = 300;
+    if (isFirstRender.current.value) {
+      duration = 0;
+      isFirstRender.current.value = false;
+    }
+    Animated.timing(fade, {
+      toValue: Number(isFavorite),
+      duration,
+      delay: (duration && 600) || 0,
+      useNativeDriver: true,
+    }).start();
+  }, [isFavorite]);
   return (
-    <View style={{marginLeft: 'auto'}}>
+    <Animated.View style={{marginLeft: 'auto', opacity: fade}}>
       <Ionicons name="ios-bookmark" size={20} color={lightBlue} />
-    </View>
+    </Animated.View>
   );
 };
 
@@ -125,7 +141,7 @@ const swipeStyles = StyleSheet.create({
     justifyContent: 'center',
   },
   rightSwipeItem: {
-    flex: 1,
+    flex: 0.75,
     alignItems: 'flex-end',
     justifyContent: 'center',
     paddingRight: 20,
@@ -187,6 +203,7 @@ class Event extends React.Component {
     return (
       <Swipeable
         ref={this.swipeableRef}
+        rightThreshold={50}
         key={event.id}
         renderRightActions={this.renderRightActions}
       >
