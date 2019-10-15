@@ -87,22 +87,28 @@ class Store extends React.Component {
   }
 
   async getId(eventId) {
+    let eventNotificationMap;
     try {
-      JSON.parse((await AsyncStorage.getItem('eventNotificationMap')) || '{}');
+      eventNotificationMap =
+        JSON.parse(await AsyncStorage.getItem('eventNotificationMap')) || {};
     } catch (e) {
-      await AsyncStorage.removeItem('eventNotificationMap');
+      eventNotificationMap = {};
     }
-    const eventNotificationMap =
-      JSON.parse(
-        (await AsyncStorage.getItem('eventNotificationMap')) || '{}',
-      ) || {};
+
     if (eventNotificationMap[eventId]) {
       return eventNotificationMap[eventId];
     }
-    const id =
-      Number((await AsyncStorage.getItem('notificationIdIncrementor')) || 1) +
-      1;
-    await AsyncStorage.setItem('notificationIdIncrementor', id);
+
+    let notificationIdIncrementor;
+    try {
+      notificationIdIncrementor =
+        JSON.parse(await AsyncStorage.getItem('notificationIdIncrementor')) ||
+        1;
+    } catch (e) {
+      notificationIdIncrementor = 1;
+    }
+    const id = Number(notificationIdIncrementor) + 1;
+    await AsyncStorage.setItem('notificationIdIncrementor', JSON.stringify(id));
 
     eventNotificationMap[eventId] = id;
     await AsyncStorage.setItem(
@@ -130,11 +136,10 @@ class Store extends React.Component {
   async scheduleNotification(event, date) {
     PushNotification.requestPermissions();
     const tzDate = moment().tz('America/Sao_Paulo');
-
+    const id = await this.getId(event.id);
     PushNotification.localNotificationSchedule({
-      id: await this.getId(event.id),
+      id,
       ...this.getNotificationContent(event),
-      foreground: true,
       date: tzDate.add(10, 'seconds').toDate(),
     });
 
@@ -158,8 +163,7 @@ class Store extends React.Component {
       const favorites = await this.getFavorites();
       if (!favorites.includes(id)) {
         favorites.push(id);
-
-        this.scheduleNotification(event, date);
+        await this.scheduleNotification(event, date);
       } else {
         isAdding = false;
         favorites.splice(favorites.indexOf(id), 1);
