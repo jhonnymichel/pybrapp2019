@@ -13,7 +13,7 @@ import Tabs from './components/Tabs';
 const AppNavigator = Tabs({
   Now: Now,
   Schedule: {
-    screen: () => <Schedule currentPage="schedule" />,
+    screen: () => <Schedule currentPage="schedulePage" />,
   },
 });
 

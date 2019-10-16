@@ -67,10 +67,54 @@ class Store extends React.Component {
   async componentDidMount() {
     const favorites = await this.getFavorites();
     const calendarData = await this.reduceCalendarData(this.props.data);
+    const sectionHeaderHeight =
+      (await rnTextSize.measure({
+        text: 'Dia 99 - Tutorais',
+        width: screenWidth - styles.dateSeparator.padding * 2,
+        fontFamily: styles.dateSeparatorText.fontFamily,
+        fontSize: styles.dateSeparatorText.fontSize,
+      })).height +
+      styles.dateSeparator.padding * 2;
+
+    const listHeaderTexts = {
+      schedulePage:
+        'Arraste um evento para a esquerda para adicioná-lo à sua lista e receber notificações.',
+      myListPage:
+        'Arraste um evento para a esquerda para removê-lo de sua lista e cancelar notificações.',
+    };
+
+    const listHeaderMeasurements = {
+      width:
+        screenWidth -
+        styles.tableHeader.wrapper.padding * 2 -
+        styles.tableHeader.container.padding * 2,
+      fontFamily: styles.tableHeader.text.fontFamily,
+      fontSize: styles.tableHeader.text.fontSize,
+    };
+
+    const listHeaderHeights = {
+      schedulePage:
+        (await rnTextSize.measure({
+          text: listHeaderTexts.schedulePage,
+          ...listHeaderMeasurements,
+        })).height +
+        styles.tableHeader.wrapper.padding * 2 +
+        styles.tableHeader.container.padding * 2,
+      myListPage:
+        (await rnTextSize.measure({
+          text: listHeaderTexts.myListPage,
+          ...listHeaderMeasurements,
+        })).height +
+        styles.tableHeader.wrapper.padding * 2 +
+        styles.tableHeader.container.padding * 2,
+    };
     this.setState({
       ...this.state,
       ...calendarData,
       favorites,
+      sectionHeaderHeight,
+      listHeaderHeights,
+      listHeaderTexts,
     });
   }
 
@@ -135,13 +179,13 @@ class Store extends React.Component {
 
   async scheduleNotification(event, date) {
     PushNotification.requestPermissions();
-    const tzDate = moment().tz('America/Sao_Paulo');
+    const tzDate = moment(date).tz('America/Sao_Paulo');
     const id = String(await this.getId(event.id));
     PushNotification.localNotificationSchedule({
       id,
       userInfo: {id},
       ...this.getNotificationContent(event),
-      date: tzDate.add(5, 'minutes').toDate(),
+      date: tzDate.subtract(5, 'minutes').toDate(),
     });
 
     console.log('scheduled');
@@ -174,8 +218,8 @@ class Store extends React.Component {
       await AsyncStorage.setItem('favoriteTalks', JSON.stringify(favorites));
       this.setState({favorites});
       const message = isAdding
-        ? 'Evento salvo como favorito!'
-        : 'Evento removido dos favoritos.';
+        ? 'Evento adicionado a sua lista!'
+        : 'Evento removido da sua lista.';
       Toast.show(message, {
         duration: Toast.durations.LONG,
         position: Toast.positions.BOTTOM,
@@ -265,6 +309,9 @@ class Store extends React.Component {
           days[dayOfEvent].push({
             date: pybrEvent.date,
             events: [pybrEvent],
+            layout: {
+              listHeaderHeight: 70,
+            },
           });
         } else {
           eventsOnSameTime.events.push(pybrEvent);

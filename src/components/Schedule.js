@@ -64,8 +64,8 @@ class Schedule extends React.Component {
       rowData.events.reduce((height, event) => event.layout.height + height, 0),
 
     // These four properties are optional
-    getSectionHeaderHeight: () => 156, // The height of your section headers
-    listHeaderHeight: 34,
+    getSectionHeaderHeight: () => this.context.sectionHeaderHeight, // The height of your section headers
+    listHeaderHeight: this.context.listHeaderHeights[this.props.currentPage],
   });
 
   scrollTo = sectionIndex => {
@@ -83,6 +83,7 @@ class Schedule extends React.Component {
 
   render() {
     const store = this.context;
+    console.log(store);
     const days = map(store.days, (data, title) => ({
       title,
       data,
@@ -90,7 +91,7 @@ class Schedule extends React.Component {
     const errorMessage =
       store.isListEmpty ||
       store.isError ||
-      (this.props.currentPage === 'my-schedule' && store.favorites.length);
+      (this.props.currentPage === 'myListPage' && store.favorites.length);
 
     return (
       <SafeAreaView style={styles.schedulePage.container}>
@@ -113,7 +114,7 @@ class Schedule extends React.Component {
           onRequestClose={this.toggleAdvancedFilters}
         />
         <View style={styles.schedulePage.scrollView}>
-          {this.props.currentPage === 'my-schedule' &&
+          {this.props.currentPage === 'myListPage' &&
             !store.favorites.length && (
               <EmptyList message="Você ainda não marcou nenhuma palestra. Na aba Palestras você pode fazer isso." />
             )}
@@ -135,28 +136,22 @@ class Schedule extends React.Component {
                 data.length ? <DaySeparator key={title} day={title} /> : null
               }
               ListHeaderComponent={
-                <Text>
-                  {this.props.currentPage === 'schedule'
-                    ? !store.isListEmpty && (
-                        <Text>
-                          {' '}
-                          Toque em um evento para adicioná-lo as suas marcações
-                          e receber notificações.{' '}
-                        </Text>
-                      )
-                    : store.favorites.length && (
-                        <Text>
-                          {' '}
-                          Toque em um evento para removê-lo de sua lista e
-                          cancelar notificações.{' '}
-                        </Text>
-                      )}
-                </Text>
+                <View style={styles.tableHeader.wrapper}>
+                  <View style={styles.tableHeader.container}>
+                    <Text style={styles.tableHeader.text}>
+                      {store.listHeaderTexts[this.props.currentPage]}
+                    </Text>
+                  </View>
+                </View>
               }
               ListFooterComponent={
-                <Text className="schedule_subtitle" style={{marginBottom: 100}}>
-                  * Programação sujeita a alteração sem aviso prévio *
-                </Text>
+                <View style={styles.tableHeader.wrapper}>
+                  <View style={styles.tableHeader.container}>
+                    <Text style={styles.tableHeader.text}>
+                      Programação sujeita a alterações sem aviso prévio.
+                    </Text>
+                  </View>
+                </View>
               }
               stickySectionHeadersEnabled={false}
               keyExtractor={events => getFormattedTime(events.date)}

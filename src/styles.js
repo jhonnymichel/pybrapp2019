@@ -105,7 +105,7 @@ const fixedEventTitle = {
 };
 
 const dateSeparator = {
-  padding: 60,
+  padding: 40,
   flex: 1,
   justifyContent: 'center',
 };
@@ -380,6 +380,23 @@ const emptyList = StyleSheet.create({
   },
 });
 
+const tableHeader = StyleSheet.create({
+  wrapper: {
+    padding: 10,
+  },
+  container: {
+    borderRadius: 5,
+    padding: 5,
+    backgroundColor: white,
+  },
+  text: {
+    fontFamily: nunito('SemiBold'),
+    color: darkBlue,
+    fontSize: 16,
+    textAlign: 'center',
+  },
+});
+
 export default {
   ...StyleSheet.create({
     body,
@@ -407,4 +424,5 @@ export default {
   filters,
   filtersModal,
   emptyList,
+  tableHeader,
 };
