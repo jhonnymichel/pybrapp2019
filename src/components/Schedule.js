@@ -26,6 +26,7 @@ class Schedule extends React.Component {
   renderDay = events => {
     return (
       <Events
+        currentPage={this.props.currentPage}
         favorites={this.context.favorites}
         scheduleInDate={events.item}
         toggleFavorite={this.context.actions.toggleFavorite}
@@ -83,40 +84,45 @@ class Schedule extends React.Component {
 
   render() {
     const store = this.context;
-    console.log(store);
-    const days = map(store.days, (data, title) => ({
+    console.log(store.favorites);
+    let days = store.days;
+    if (this.props.currentPage === 'myListPage') {
+      days = store.actions.filterDays(store.fullSchedule, true);
+    }
+    const daysForSectionView = map(days, (data, title) => ({
       title,
       data,
     }));
-    const errorMessage =
-      store.isListEmpty ||
-      store.isError ||
-      (this.props.currentPage === 'myListPage' && store.favorites.length);
+    const errorMessage = store.isListEmpty || store.isError;
 
     return (
       <SafeAreaView style={styles.schedulePage.container}>
         <View style={styles.schedulePage.header}>
           <DayMenu
-            days={store.days}
+            days={days}
             currentDay={this.state.currentDay}
             scrollTo={this.scrollTo}
           />
-          <FilterBox
-            value={store.searchFilter}
-            onClick={this.toggleAdvancedFilters}
-            onChange={store.actions.onSearchFilterChange}
-            isPopoverOpened={store.isShowingAdvancedFilters}
-          />
+          {this.props.currentPage === 'schedulePage' && (
+            <FilterBox
+              value={store.searchFilter}
+              onClick={this.toggleAdvancedFilters}
+              onChange={store.actions.onSearchFilterChange}
+              isPopoverOpened={store.isShowingAdvancedFilters}
+            />
+          )}
         </View>
-        <FilterModal
-          store={store}
-          visible={this.state.isFilterModalOpen}
-          onRequestClose={this.toggleAdvancedFilters}
-        />
+        {this.props.currentPage === 'schedulePage' && (
+          <FilterModal
+            store={store}
+            visible={this.state.isFilterModalOpen}
+            onRequestClose={this.toggleAdvancedFilters}
+          />
+        )}
         <View style={styles.schedulePage.scrollView}>
           {this.props.currentPage === 'myListPage' &&
             !store.favorites.length && (
-              <EmptyList message="Você ainda não marcou nenhuma palestra. Na aba Palestras você pode fazer isso." />
+              <EmptyList message="Você ainda não salvou nenhum evento à sua lista." />
             )}
           {store.isListEmpty && (
             <EmptyList message="Nenhum resultado encontrado. Altere os termos de sua pesquisa e cheque os filtros aplicados." />
@@ -124,39 +130,48 @@ class Schedule extends React.Component {
           {store.isError && (
             <EmptyList message="Houve um problema ao carregar os dados. Verifique sua conexão com a internet" />
           )}
-          {!errorMessage && (
-            <SectionList
-              sections={days}
-              ref={this.sectionList}
-              initialNumToRender={2}
-              renderItem={this.renderDay}
-              onViewableItemsChanged={this.changeHighlightedDay}
-              getItemLayout={this.getItemLayout}
-              renderSectionHeader={({section: {data, title}}) =>
-                data.length ? <DaySeparator key={title} day={title} /> : null
-              }
-              ListHeaderComponent={
-                <View style={styles.tableHeader.wrapper}>
-                  <View style={styles.tableHeader.container}>
-                    <Text style={styles.tableHeader.text}>
-                      {store.listHeaderTexts[this.props.currentPage]}
-                    </Text>
+          {!errorMessage &&
+            (!(
+              this.props.currentPage === 'myListPage' && !store.favorites.length
+            ) && (
+              <SectionList
+                sections={daysForSectionView}
+                ref={this.sectionList}
+                initialNumToRender={2}
+                renderItem={this.renderDay}
+                onViewableItemsChanged={this.changeHighlightedDay}
+                getItemLayout={this.getItemLayout}
+                renderSectionHeader={({section: {data, title}}) =>
+                  data.length ? (
+                    <DaySeparator
+                      key={title}
+                      day={title}
+                      height={store.sectionHeaderHeight}
+                    />
+                  ) : null
+                }
+                ListHeaderComponent={
+                  <View style={styles.tableHeader.wrapper}>
+                    <View style={styles.tableHeader.container}>
+                      <Text style={styles.tableHeader.text}>
+                        {store.listHeaderTexts[this.props.currentPage]}
+                      </Text>
+                    </View>
                   </View>
-                </View>
-              }
-              ListFooterComponent={
-                <View style={styles.tableHeader.wrapper}>
-                  <View style={styles.tableHeader.container}>
-                    <Text style={styles.tableHeader.text}>
-                      Programação sujeita a alterações sem aviso prévio.
-                    </Text>
+                }
+                ListFooterComponent={
+                  <View style={styles.tableHeader.wrapper}>
+                    <View style={styles.tableHeader.container}>
+                      <Text style={styles.tableHeader.text}>
+                        Programação sujeita a alterações sem aviso prévio.
+                      </Text>
+                    </View>
                   </View>
-                </View>
-              }
-              stickySectionHeadersEnabled={false}
-              keyExtractor={events => getFormattedTime(events.date)}
-            />
-          )}
+                }
+                stickySectionHeadersEnabled={false}
+                keyExtractor={events => getFormattedTime(events.date)}
+              />
+            ))}
         </View>
       </SafeAreaView>
     );

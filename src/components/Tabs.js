@@ -5,8 +5,9 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 function getIcon(navigation, focused, tintColor) {
   const {routeName} = navigation.state;
   const icons = {
-    Schedule: 'ios-calendar',
-    Now: 'ios-time',
+    Programação: 'ios-calendar',
+    Agora: 'ios-time',
+    'Minha lista': 'ios-bookmark',
   };
   return <Ionicons name={icons[routeName]} size={25} color={tintColor} />;
 }

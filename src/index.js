@@ -11,9 +11,12 @@ import Tabs from './components/Tabs';
 // import Now from './components/Now';
 
 const AppNavigator = Tabs({
-  Now: Now,
-  Schedule: {
+  Agora: Now,
+  Programação: {
     screen: () => <Schedule currentPage="schedulePage" />,
+  },
+  'Minha lista': {
+    screen: () => <Schedule currentPage="myListPage" />,
   },
 });
 

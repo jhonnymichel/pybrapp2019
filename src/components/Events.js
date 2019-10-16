@@ -179,17 +179,31 @@ const FavoriteButton = ({active, onPress}) => {
 
 class Event extends React.PureComponent {
   swipeableRef = React.createRef(null);
+  state = {active: true};
 
   onFavoriteButtonPress = async () => {
-    const {event, scheduleInDate, toggleFavorite} = this.props;
-    await toggleFavorite(event, scheduleInDate.date);
-    setTimeout(() => {
-      this.swipeableRef.current.close();
-    }, 300);
+    const {event, scheduleInDate, toggleFavorite, currentPage} = this.props;
+    if (currentPage !== 'myListPage') {
+      await toggleFavorite(event, scheduleInDate.date);
+      setTimeout(() => {
+        this.swipeableRef.current.close();
+      }, 300);
+    } else {
+      this.setState({active: false});
+      setTimeout(() => {
+        this.swipeableRef.current.close();
+        setTimeout(() => {
+          toggleFavorite(event, scheduleInDate.date);
+        }, 300);
+      }, 300);
+    }
   };
 
   renderRightActions = () => {
-    const {isFavorite, toggleFavorite} = this.props;
+    let {isFavorite, currentPage} = this.props;
+    if (currentPage === 'myListPage') {
+      isFavorite = this.state.active;
+    }
     return (
       <FavoriteButton
         active={isFavorite}
@@ -221,7 +235,7 @@ class Event extends React.PureComponent {
 
 class Events extends React.PureComponent {
   render() {
-    const {scheduleInDate, favorites, toggleFavorite} = this.props;
+    const {scheduleInDate, favorites, toggleFavorite, currentPage} = this.props;
     return (
       <View style={styles.scheduleContainer}>
         <View style={styles.time.container}>
@@ -237,7 +251,7 @@ class Events extends React.PureComponent {
           {scheduleInDate.events.map(event => (
             <Event
               key={event.id}
-              {...{scheduleInDate, toggleFavorite}}
+              {...{scheduleInDate, toggleFavorite, currentPage}}
               isFavorite={favorites.includes(event.id)}
               event={event}
             />

@@ -369,7 +369,8 @@ const absolute = {
 
 const emptyList = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 0.5,
+    padding: 10,
     justifyContent: 'center',
     alignItems: 'center',
   },
