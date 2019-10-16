@@ -94,6 +94,12 @@ class Schedule extends React.Component {
       data,
     }));
     const errorMessage = store.isListEmpty || store.isError;
+    const noFavoritesSaved = !store.favorites.length;
+
+    const listRenderConstraint =
+      this.props.currentPage === 'schedulePage'
+        ? errorMessage
+        : noFavoritesSaved;
 
     return (
       <SafeAreaView style={styles.schedulePage.container}>
@@ -130,48 +136,45 @@ class Schedule extends React.Component {
           {store.isError && (
             <EmptyList message="Houve um problema ao carregar os dados. Verifique sua conexão com a internet" />
           )}
-          {!errorMessage &&
-            (!(
-              this.props.currentPage === 'myListPage' && !store.favorites.length
-            ) && (
-              <SectionList
-                sections={daysForSectionView}
-                ref={this.sectionList}
-                initialNumToRender={2}
-                renderItem={this.renderDay}
-                onViewableItemsChanged={this.changeHighlightedDay}
-                getItemLayout={this.getItemLayout}
-                renderSectionHeader={({section: {data, title}}) =>
-                  data.length ? (
-                    <DaySeparator
-                      key={title}
-                      day={title}
-                      height={store.sectionHeaderHeight}
-                    />
-                  ) : null
-                }
-                ListHeaderComponent={
-                  <View style={styles.tableHeader.wrapper}>
-                    <View style={styles.tableHeader.container}>
-                      <Text style={styles.tableHeader.text}>
-                        {store.listHeaderTexts[this.props.currentPage]}
-                      </Text>
-                    </View>
+          {!listRenderConstraint && (
+            <SectionList
+              sections={daysForSectionView}
+              ref={this.sectionList}
+              initialNumToRender={2}
+              renderItem={this.renderDay}
+              onViewableItemsChanged={this.changeHighlightedDay}
+              getItemLayout={this.getItemLayout}
+              renderSectionHeader={({section: {data, title}}) =>
+                data.length ? (
+                  <DaySeparator
+                    key={title}
+                    day={title}
+                    height={store.sectionHeaderHeight}
+                  />
+                ) : null
+              }
+              ListHeaderComponent={
+                <View style={styles.tableHeader.wrapper}>
+                  <View style={styles.tableHeader.container}>
+                    <Text style={styles.tableHeader.text}>
+                      {store.listHeaderTexts[this.props.currentPage]}
+                    </Text>
                   </View>
-                }
-                ListFooterComponent={
-                  <View style={styles.tableHeader.wrapper}>
-                    <View style={styles.tableHeader.container}>
-                      <Text style={styles.tableHeader.text}>
-                        Programação sujeita a alterações sem aviso prévio.
-                      </Text>
-                    </View>
+                </View>
+              }
+              ListFooterComponent={
+                <View style={styles.tableHeader.wrapper}>
+                  <View style={styles.tableHeader.container}>
+                    <Text style={styles.tableHeader.text}>
+                      Programação sujeita a alterações sem aviso prévio.
+                    </Text>
                   </View>
-                }
-                stickySectionHeadersEnabled={false}
-                keyExtractor={events => getFormattedTime(events.date)}
-              />
-            ))}
+                </View>
+              }
+              stickySectionHeadersEnabled={false}
+              keyExtractor={events => getFormattedTime(events.date)}
+            />
+          )}
         </View>
       </SafeAreaView>
     );

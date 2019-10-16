@@ -179,13 +179,13 @@ class Store extends React.Component {
 
   async scheduleNotification(event, date) {
     PushNotification.requestPermissions();
-    const tzDate = moment(date).tz('America/Sao_Paulo');
+    const tzDate = moment().tz('America/Sao_Paulo');
     const id = String(await this.getId(event.id));
     PushNotification.localNotificationSchedule({
       id,
       userInfo: {id},
       ...this.getNotificationContent(event),
-      date: tzDate.subtract(5, 'minutes').toDate(),
+      date: tzDate.add(20, 'seconds').toDate(),
     });
 
     console.log('scheduled');
@@ -284,7 +284,8 @@ class Store extends React.Component {
             case 'keynote':
             case 'talk':
               pybrEvent.details.category = category;
-              !talksCategories.includes(category) &&
+              category &&
+                !talksCategories.includes(category) &&
                 talksCategories.push(category);
               break;
             case 'tutorial':
@@ -333,7 +334,8 @@ class Store extends React.Component {
           time.width -
           container.paddingLeft -
           container.paddingRight -
-          ball.width;
+          ball.width -
+          1;
 
         const measurements = {
           textsToMeasure: [],
@@ -388,6 +390,10 @@ class Store extends React.Component {
         let textHeights = 0;
 
         for (let textParams of measurements.textsToMeasure) {
+          if (textParams.text.startsWith('David Cosac')) {
+            console.log(eventContainerWidth);
+            console.log(await rnTextSize.measure(textParams));
+          }
           textHeights += (await rnTextSize.measure(textParams)).height;
         }
         const containerHeight = measurements.containerPaddings.reduce(
@@ -453,8 +459,8 @@ class Store extends React.Component {
 
   filterEvents(acc, {date, events}) {
     const rooms = [
-      'Sala Tapioca',
-      'Sala Rapadura',
+      'topázio',
+      'onix',
       'Sala Macaxeira',
       'Sala Jerimum',
     ].reverse();

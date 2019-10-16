@@ -21,11 +21,12 @@ const nunito = font('Nunito');
 const adventPro = font('AdventPro');
 
 const categoryColors = {
-  dev: '#7fc7cf',
-  devops: '#3a8bbb',
-  web: '#f5bc8b',
+  desenvolvimento: '#7fc7cf',
+  arquitetura: '#3a8bbb',
+  'python-para-tudo': '#f5bc8b',
   'data-science': '#ce9bc4',
   pessoas: '#8b9ffc',
+  default: 'gray',
 };
 
 const categories = StyleSheet.create(

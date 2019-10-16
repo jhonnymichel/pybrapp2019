@@ -81,18 +81,19 @@ const EventTypeFilter = ({types, onChange, filter}) => (
   </View>
 );
 
-const CategoryFilter = ({categories, onChange, filter}) => (
-  <View>
-    {categories.map(category => (
-      <FilterCheckbox
-        checked={filter.includes(category)}
-        key={category}
-        onChange={() => onChange(category)}
-        label={category}
-      />
-    ))}
-  </View>
-);
+const CategoryFilter = ({categories, onChange, filter}) =>
+  console.log('categories', categories) || (
+    <View style={styles.filtersModal.group}>
+      {categories.map(category => (
+        <FilterCheckbox
+          checked={filter.includes(category)}
+          key={category}
+          onChange={() => onChange(category)}
+          label={category}
+        />
+      ))}
+    </View>
+  );
 
 export const FilterModal = ({visible, onRequestClose, store}) => (
   <Modal
@@ -103,12 +104,11 @@ export const FilterModal = ({visible, onRequestClose, store}) => (
   >
     <View style={styles.filtersModal.wrapper}>
       <View style={{...styles.filtersModal.container, zIndex: 999}}>
-        {/* <Text>Categoria</Text>
-      <CategoryFilter
-        categories={store.talksCategories}
-        filter={store.categoryFilter}
-        onChange={store.actions.onCategoryFilterChange}
-      /> */}
+        <CategoryFilter
+          categories={store.talksCategories}
+          filter={store.categoryFilter}
+          onChange={store.actions.onCategoryFilterChange}
+        />
         <EventTypeFilter
           types={store.eventTypes}
           filter={store.typeFilter}

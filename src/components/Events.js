@@ -30,13 +30,10 @@ function getEventType(type) {
   return null;
 }
 
-const Location = ({children, prefix = 'Sala'}) => (
+const Location = ({children}) => (
   <View style={styles.location.container}>
     <Ionicons name="ios-pin" size={17} color={lightBlue} />
-    <Text style={styles.location.text}>
-      {prefix && `${prefix} `}
-      {children}
-    </Text>
+    <Text style={styles.location.text}>{children}</Text>
   </View>
 );
 
@@ -46,7 +43,7 @@ const Category = ({event}) =>
       style={
         styles.categories[
           event.details.category.toLowerCase().replace(/\s/g, '-')
-        ]
+        ] || styles.categories.default
       }
     >
       <Text style={styles.categories.text}>{event.details.category}</Text>
