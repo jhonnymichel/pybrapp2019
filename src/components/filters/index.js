@@ -9,22 +9,18 @@ import {
 } from 'react-native';
 import styles, {white} from 'app/styles';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {BlurView, VibrancyView} from '@react-native-community/blur';
+import debounce from 'lodash/debounce';
+import Debounce from 'app/components/Debounce';
+import {BlurView} from '@react-native-community/blur';
 
-export class FilterBox extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    const {value, onChange, onClick} = this.props;
-
-    return (
-      <View style={styles.filters.container}>
-        <View style={styles.filters.searchIcon}>
-          <Ionicons name="ios-search" size={20} color={white} />
-        </View>
-        <View style={styles.filters.inputContainer}>
+export const FilterBox = ({value, onChange, onClick}) => (
+  <View style={styles.filters.container}>
+    <View style={styles.filters.searchIcon}>
+      <Ionicons name="ios-search" size={20} color={white} />
+    </View>
+    <View style={styles.filters.inputContainer}>
+      <Debounce value={value} onChange={onChange}>
+        {(value, onChange) => (
           <TextInput
             placeholder="Pesquise palestras, autores..."
             placeholderTextColor="#777"
@@ -33,17 +29,17 @@ export class FilterBox extends React.Component {
             value={value}
             clearButtonMode="always"
           />
-        </View>
-        <View>
-          <TouchableOpacity onPress={onClick} style={styles.filters.button}>
-            <Ionicons name="ios-options" size={25} color={white} />
-            <Text style={styles.filters.buttonText}>Filtros</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-    );
-  }
-}
+        )}
+      </Debounce>
+    </View>
+    <View>
+      <TouchableOpacity onPress={onClick} style={styles.filters.button}>
+        <Ionicons name="ios-options" size={25} color={white} />
+        <Text style={styles.filters.buttonText}>Filtros</Text>
+      </TouchableOpacity>
+    </View>
+  </View>
+);
 
 const FilterCheckbox = ({checked, onChange, label, ...props}) => (
   <View style={styles.filtersModal.checkboxContainer}>
@@ -68,32 +64,64 @@ const FilterCheckbox = ({checked, onChange, label, ...props}) => (
   </View>
 );
 
-const EventTypeFilter = ({types, onChange, filter}) => (
-  <View style={styles.filtersModal.group}>
-    {types.map(type => (
-      <FilterCheckbox
-        checked={filter.includes(type)}
-        onChange={() => onChange(type)}
-        label={type}
-        key={type}
-      />
-    ))}
-  </View>
-);
+class EventTypeFilter extends React.PureComponent {
+  onChange = (type, filter) => {
+    if (filter.includes(type)) {
+      return filter.filter(t => t !== type);
+    }
 
-const CategoryFilter = ({categories, onChange, filter}) =>
-  console.log('categories', categories) || (
-    <View style={styles.filtersModal.group}>
-      {categories.map(category => (
-        <FilterCheckbox
-          checked={filter.includes(category)}
-          key={category}
-          onChange={() => onChange(category)}
-          label={category}
-        />
-      ))}
-    </View>
-  );
+    return [...filter, type];
+  };
+
+  render() {
+    const {types, onChange, filter} = this.props;
+    return (
+      <Debounce value={filter} onChange={onChange}>
+        {(filter, onChange) => (
+          <View style={styles.filtersModal.group}>
+            {types.map(type => (
+              <FilterCheckbox
+                checked={filter.includes(type)}
+                onChange={() => onChange(this.onChange(type, filter))}
+                label={type}
+                key={type}
+              />
+            ))}
+          </View>
+        )}
+      </Debounce>
+    );
+  }
+}
+class CategoryFilter extends React.PureComponent {
+  onChange = (category, filter) => {
+    if (filter.includes(category)) {
+      return filter.filter(c => c !== category);
+    }
+
+    return [...filter, category];
+  };
+
+  render() {
+    const {categories, onChange, filter} = this.props;
+    return (
+      <Debounce value={filter} onChange={onChange}>
+        {(filter, onChange) => (
+          <View style={styles.filtersModal.group}>
+            {categories.map(category => (
+              <FilterCheckbox
+                checked={filter.includes(category)}
+                key={category}
+                onChange={() => onChange(this.onChange(category, filter))}
+                label={category}
+              />
+            ))}
+          </View>
+        )}
+      </Debounce>
+    );
+  }
+}
 
 export const FilterModal = ({visible, onRequestClose, store}) => (
   <Modal

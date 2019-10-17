@@ -58,6 +58,7 @@ class Store extends React.Component {
       onTypeFilterChange: this.onFilterChange.bind(this, 'typeFilter'),
       filterDays: this.filterDays.bind(this),
       filterEvents: this.filterEvents.bind(this),
+      getAllFavoriteEvents: this.getAllFavoriteEvents,
       toggleFavorite: this.toggleFavorite,
       onSearchFilterChange: this.onSearchFilterChange.bind(this),
       checkSearchMatch: this.checkSearchMatch.bind(this),
@@ -427,19 +428,11 @@ class Store extends React.Component {
     return eventA.date > eventB.date ? 1 : -1;
   }
 
-  onFilterChange(filterType, filter) {
-    const state = this.state;
-    if (state[filterType].includes(filter)) {
-      this.setState(state => ({
-        ...state,
-        [filterType]: state[filterType].filter(f => f !== filter),
-      }));
-    } else {
-      this.setState(state => ({
-        ...state,
-        [filterType]: [...state[filterType], filter],
-      }));
-    }
+  onFilterChange(filterType, filters) {
+    this.setState(state => ({
+      ...state,
+      [filterType]: filters,
+    }));
   }
 
   onSearchFilterChange(text) {
@@ -467,7 +460,6 @@ class Store extends React.Component {
     const filteredEvents = events.filter(
       event =>
         this.state.typeFilter.includes(event.details.eventType) &&
-        (this.onlySaved ? this.state.favorites.includes(event.id) : true) &&
         (!event.details.category ||
           this.state.categoryFilter.includes(event.details.category)) &&
         (!this.state.searchFilter || this.checkSearchMatch(event)),
@@ -487,12 +479,30 @@ class Store extends React.Component {
     return acc;
   }
 
-  filterDays(days, onlySaved) {
-    this.onlySaved = !!onlySaved;
+  filterDays(days) {
     return days.isError
       ? {}
       : mapValues(days, day => day.reduce(this.actions.filterEvents, []));
   }
+
+  getAllFavoriteEvents = () =>
+    mapValues(this.state.days, day =>
+      day.reduce((acc, {date, events}) => {
+        const filteredEvents = events.filter(e =>
+          this.state.favorites.includes(e.id),
+        );
+        if (!filteredEvents.length) {
+          return acc;
+        }
+        return [
+          ...acc,
+          {
+            date,
+            events: filteredEvents,
+          },
+        ];
+      }, []),
+    );
 
   render() {
     const {days, favorites} = this.state;
@@ -500,6 +510,7 @@ class Store extends React.Component {
     const isListEmpty =
       !days.isError && every(filteredDays, day => !day.length);
 
+    0;
     return (
       <StoreContext.Provider
         value={{

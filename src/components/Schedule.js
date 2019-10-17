@@ -1,12 +1,9 @@
 import React from 'react';
 import {View, Text, ScrollView, Button} from 'react-native';
 import map from 'lodash/map';
-import reduce from 'lodash/reduce';
 import DayMenu from './DayMenu';
 import DaySeparator from './DaySeparator';
-// import ScrollNavigation from 'scroll-navigation-menu';
 import Events from './Events';
-// import Transition from 'react-transition-group/Transition';
 import EmptyList from './EmptyList';
 import {getFormattedTime} from 'app/utils';
 import {StoreContext} from '../Store';
@@ -15,8 +12,6 @@ import SafeAreaView from 'react-native-safe-area-view';
 import {SectionList} from 'react-native';
 import sectionListGetItemLayout from 'react-native-section-list-get-item-layout';
 import {FilterBox, FilterModal} from './filters';
-import {white} from '../styles';
-// import { FilterBox, CategoryFilter, EventTypeFilter } from './filters';
 
 class Schedule extends React.Component {
   static contextType = StoreContext;
@@ -84,10 +79,10 @@ class Schedule extends React.Component {
 
   render() {
     const store = this.context;
-    console.log(store.favorites);
     let days = store.days;
     if (this.props.currentPage === 'myListPage') {
-      days = store.actions.filterDays(store.fullSchedule, true);
+      days = store.actions.getAllFavoriteEvents();
+      console.log(days);
     }
     const daysForSectionView = map(days, (data, title) => ({
       title,
