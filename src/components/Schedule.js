@@ -25,6 +25,7 @@ class Schedule extends React.Component {
         favorites={this.context.favorites}
         scheduleInDate={events.item}
         toggleFavorite={this.context.actions.toggleFavorite}
+        isLastItem={events.section.data.length - 1 === events.index}
       />
     );
   };
@@ -86,7 +87,6 @@ class Schedule extends React.Component {
     let days = store.days;
     if (this.props.currentPage === 'myListPage') {
       days = store.actions.getAllFavoriteEvents();
-      console.log(days);
     }
     const daysForSectionView = map(days, (data, title) => ({
       title,

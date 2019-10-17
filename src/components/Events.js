@@ -232,7 +232,13 @@ class Event extends React.PureComponent {
 
 class Events extends React.PureComponent {
   render() {
-    const {scheduleInDate, favorites, toggleFavorite, currentPage} = this.props;
+    const {
+      scheduleInDate,
+      favorites,
+      toggleFavorite,
+      currentPage,
+      isLastItem,
+    } = this.props;
     return (
       <View style={styles.scheduleContainer}>
         <View style={styles.time.container}>
@@ -242,7 +248,7 @@ class Events extends React.PureComponent {
         </View>
         <View style={styles.timelineIllustration.container}>
           <View style={styles.timelineIllustration.ball} />
-          <View style={styles.timelineIllustration.line} />
+          {!isLastItem && <View style={styles.timelineIllustration.line} />}
         </View>
         <View style={styles.dayContainer}>
           {scheduleInDate.events.map(event => (

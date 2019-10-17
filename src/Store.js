@@ -188,8 +188,6 @@ class Store extends React.Component {
       ...this.getNotificationContent(event),
       date: tzDate.add(20, 'seconds').toDate(),
     });
-
-    console.log('scheduled');
   }
 
   async cancelNotification(id) {
@@ -391,10 +389,6 @@ class Store extends React.Component {
         let textHeights = 0;
 
         for (let textParams of measurements.textsToMeasure) {
-          if (textParams.text.startsWith('David Cosac')) {
-            console.log(eventContainerWidth);
-            console.log(await rnTextSize.measure(textParams));
-          }
           textHeights += (await rnTextSize.measure(textParams)).height;
         }
         const containerHeight = measurements.containerPaddings.reduce(

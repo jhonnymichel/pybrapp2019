@@ -151,7 +151,7 @@ const timelineIllustration = StyleSheet.create({
   container: {
     paddingLeft: 10,
     paddingRight: 10,
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
     zIndex: 999,
     backgroundColor: darkBlue,
