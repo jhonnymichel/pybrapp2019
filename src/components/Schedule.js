@@ -60,7 +60,11 @@ class Schedule extends React.Component {
       rowData.events.reduce((height, event) => event.layout.height + height, 0),
 
     // These four properties are optional
-    getSectionHeaderHeight: () => this.context.sectionHeaderHeight, // The height of your section headers
+    getSectionHeaderHeight: id => {
+      return this.context.days[Object.keys(this.context.days)[id]].length
+        ? this.context.sectionHeaderHeight
+        : 0; /// The height of your section headers
+    },
     listHeaderHeight: this.context.listHeaderHeights[this.props.currentPage],
   });
 

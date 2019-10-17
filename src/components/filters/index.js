@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 import styles, {white} from 'app/styles';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import debounce from 'lodash/debounce';
 import Debounce from 'app/components/Debounce';
 import {BlurView} from '@react-native-community/blur';
 
