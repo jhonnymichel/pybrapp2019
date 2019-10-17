@@ -12,6 +12,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import rnTextSize from 'react-native-text-size';
 import PushNotification from 'react-native-push-notification';
 import PushNotificationIOS from '@react-native-community/push-notification-ios';
+import {tryStatement} from '@babel/types';
 
 PushNotification.configure({
   // (required) Called when a remote or local notification is opened or received
@@ -48,9 +49,13 @@ class Store extends React.Component {
 
     this.state = {
       days: {},
+      isInitialState: true,
       searchFilter: '',
       favorites: [],
       isShowingAdvancedFilters: false,
+      sectionHeaderHeight: 0,
+      listHeaderHeights: {},
+      listHeaderTexts: {},
     };
 
     this.actions = {
@@ -67,6 +72,10 @@ class Store extends React.Component {
 
   async componentDidMount() {
     const favorites = await this.getFavorites();
+    const validFavorites = favorites.filter(id =>
+      this.props.data.items.find(i => i.id === id),
+    );
+    await AsyncStorage.setItem('favoriteTalks', JSON.stringify(validFavorites));
     const calendarData = await this.reduceCalendarData(this.props.data);
     const sectionHeaderHeight =
       (await rnTextSize.measure({
@@ -116,6 +125,7 @@ class Store extends React.Component {
       sectionHeaderHeight,
       listHeaderHeights,
       listHeaderTexts,
+      isInitialState: false,
     });
   }
 
@@ -128,6 +138,7 @@ class Store extends React.Component {
       favorites = [];
     }
 
+    console.log(favorites);
     return favorites;
   }
 
@@ -216,6 +227,7 @@ class Store extends React.Component {
       }
       await AsyncStorage.setItem('favoriteTalks', JSON.stringify(favorites));
       this.setState({favorites});
+      console.log(favorites);
       const message = isAdding
         ? 'Evento adicionado a sua lista!'
         : 'Evento removido da sua lista.';
