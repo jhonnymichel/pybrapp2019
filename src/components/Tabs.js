@@ -1,6 +1,7 @@
 import React from 'react';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {darkBlue, yellow, tropicalLight} from 'app/styles';
 
 function getIcon(navigation, focused, tintColor) {
   const {routeName} = navigation.state;
@@ -20,15 +21,24 @@ function getNavigationBar(routes) {
     }),
     tabBarOptions: {
       style: {
-        backgroundColor: '#0D273C',
+        position: 'absolute',
+        bottom: 10,
+        left: 10,
+        right: 10,
+        height: 55,
+        padding: 5,
+
+        backgroundColor: darkBlue,
+        borderRadius: 50,
       },
       tabStyle: {
-        backgroundColor: '#0D273C',
+        backgroundColor: darkBlue,
+        borderRadius: 50,
       },
-      activeTintColor: '#7fc7cf',
+      activeTintColor: yellow,
       inactiveTintColor: 'white',
-      activeBackgroundColor: '#0D273C',
-      inactiveBackgroundColor: '#0D273C',
+      activeBackgroundColor: darkBlue,
+      inactiveBackgroundColor: darkBlue,
     },
   });
 }

@@ -15,7 +15,8 @@ export function getDayLabel(day) {
 }
 
 export function getFormattedTime(time) {
-  return moment(time)
+  const tzTime = moment(time)
     .tz('America/Sao_Paulo')
     .format('HH[h]mm');
+  return tzTime;
 }

@@ -7,7 +7,7 @@ import {
   Modal,
   Button,
 } from 'react-native';
-import styles, {white} from 'app/styles';
+import styles, {darkBlue} from 'app/styles';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Debounce from 'app/components/Debounce';
 import {BlurView} from '@react-native-community/blur';
@@ -15,14 +15,14 @@ import {BlurView} from '@react-native-community/blur';
 export const FilterBox = ({value, onChange, onClick}) => (
   <View style={styles.filters.container}>
     <View style={styles.filters.searchIcon}>
-      <Ionicons name="ios-search" size={20} color={white} />
+      <Ionicons name="ios-search" size={20} color={darkBlue} />
     </View>
     <View style={styles.filters.inputContainer}>
       <Debounce value={value} onChange={onChange}>
         {(value, onChange) => (
           <TextInput
             placeholder="Pesquise palestras, autores..."
-            placeholderTextColor="#777"
+            placeholderTextColor="#FFFFFFAA"
             style={styles.filters.input}
             onChangeText={onChange}
             value={value}
@@ -33,7 +33,7 @@ export const FilterBox = ({value, onChange, onClick}) => (
     </View>
     <View>
       <TouchableOpacity onPress={onClick} style={styles.filters.button}>
-        <Ionicons name="ios-options" size={25} color={white} />
+        <Ionicons name="ios-options" size={25} color={darkBlue} />
         <Text style={styles.filters.buttonText}>Filtros</Text>
       </TouchableOpacity>
     </View>

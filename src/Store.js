@@ -84,7 +84,9 @@ class Store extends React.Component {
         fontFamily: styles.dateSeparatorText.fontFamily,
         fontSize: styles.dateSeparatorText.fontSize,
       })).height +
-      styles.dateSeparator.padding * 2;
+      styles.dateSeparator.padding * 2 +
+      styles.dateSeparatorLine.marginTop +
+      styles.dateSeparatorLine.height;
 
     const listHeaderTexts = {
       schedulePage:

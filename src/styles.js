@@ -6,19 +6,20 @@ const weights = [
   'Light',
   'Medium',
   'Regular',
-  'SemiBold',
+  'Bold',
   'Thin',
 ];
 
-export const yellow = '#efc780';
-export const darkBlue = '#102e46';
-export const lightBlue = '#7fc7cf';
-export const white = '#FFFFFF';
-export const darkestBlue = '#0D273C';
-
-const font = f => (weight = 'Regular') => `${f}-${weight}`;
-const nunito = font('Nunito');
-const adventPro = font('AdventPro');
+export const yellow = '#f0a85e';
+export const darkBlue = '#28223e';
+export const lightBlue = '#696478';
+export const white = '#fbf3e4';
+export const darkestBlue = '#25203b';
+export const tropical = '#f1ba91';
+export const tropicalDark = '#e86d4b';
+export const tropicalLight = '#ea8666';
+const font = f => (weight = 'Medium') => `${f}-${weight}`;
+const helvetica = font('HelveticaNeue');
 
 const categoryColors = {
   desenvolvimento: '#7fc7cf',
@@ -48,7 +49,7 @@ const categories = StyleSheet.create(
     {
       text: {
         textAlign: 'center',
-        fontFamily: nunito(),
+        fontFamily: helvetica(),
         fontSize: 10,
         color: '#102e46',
       },
@@ -61,18 +62,18 @@ const body = {
   padding: 10,
   height: '100%',
   backgroundColor: darkestBlue,
-  fontFamily: adventPro(),
+  fontFamily: helvetica(),
 };
 
 const author = {
-  color: white,
-  fontFamily: nunito(),
+  color: tropicalLight,
+  fontFamily: helvetica(),
   fontSize: 14,
 };
 
 const authorTitle = {
   color: 'hsla(48,29%,97%,.6)',
-  fontFamily: nunito('Light'),
+  fontFamily: helvetica('Light'),
   fontSize: 14,
   paddingBottom: 8,
 };
@@ -80,9 +81,9 @@ const authorTitle = {
 const title = StyleSheet.create({
   text: {
     flex: 1,
-    color: yellow,
+    color: darkBlue,
     fontSize: 18,
-    fontFamily: adventPro('Bold'),
+    fontFamily: helvetica('Bold'),
   },
   container: {
     width: '100%',
@@ -109,14 +110,23 @@ const dateSeparator = {
   padding: 40,
   flex: 1,
   justifyContent: 'center',
+  alignItems: 'center',
 };
 
 const dateSeparatorText = {
-  fontFamily: adventPro('Bold'),
-  color: yellow,
+  fontFamily: helvetica('Bold'),
+  color: darkestBlue,
   fontSize: 30,
   flex: 1,
   textAlign: 'center',
+};
+
+const dateSeparatorLine = {
+  width: 100,
+  height: 15,
+  backgroundColor: tropicalLight,
+  borderRadius: 8,
+  marginTop: 10,
 };
 
 const scheduleInfo = {
@@ -141,7 +151,7 @@ const eventContainer = {
   paddingBottom: 20,
   paddingLeft: 0,
   paddingRight: 10,
-  backgroundColor: darkBlue,
+  backgroundColor: white,
 };
 const eventContainerFavorite = {
   ...eventContainer,
@@ -149,21 +159,24 @@ const eventContainerFavorite = {
 
 const timelineIllustration = StyleSheet.create({
   container: {
+    marginTop: 3,
     paddingLeft: 10,
     paddingRight: 10,
     justifyContent: 'flex-start',
     alignItems: 'center',
     zIndex: 999,
-    backgroundColor: darkBlue,
+    backgroundColor: white,
   },
   ball: {
     width: 16,
     height: 16,
     borderRadius: 8,
-    backgroundColor: lightBlue,
+
+    marginBottom: 3,
+    backgroundColor: tropicalLight,
   },
   line: {
-    backgroundColor: lightBlue,
+    backgroundColor: tropicalLight,
     flex: 1,
     width: 1,
   },
@@ -171,14 +184,14 @@ const timelineIllustration = StyleSheet.create({
 
 const time = StyleSheet.create({
   container: {
-    width: 50,
-    backgroundColor: darkBlue,
+    width: 60,
+    backgroundColor: white,
     zIndex: 999,
     alignItems: 'flex-end',
   },
   text: {
-    fontFamily: adventPro('Bold'),
-    color: white,
+    fontFamily: helvetica('Bold'),
+    color: tropicalLight,
     fontSize: 16,
   },
 });
@@ -190,7 +203,7 @@ const emptyMessage = StyleSheet.create({
     marginTop: 20,
   },
   text: {
-    fontFamily: nunito(),
+    fontFamily: helvetica(),
     fontSize: 14,
     textAlign: 'center',
     color: lightBlue,
@@ -205,8 +218,9 @@ const location = StyleSheet.create({
   },
   text: {
     paddingLeft: 5,
-    color: yellow,
+    color: lightBlue,
     fontSize: 14,
+    fontFamily: helvetica('Bold'),
     textTransform: 'uppercase',
   },
 });
@@ -216,6 +230,8 @@ const dayMenu = StyleSheet.create({
     width: '100%',
     flexDirection: 'row',
     flexWrap: 'nowrap',
+    backgroundColor: darkBlue,
+    borderRadius: 50,
   },
   button: {
     flex: 1,
@@ -225,19 +241,19 @@ const dayMenu = StyleSheet.create({
     paddingRight: 8,
   },
   text: {
-    fontFamily: adventPro('SemiBold'),
+    fontFamily: helvetica('Bold'),
     fontSize: 22,
     color: white,
     textAlign: 'center',
   },
   textHighlight: {
-    fontFamily: adventPro('SemiBold'),
+    fontFamily: helvetica('Bold'),
     fontSize: 22,
     color: yellow,
     textAlign: 'center',
   },
   textDisabled: {
-    fontFamily: adventPro('SemiBold'),
+    fontFamily: helvetica('Bold'),
     fontSize: 22,
     color: white,
     opacity: 0.5,
@@ -251,7 +267,7 @@ const schedulePage = StyleSheet.create({
     padding: 0,
   },
   header: {
-    backgroundColor: darkestBlue,
+    backgroundColor: tropical,
     padding: 10,
     paddingBottom: 5,
     borderBottomWidth: 1,
@@ -259,7 +275,7 @@ const schedulePage = StyleSheet.create({
   },
   scrollView: {
     flex: 1,
-    backgroundColor: darkBlue,
+    backgroundColor: white,
   },
 });
 
@@ -280,7 +296,7 @@ const filters = StyleSheet.create({
     borderStyle: 'solid',
     borderColor: white,
     fontSize: 16,
-    fontFamily: nunito(),
+    fontFamily: helvetica(),
     height: 30,
   },
   button: {
@@ -290,10 +306,10 @@ const filters = StyleSheet.create({
   buttonText: {
     textAlign: 'center',
     fontSize: 11,
-    color: white,
+    color: darkBlue,
     paddingLeft: 15,
     paddingRight: 15,
-    fontFamily: nunito(),
+    fontFamily: helvetica(),
   },
 });
 
@@ -306,7 +322,7 @@ const filtersModal = StyleSheet.create({
   },
   container: {
     borderRadius: 4,
-    backgroundColor: `${white}CC`,
+    backgroundColor: `${tropical}CC`,
     margin: 'auto',
     padding: 10,
   },
@@ -341,13 +357,13 @@ const filtersModal = StyleSheet.create({
     borderWidth: 1,
   },
   checkboxText: {
-    fontFamily: nunito('SemiBold'),
+    fontFamily: helvetica('Bold'),
     fontSize: 16,
     color: white,
     textAlign: 'center',
   },
   checkboxTextEmpty: {
-    fontFamily: nunito('SemiBold'),
+    fontFamily: helvetica('Bold'),
     fontSize: 16,
     color: lightBlue,
     textAlign: 'center',
@@ -389,13 +405,28 @@ const tableHeader = StyleSheet.create({
   container: {
     borderRadius: 5,
     padding: 5,
-    backgroundColor: white,
+    backgroundColor: tropical,
   },
   text: {
-    fontFamily: nunito('SemiBold'),
+    fontFamily: helvetica('Bold'),
     color: darkBlue,
     fontSize: 16,
     textAlign: 'center',
+  },
+});
+
+const eventDetails = StyleSheet.create({
+  wrapper: {flex: 1, flexDirection: 'row', flexWrap: 'nowrap'},
+  container: {
+    flex: 1,
+  },
+  badge: {
+    width: 30,
+    height: 30,
+    borderRadius: 15,
+    backgroundColor: yellow,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 
@@ -406,6 +437,7 @@ export default {
     authorTitle,
     dateSeparator,
     dateSeparatorText,
+    dateSeparatorLine,
     scheduleInfo,
     fixedEventTitle,
     scheduleContainer,
@@ -421,6 +453,7 @@ export default {
   time,
   location,
   dayMenu,
+  eventDetails,
   schedulePage,
   footer,
   filters,

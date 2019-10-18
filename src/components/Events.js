@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {getFormattedTime} from 'app/utils';
-import styles, {lightBlue} from 'app/styles';
+import styles, {lightBlue, white} from 'app/styles';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 
 function getEventType(type) {
@@ -69,7 +69,9 @@ const FavoriteBadge = ({isFavorite}) => {
   }, [isFavorite]);
   return (
     <Animated.View style={{marginLeft: 'auto', opacity: fade}}>
-      <Ionicons name="ios-bookmark" size={20} color={lightBlue} />
+      <View style={styles.eventDetails.badge}>
+        <Ionicons name="ios-bookmark" size={20} color={white} />
+      </View>
     </Animated.View>
   );
 };
@@ -86,10 +88,14 @@ const EventTypes = (event, date, isFavorite) => {
         <View style={styles.title.container}>
           <Text style={styles.title.text}>{event.summary}</Text>
         </View>
-        <Text style={styles.author}>{event.details.name}</Text>
-        <View style={styles.footer.container}>
-          <Location>{event.location}</Location>
-          <Category event={event} />
+        <View style={styles.eventDetails.wrapper}>
+          <View style={styles.eventDetails.container}>
+            <Text style={styles.author}>{event.details.name}</Text>
+            <View style={styles.footer.container}>
+              <Location>{event.location}</Location>
+              <Category event={event} />
+            </View>
+          </View>
           <FavoriteBadge isFavorite={isFavorite} />
         </View>
       </>
@@ -99,9 +105,13 @@ const EventTypes = (event, date, isFavorite) => {
         <View style={styles.title.container}>
           <Text style={styles.title.text}>{event.summary}</Text>
         </View>
-        <Text style={styles.author}>{event.details.name}</Text>
-        <View style={styles.footer.container}>
-          <Location prefix={null}>{event.location}</Location>
+        <View style={styles.eventDetails.wrapper}>
+          <View style={styles.eventDetails.container}>
+            <Text style={styles.author}>{event.details.name}</Text>
+            <View style={styles.footer.container}>
+              <Location prefix={null}>{event.location}</Location>
+            </View>
+          </View>
           <FavoriteBadge isFavorite={isFavorite} />
         </View>
       </>
@@ -239,6 +249,7 @@ class Events extends React.PureComponent {
       currentPage,
       isLastItem,
     } = this.props;
+
     return (
       <View style={styles.scheduleContainer}>
         <View style={styles.time.container}>

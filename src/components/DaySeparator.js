@@ -8,6 +8,7 @@ const DaySeparator = ({day, height}) => (
     <Text style={styles.dateSeparatorText}>
       Dia {day} – <Text>{getDayLabel(day)}</Text>
     </Text>
+    <View style={styles.dateSeparatorLine} />
   </View>
 );
 

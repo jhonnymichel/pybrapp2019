@@ -8,6 +8,7 @@ import styles from 'app/styles';
 import Schedule from './components/Schedule';
 import Now from './components/Now';
 import Tabs from './components/Tabs';
+import AsyncStorage from '@react-native-community/async-storage';
 // import Now from './components/Now';
 
 const AppNavigator = Tabs({
@@ -32,11 +33,15 @@ class ScheduleManager extends React.Component {
     return new Promise(resolve => {
       fetch(url)
         .then(r => (r.ok ? r.json() : Promise.reject(r)))
-        .then(r => {
+        .then(async r => {
+          await AsyncStorage.setItem('cachedSchedule', JSON.stringify(r));
           resolve(r);
         })
-        .catch(r => {
-          r.json().then(r => console.log(r));
+        .catch(async r => {
+          const cached = await AsyncStorage.getItem('cachedSchedule');
+          if (cached) {
+            resolve(JSON.parse(cached));
+          }
         });
     });
   }
