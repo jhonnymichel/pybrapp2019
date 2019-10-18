@@ -368,6 +368,7 @@ class Store extends React.Component {
             measurements.containerPaddings = [
               eventContainer.paddingBottom,
               title.container.paddingBottom,
+              10, // badge
             ];
             break;
           case 'Lightning Talks':

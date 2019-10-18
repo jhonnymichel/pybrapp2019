@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {getFormattedTime} from 'app/utils';
-import styles, {lightBlue, white} from 'app/styles';
+import styles, {lightBlue, yellow} from 'app/styles';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 
 function getEventType(type) {
@@ -40,14 +40,16 @@ const Location = ({children}) => (
 
 const Category = ({event}) =>
   event.details.category ? (
-    <View
-      style={
-        styles.categories[
-          event.details.category.toLowerCase().replace(/\s/g, '-')
-        ] || styles.categories.default
-      }
-    >
-      <Text style={styles.categories.text}>{event.details.category}</Text>
+    <View style={styles.flexOne}>
+      <View
+        style={
+          styles.categories[
+            event.details.category.toLowerCase().replace(/\s/g, '-')
+          ] || styles.categories.default
+        }
+      >
+        <Text style={styles.categories.text}>{event.details.category}</Text>
+      </View>
     </View>
   ) : null;
 
@@ -71,7 +73,7 @@ const FavoriteBadge = ({isFavorite}) => {
   return (
     <Animated.View style={{marginLeft: 'auto', opacity: fade}}>
       <View style={styles.eventDetails.badge}>
-        <Ionicons name="ios-bookmark" size={20} color={white} />
+        <Ionicons name="ios-bookmark" size={30} color={yellow} />
       </View>
     </Animated.View>
   );
@@ -81,13 +83,13 @@ const EventTypes = (event, date, isFavorite) => {
   return {
     ['Lightning']: (
       <>
-        <View style={styles.title.container}>
-          <Text style={styles.fixedEventTitle}>{event.summary}</Text>
-        </View>
         <View style={styles.eventDetails.wrapper}>
           <View style={styles.eventDetails.container}>
+            <View style={styles.title.container}>
+              <Text style={styles.fixedEventTitle}>{event.summary}</Text>
+            </View>
             <View style={styles.footer.container}>
-              <Location>{event.location || 'mia pomba'}</Location>
+              <Location>{event.location}</Location>
             </View>
           </View>
           <FavoriteBadge isFavorite={isFavorite} />

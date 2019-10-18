@@ -82,12 +82,12 @@ const title = StyleSheet.create({
   text: {
     flex: 1,
     color: darkBlue,
-    fontSize: 18,
+    fontSize: 16,
     fontFamily: helvetica('Bold'),
   },
   container: {
     width: '100%',
-    paddingBottom: 8,
+    paddingBottom: 2,
     flexDirection: 'row',
     flexWrap: 'wrap',
     alignItems: 'flex-end',
@@ -144,6 +144,12 @@ const scheduleContainer = {
 
 const dayContainer = {
   flex: 1,
+};
+
+const flexOne = {
+  flex: 1,
+  alignItems: 'flex-start',
+  justifyContent: 'center',
 };
 
 const eventContainer = {
@@ -215,12 +221,13 @@ const location = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingTop: 8,
+    paddingTop: 4,
+    flex: 1,
   },
   text: {
     paddingLeft: 5,
     color: lightBlue,
-    fontSize: 14,
+    fontSize: 12,
     fontFamily: helvetica('Bold'),
     textTransform: 'uppercase',
   },
@@ -427,12 +434,7 @@ const eventDetails = StyleSheet.create({
     flex: 1,
   },
   badge: {
-    width: 30,
-    height: 30,
-    borderRadius: 15,
-    backgroundColor: yellow,
-    alignItems: 'center',
-    justifyContent: 'center',
+    paddingLeft: 6,
   },
 });
 
@@ -451,6 +453,7 @@ export default {
     eventContainer,
     eventContainerFavorite,
     absolute,
+    flexOne,
   }),
   title,
   emptyMessage,
