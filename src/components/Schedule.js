@@ -66,7 +66,9 @@ class Schedule extends React.Component {
         ? this.context.sectionHeaderHeight
         : 0; /// The height of your section headers
     },
-    // listHeaderHeight: this.context.listHeaderHeights[this.props.currentPage],
+    listHeaderHeight: this.context.learnedToFavorite
+      ? 0
+      : this.context.listHeaderHeights[this.props.currentPage],
   });
 
   scrollTo = sectionIndex => {
@@ -152,15 +154,17 @@ class Schedule extends React.Component {
                   />
                 ) : null
               }
-              // ListHeaderComponent={
-              //   <View style={styles.tableHeader.wrapper}>
-              //     <View style={styles.tableHeader.container}>
-              //       <Text style={styles.tableHeader.text}>
-              //         {store.listHeaderTexts[this.props.currentPage]}
-              //       </Text>
-              //     </View>
-              //   </View>
-              // }
+              ListHeaderComponent={
+                !store.learnedToFavorite && (
+                  <View style={styles.tableHeader.wrapper}>
+                    <View style={styles.tableHeader.container}>
+                      <Text style={styles.tableHeader.text}>
+                        {store.listHeaderTexts[this.props.currentPage]}
+                      </Text>
+                    </View>
+                  </View>
+                )
+              }
               ListFooterComponent={
                 <View style={styles.tableHeader.wrapperFooter}>
                   <View style={styles.tableHeader.container}>

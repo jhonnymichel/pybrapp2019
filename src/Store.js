@@ -72,6 +72,7 @@ class Store extends React.Component {
 
   async componentDidMount() {
     const favorites = await this.getFavorites();
+    const learnedToFavorite = await AsyncStorage.getItem('learnedToFavorite');
     const validFavorites = favorites.filter(id =>
       this.props.data.items.find(i => i.id === id),
     );
@@ -124,6 +125,7 @@ class Store extends React.Component {
       ...this.state,
       ...calendarData,
       favorites,
+      learnedToFavorite,
       sectionHeaderHeight,
       listHeaderHeights,
       listHeaderTexts,
@@ -215,6 +217,7 @@ class Store extends React.Component {
   }
 
   toggleFavorite = async (event, date) => {
+    AsyncStorage.setItem('learnedToFavorite', JSON.stringify(true));
     const {id} = event;
     let isAdding = true;
     try {

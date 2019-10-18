@@ -276,7 +276,7 @@ const schedulePage = StyleSheet.create({
   },
   header: {
     backgroundColor: tropical,
-    padding: 10,
+    padding: 5,
     paddingBottom: 5,
     borderBottomWidth: 1,
     borderColor: 'rgba(255,255,255,0.2)',
@@ -290,25 +290,33 @@ const schedulePage = StyleSheet.create({
 const filters = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'flex-end',
+    paddingTop: 5,
   },
   searchIcon: {
     paddingRight: 10,
   },
   inputContainer: {
+    backgroundColor: white,
+    borderRadius: 15,
+    paddingLeft: 10,
     flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   input: {
-    color: white,
-    borderBottomWidth: 1,
-    borderStyle: 'solid',
-    borderColor: white,
+    flex: 1,
+    color: lightBlue,
     fontSize: 16,
-    fontFamily: helvetica(),
+    fontFamily: helvetica('Light'),
     height: 30,
   },
   button: {
-    justifyContent: 'center',
+    padding: 5,
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingBottom: 0,
+    justifyContent: 'flex-end',
     alignItems: 'center',
   },
   buttonText: {
