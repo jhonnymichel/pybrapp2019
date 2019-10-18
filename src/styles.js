@@ -148,7 +148,7 @@ const dayContainer = {
 
 const flexOne = {
   flex: 1,
-  alignItems: 'flex-start',
+  alignItems: 'center',
   justifyContent: 'center',
 };
 
