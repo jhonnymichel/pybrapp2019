@@ -18,6 +18,7 @@ function getEventType(type) {
     Palestra: ['talk'],
     Tutorial: ['tutorial'],
     Keynote: ['keynote'],
+    Lightning: ['Lightning Talks'],
   };
 
   for (let t of Object.keys(types)) {
@@ -27,7 +28,7 @@ function getEventType(type) {
     }
   }
 
-  return null;
+  return 'Eventos Fixos';
 }
 
 const Location = ({children}) => (
@@ -78,9 +79,31 @@ const FavoriteBadge = ({isFavorite}) => {
 
 const EventTypes = (event, date, isFavorite) => {
   return {
+    ['Lightning']: (
+      <>
+        <View style={styles.title.container}>
+          <Text style={styles.fixedEventTitle}>{event.summary}</Text>
+        </View>
+        <View style={styles.eventDetails.wrapper}>
+          <View style={styles.eventDetails.container}>
+            <View style={styles.footer.container}>
+              <Location>{event.location || 'mia pomba'}</Location>
+            </View>
+          </View>
+          <FavoriteBadge isFavorite={isFavorite} />
+        </View>
+      </>
+    ),
     ['Eventos Fixos']: (
       <>
-        <Text style={styles.fixedEventTitle}>{event.summary}</Text>
+        <View style={styles.title.container}>
+          <View style={styles.eventDetails.wrapper}>
+            <View style={styles.eventDetails.container}>
+              <Text style={styles.fixedEventTitle}>{event.summary}</Text>
+            </View>
+            <FavoriteBadge isFavorite={isFavorite} />
+          </View>
+        </View>
       </>
     ),
     ['Palestra']: (

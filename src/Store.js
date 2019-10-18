@@ -370,9 +370,17 @@ class Store extends React.Component {
               title.container.paddingBottom,
             ];
             break;
+          case 'Lightning Talks':
+            measurements.containerPaddings = [
+              eventContainer.paddingBottom,
+              19.5, // location height
+              title.container.paddingBottom,
+              location.container.paddingTop,
+            ];
+            break;
           case 'keynote':
             measurements.containerPaddings = [
-              18.7, // location height
+              19.5, // location height
               eventContainer.paddingBottom,
               location.container.paddingTop,
               title.container.paddingBottom,
@@ -381,7 +389,7 @@ class Store extends React.Component {
           case 'tutorial':
           case 'talk':
             measurements.containerPaddings = [
-              18.7, // location height
+              19.5, // location height
               eventContainer.paddingBottom,
               location.container.paddingTop,
               title.container.paddingBottom,

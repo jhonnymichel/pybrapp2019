@@ -103,7 +103,7 @@ const footer = StyleSheet.create({
 
 const fixedEventTitle = {
   ...title.text,
-  color: white,
+  color: yellow,
 };
 
 const dateSeparator = {
@@ -152,6 +152,7 @@ const eventContainer = {
   paddingLeft: 0,
   paddingRight: 10,
   backgroundColor: white,
+  justifyContent: 'flex-start',
 };
 const eventContainerFavorite = {
   ...eventContainer,
@@ -416,7 +417,12 @@ const tableHeader = StyleSheet.create({
 });
 
 const eventDetails = StyleSheet.create({
-  wrapper: {flex: 1, flexDirection: 'row', flexWrap: 'nowrap'},
+  wrapper: {
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'nowrap',
+    alignItems: 'flex-start',
+  },
   container: {
     flex: 1,
   },
