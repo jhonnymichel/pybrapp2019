@@ -1,6 +1,13 @@
 import {CALENDAR_CONFIG} from './config';
 import React from 'react';
-import {Text, SafeAreaView, View, StyleSheet} from 'react-native';
+import {
+  Text,
+  SafeAreaView,
+  View,
+  StyleSheet,
+  Animated,
+  Easing,
+} from 'react-native';
 import {createAppContainer} from 'react-navigation';
 // import ReactDOM from 'react-dom';
 import Store from './Store';
@@ -9,6 +16,9 @@ import Schedule from './components/Schedule';
 import Now from './components/Now';
 import Tabs from './components/Tabs';
 import AsyncStorage from '@react-native-community/async-storage';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import {white} from './styles';
+
 // import Now from './components/Now';
 
 const AppNavigator = Tabs({
@@ -23,6 +33,34 @@ const AppNavigator = Tabs({
 
 const App = createAppContainer(AppNavigator);
 
+const Loading = ({message}) => {
+  const [animation] = React.useState(new Animated.Value(0));
+  const spin = animation.interpolate({
+    inputRange: [0, 1],
+    outputRange: ['0deg', '360deg'],
+  });
+
+  React.useLayoutEffect(() => {
+    Animated.loop(
+      Animated.timing(animation, {
+        toValue: 1,
+        duration: 1000,
+        easing: Easing.bezier(0.17, 0.67, 0.83, 0.67),
+        useNativeDriver: true,
+      }),
+    ).start();
+  }, []);
+
+  return (
+    <View style={{...styles.emptyList.container, flex: 1}}>
+      <Animated.View style={{transform: [{rotate: spin}]}}>
+        <AntDesign name="loading2" size={100} color={white} />
+      </Animated.View>
+      <Text style={{...styles.emptyList.text, paddingTop: 20}}>{message}</Text>
+    </View>
+  );
+};
+
 class ScheduleManager extends React.Component {
   getSchedule() {
     const {apiKey, calendarId} = CALENDAR_CONFIG;
@@ -31,13 +69,23 @@ class ScheduleManager extends React.Component {
     );
 
     return new Promise(resolve => {
+      const timeoutId = setTimeout(async () => {
+        const cached = await AsyncStorage.getItem('cachedSchedule');
+        if (cached) {
+          resolve(JSON.parse(cached));
+        }
+      }, 10000);
       fetch(url)
-        .then(r => (r.ok ? r.json() : Promise.reject(r)))
+        .then(r => {
+          clearTimeout(timeoutId);
+          return r.ok ? r.json() : Promise.reject(r);
+        })
         .then(async r => {
           await AsyncStorage.setItem('cachedSchedule', JSON.stringify(r));
           resolve(r);
         })
         .catch(async r => {
+          clearTimeout(timeoutId);
           const cached = await AsyncStorage.getItem('cachedSchedule');
           if (cached) {
             resolve(JSON.parse(cached));
@@ -58,8 +106,8 @@ class ScheduleManager extends React.Component {
     if (!this.state.data) {
       return (
         <View style={styles.body}>
-          <SafeAreaView>
-            <Text>Loading...</Text>
+          <SafeAreaView style={{flex: 1}}>
+            <Loading message="Carregando..." />
           </SafeAreaView>
         </View>
       );

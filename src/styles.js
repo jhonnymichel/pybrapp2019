@@ -213,7 +213,7 @@ const emptyMessage = StyleSheet.create({
     fontFamily: helvetica(),
     fontSize: 14,
     textAlign: 'center',
-    color: lightBlue,
+    color: darkBlue,
   },
 });
 
@@ -414,7 +414,7 @@ const emptyList = StyleSheet.create({
     alignItems: 'center',
   },
   text: {
-    color: white,
+    color: lightBlue,
     fontSize: 20,
     textAlign: 'center',
   },
