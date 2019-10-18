@@ -482,6 +482,62 @@ const swipe = StyleSheet.create({
   },
 });
 
+const now = StyleSheet.create({
+  eventsWrapper: {
+    flexDirection: 'row',
+  },
+  dateSeparator: {
+    ...dateSeparator,
+    padding: 20,
+    alignItems: 'flex-start',
+  },
+  timeWrapper: {
+    paddingLeft: 5,
+    paddingRight: 10,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  timeContainer: {
+    justifyContent: 'flex-end',
+  },
+  timeText: {
+    fontFamily: helvetica('Bold'),
+    fontSize: 25,
+    lineHeight: 25,
+    color: tropicalLight,
+    textAlign: 'right',
+  },
+  eventsContainer: {
+    flex: 1,
+  },
+  line: {
+    ...timelineIllustration.line,
+  },
+  buttonContainer: {
+    padding: 40,
+    paddingBottom: 120,
+  },
+  button: {
+    padding: 20,
+    backgroundColor: darkBlue,
+    borderRadius: 40,
+  },
+  buttonText: {
+    fontSize: 20,
+    fontFamily: helvetica('Bold'),
+    textAlign: 'center',
+    color: white,
+  },
+});
+
+const logo = StyleSheet.create({
+  container: {
+    alignItems: 'center',
+    padding: 10,
+  },
+  image: {width: 250, height: 250 / 2.3553370787},
+});
+
 export default {
   ...StyleSheet.create({
     body,
@@ -514,4 +570,6 @@ export default {
   emptyList,
   tableHeader,
   swipe,
+  now,
+  logo,
 };

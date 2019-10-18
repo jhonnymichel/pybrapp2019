@@ -67,7 +67,6 @@ class ScheduleManager extends React.Component {
     const url = encodeURI(
       `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?key=${apiKey}&singleEvents=true&maxResults=9999&timeZone=America/Sao_Paulo`,
     );
-
     return new Promise(resolve => {
       const timeoutId = setTimeout(async () => {
         const cached = await AsyncStorage.getItem('cachedSchedule');
@@ -81,6 +80,9 @@ class ScheduleManager extends React.Component {
           return r.ok ? r.json() : Promise.reject(r);
         })
         .then(async r => {
+          if (!r.items || !r.items.length) {
+            throw new Error('Calendar is crazy');
+          }
           await AsyncStorage.setItem('cachedSchedule', JSON.stringify(r));
           resolve(r);
         })

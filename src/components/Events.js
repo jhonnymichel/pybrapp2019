@@ -79,7 +79,7 @@ const FavoriteBadge = ({isFavorite}) => {
   );
 };
 
-const EventTypes = (event, date, isFavorite) => {
+export const EventTypes = (event, date, isFavorite) => {
   return {
     ['Lightning']: (
       <>
@@ -162,7 +162,7 @@ const EventTypes = (event, date, isFavorite) => {
   };
 };
 
-const FavoriteButton = ({active, onPress}) => {
+const FavoriteButton = React.memo(({active, onPress}) => {
   const [scaleAnimation] = React.useState(new Animated.Value(1));
   const [text, setText] = React.useState(
     active ? 'Remover de sua lista' : 'Adicionar a sua lista',
@@ -197,7 +197,7 @@ const FavoriteButton = ({active, onPress}) => {
       </Animated.View>
     </TouchableOpacity>
   );
-};
+});
 
 class Event extends React.PureComponent {
   swipeableRef = React.createRef(null);
@@ -264,19 +264,24 @@ class Events extends React.PureComponent {
       currentPage,
       timeWidth,
       isLastItem,
+      hideTimeline,
     } = this.props;
 
     return (
       <View style={styles.scheduleContainer}>
-        <View style={{...styles.time.container, width: timeWidth}}>
-          <Text style={styles.time.text}>
-            {getFormattedTime(scheduleInDate.date)}
-          </Text>
-        </View>
-        <View style={styles.timelineIllustration.container}>
-          <View style={styles.timelineIllustration.ball} />
-          {!isLastItem && <View style={styles.timelineIllustration.line} />}
-        </View>
+        {!hideTimeline && (
+          <>
+            <View style={{...styles.time.container, width: timeWidth}}>
+              <Text style={styles.time.text}>
+                {getFormattedTime(scheduleInDate.date)}
+              </Text>
+            </View>
+            <View style={styles.timelineIllustration.container}>
+              <View style={styles.timelineIllustration.ball} />
+              {!isLastItem && <View style={styles.timelineIllustration.line} />}
+            </View>
+          </>
+        )}
         <View style={styles.dayContainer}>
           {scheduleInDate.events.map(event => (
             <Event

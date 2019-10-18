@@ -1,15 +1,51 @@
 import React from 'react';
 import Events from './Events';
-import {Text, View, ScrollView, AppState, SafeAreaView} from 'react-native';
+import {
+  Text,
+  View,
+  ScrollView,
+  AppState,
+  SafeAreaView,
+  TouchableOpacity,
+  Image,
+} from 'react-native';
 import moment from 'moment-timezone';
 import {StoreContext} from 'app/Store';
+import DaySeparator from './DaySeparator';
 import styles from 'app/styles';
+import {getFormattedTime} from 'app/utils';
+import Logo from '../../assets/img/logo_python_brasil-03.png';
 
 function EventsOrEmpty(props) {
   if (props.scheduleInDate) {
+    const events = props.scheduleInDate.events.map(e => ({
+      ...e,
+      layout: {
+        height: 'auto',
+      },
+    }));
+
+    const scheduleInDate = {
+      ...props.scheduleInDate,
+      events,
+    };
+
+    const [hour, minutes] = getFormattedTime(props.scheduleInDate.date).split(
+      'h',
+    );
     return (
-      <View style={{padding: 10}}>
-        <Events {...props} />
+      <View style={styles.now.eventsWrapper}>
+        <View style={styles.now.timeWrapper}>
+          <View style={styles.now.line} />
+          <View style={styles.now.timeContainer}>
+            <Text style={styles.now.timeText}>{hour}</Text>
+            <Text style={styles.now.timeText}>{minutes}</Text>
+          </View>
+          <View style={styles.now.line} />
+        </View>
+        <View style={styles.now.eventsContainer}>
+          <Events {...props} scheduleInDate={scheduleInDate} hideTimeline />
+        </View>
       </View>
     );
   }
@@ -125,28 +161,42 @@ class Now extends React.Component {
         favorites,
         actions: {toggleFavorite},
       },
+      navigation,
     } = this.props;
+    console.log(this.props);
     return (
-      <SafeAreaView style={styles.body}>
+      <SafeAreaView style={styles.schedulePage.container}>
         <ScrollView style={styles.schedulePage.scrollView}>
-          <Text style={styles.dateSeparatorText}>Rolando agora</Text>
+          <View style={styles.logo.container}>
+            <Image source={Logo} style={styles.logo.image} />
+          </View>
+          <View style={styles.now.dateSeparator}>
+            <Text style={styles.dateSeparatorText}>Rolando agora</Text>
+            <View style={styles.dateSeparatorLine} />
+          </View>
           <EventsOrEmpty
             emptyMessage="Nada rolando agora :("
             scheduleInDate={this.state.now}
             favorites={favorites}
             toggleFavorite={toggleFavorite}
           />
-          <Text style={styles.dateSeparatorText}>Em seguida</Text>
+          <View style={styles.now.dateSeparator}>
+            <Text style={styles.dateSeparatorText}>Em seguida</Text>
+            <View style={styles.dateSeparatorLine} />
+          </View>
           <EventsOrEmpty
             emptyMessage="Isso é tudo por hoje. Hora de curtir o happy hour!"
             scheduleInDate={this.state.next}
             favorites={favorites}
             toggleFavorite={toggleFavorite}
           />
-          <View className="intern-page-content event-button-area">
-            <View className="sponsor-button snake-button">
-              <Text className="pybr-button">Monte sua programação</Text>
-            </View>
+          <View style={styles.now.buttonContainer}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Programação')}
+              style={styles.now.button}
+            >
+              <Text style={styles.now.buttonText}>Monte sua programação</Text>
+            </TouchableOpacity>
           </View>
         </ScrollView>
       </SafeAreaView>
