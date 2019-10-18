@@ -262,12 +262,13 @@ class Events extends React.PureComponent {
       favorites,
       toggleFavorite,
       currentPage,
+      timeWidth,
       isLastItem,
     } = this.props;
 
     return (
       <View style={styles.scheduleContainer}>
-        <View style={styles.time.container}>
+        <View style={{...styles.time.container, width: timeWidth}}>
           <Text style={styles.time.text}>
             {getFormattedTime(scheduleInDate.date)}
           </Text>

@@ -21,6 +21,7 @@ class Schedule extends React.Component {
   renderDay = events => {
     return (
       <Events
+        timwWidth={this.context.timeWidth}
         currentPage={this.props.currentPage}
         favorites={this.context.favorites}
         scheduleInDate={events.item}

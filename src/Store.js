@@ -77,7 +77,16 @@ class Store extends React.Component {
       this.props.data.items.find(i => i.id === id),
     );
     await AsyncStorage.setItem('favoriteTalks', JSON.stringify(validFavorites));
-    const calendarData = await this.reduceCalendarData(this.props.data);
+
+    const timeWidth = (await rnTextSize.measure({
+      text: '88h88',
+      fontFamily: styles.time.text.fontFamily,
+      fontSize: styles.time.text.fontSize,
+    })).width;
+    const calendarData = await this.reduceCalendarData(
+      this.props.data,
+      timeWidth,
+    );
     const sectionHeaderHeight =
       (await rnTextSize.measure({
         text: 'Dia 99 - Tutorais',
@@ -121,6 +130,7 @@ class Store extends React.Component {
         styles.tableHeader.wrapper.padding * 2 +
         styles.tableHeader.container.padding * 2,
     };
+
     this.setState({
       ...this.state,
       ...calendarData,
@@ -129,6 +139,7 @@ class Store extends React.Component {
       sectionHeaderHeight,
       listHeaderHeights,
       listHeaderTexts,
+      timeWidth,
       isInitialState: false,
     });
   }
@@ -256,7 +267,7 @@ class Store extends React.Component {
     }
   };
 
-  async reduceCalendarData(data) {
+  async reduceCalendarData(data, timeWidth) {
     const days = {};
     const eventTypes = [];
     const talksCategories = [];
@@ -347,7 +358,8 @@ class Store extends React.Component {
           screenWidth -
           eventContainer.paddingLeft -
           eventContainer.paddingRight -
-          time.width -
+          timeWidth -
+          time.paddingLeft -
           container.paddingLeft -
           container.paddingRight -
           ball.width -

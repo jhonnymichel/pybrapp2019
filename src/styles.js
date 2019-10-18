@@ -191,7 +191,7 @@ const timelineIllustration = StyleSheet.create({
 
 const time = StyleSheet.create({
   container: {
-    width: 60,
+    paddingLeft: 5,
     backgroundColor: white,
     zIndex: 999,
     alignItems: 'flex-end',
@@ -312,7 +312,6 @@ const filters = StyleSheet.create({
     height: 30,
   },
   button: {
-    padding: 5,
     paddingLeft: 10,
     paddingRight: 10,
     paddingBottom: 0,

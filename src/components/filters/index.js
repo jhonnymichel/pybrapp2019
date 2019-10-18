@@ -33,7 +33,7 @@ export const FilterBox = ({value, onChange, onClick}) => (
     </View>
     <View>
       <TouchableOpacity onPress={onClick} style={styles.filters.button}>
-        <Ionicons name="ios-options" size={25} color={darkBlue} />
+        <Ionicons name="ios-options" size={28} color={darkBlue} />
       </TouchableOpacity>
     </View>
   </View>
