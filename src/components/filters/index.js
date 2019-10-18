@@ -7,7 +7,7 @@ import {
   Modal,
   Button,
 } from 'react-native';
-import styles, {darkBlue} from 'app/styles';
+import styles, {darkBlue, white} from 'app/styles';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Debounce from 'app/components/Debounce';
 import {BlurView} from '@react-native-community/blur';
@@ -131,18 +131,20 @@ export const FilterModal = ({visible, onRequestClose, store}) => (
   >
     <View style={styles.filtersModal.wrapper}>
       <View style={{...styles.filtersModal.container, zIndex: 999}}>
+        <Text style={styles.filtersModal.text}>Categorias de palestras</Text>
         <CategoryFilter
           categories={store.talksCategories}
           filter={store.categoryFilter}
           onChange={store.actions.onCategoryFilterChange}
         />
+        <Text style={styles.filtersModal.text}>Tipos de evento</Text>
         <EventTypeFilter
           types={store.eventTypes}
           filter={store.typeFilter}
           onChange={store.actions.onTypeFilterChange}
         />
         <View style={styles.filtersModal.footer}>
-          <Button title="Ok" onPress={onRequestClose} />
+          <Button title="Ok" color={white} onPress={onRequestClose} />
         </View>
       </View>
       <BlurView style={styles.absolute} blurType="light" blurAmount={5} />

@@ -162,7 +162,7 @@ class Schedule extends React.Component {
               //   </View>
               // }
               ListFooterComponent={
-                <View style={styles.tableHeader.wrapper}>
+                <View style={styles.tableHeader.wrapperFooter}>
                   <View style={styles.tableHeader.container}>
                     <Text style={styles.tableHeader.text}>
                       Programação sujeita a alterações sem aviso prévio.

@@ -328,9 +328,16 @@ const filtersModal = StyleSheet.create({
     justifyContent: 'center',
     flex: 1,
   },
+  text: {
+    ...title.text,
+    flex: 0,
+    padding: 10,
+    textAlign: 'center',
+    color: white,
+  },
   container: {
     borderRadius: 4,
-    backgroundColor: `${tropical}CC`,
+    backgroundColor: `${darkestBlue}CC`,
     margin: 'auto',
     padding: 10,
   },
@@ -338,7 +345,7 @@ const filtersModal = StyleSheet.create({
     marginTop: 10,
     paddingTop: 10,
     borderTopWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.4)',
+    borderColor: darkBlue,
     flexDirection: 'row',
     justifyContent: 'flex-end',
   },
@@ -350,9 +357,9 @@ const filtersModal = StyleSheet.create({
     borderRadius: 25,
     paddingLeft: 10,
     paddingRight: 10,
-    backgroundColor: lightBlue,
+    backgroundColor: yellow,
     justifyContent: 'center',
-    borderColor: lightBlue,
+    borderColor: yellow,
     borderWidth: 1,
   },
   checkboxEmpty: {
@@ -360,7 +367,7 @@ const filtersModal = StyleSheet.create({
     borderRadius: 25,
     paddingLeft: 10,
     paddingRight: 10,
-    borderColor: lightBlue,
+    borderColor: yellow,
     justifyContent: 'center',
     borderWidth: 1,
   },
@@ -373,7 +380,7 @@ const filtersModal = StyleSheet.create({
   checkboxTextEmpty: {
     fontFamily: helvetica('Bold'),
     fontSize: 16,
-    color: lightBlue,
+    color: yellow,
     textAlign: 'center',
   },
   group: {
@@ -409,6 +416,10 @@ const emptyList = StyleSheet.create({
 const tableHeader = StyleSheet.create({
   wrapper: {
     padding: 10,
+  },
+  wrapperFooter: {
+    padding: 10,
+    paddingBottom: 80,
   },
   container: {
     borderRadius: 5,
