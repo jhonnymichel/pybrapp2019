@@ -449,6 +449,32 @@ const eventDetails = StyleSheet.create({
   },
 });
 
+const swipe = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingTop: 20,
+  },
+  text: {
+    textTransform: 'uppercase',
+    paddingRight: 10,
+    fontSize: 12,
+    fontFamily: helvetica('Bold'),
+    color: darkBlue,
+  },
+  listItem: {
+    height: 75,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  rightSwipeItem: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    paddingRight: 20,
+  },
+});
+
 export default {
   ...StyleSheet.create({
     body,
@@ -480,4 +506,5 @@ export default {
   filtersModal,
   emptyList,
   tableHeader,
+  swipe,
 };

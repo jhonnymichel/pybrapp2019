@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {getFormattedTime} from 'app/utils';
-import styles, {lightBlue, yellow} from 'app/styles';
+import styles, {lightBlue, yellow, tropical, white} from 'app/styles';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 
 function getEventType(type) {
@@ -58,7 +58,7 @@ const FavoriteBadge = ({isFavorite}) => {
   const isFirstRender = React.useRef({value: true});
 
   React.useLayoutEffect(() => {
-    let duration = 300;
+    let duration = 250;
     if (isFirstRender.current.value) {
       duration = 0;
       isFirstRender.current.value = false;
@@ -66,7 +66,7 @@ const FavoriteBadge = ({isFavorite}) => {
     Animated.timing(fade, {
       toValue: Number(isFavorite),
       duration,
-      delay: (duration && 600) || 0,
+      delay: (duration && 500) || 0,
       useNativeDriver: true,
     }).start();
   }, [isFavorite]);
@@ -162,48 +162,38 @@ const EventTypes = (event, date, isFavorite) => {
   };
 };
 
-const swipeStyles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 20,
-  },
-  listItem: {
-    height: 75,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  rightSwipeItem: {
-    flex: 0.75,
-    alignItems: 'flex-end',
-    justifyContent: 'center',
-    paddingRight: 20,
-  },
-});
-
 const FavoriteButton = ({active, onPress}) => {
   const [scaleAnimation] = React.useState(new Animated.Value(1));
+  const [text, setText] = React.useState(
+    active ? 'Remover de sua lista' : 'Adicionar a sua lista',
+  );
 
   React.useEffect(() => {
     Animated.timing(scaleAnimation, {
       toValue: active ? 1.5 : 1,
-      duration: 300,
+      duration: 250,
       easing: Easing.bezier(0.16, 0.53, 0.06, 1.36),
       useNativeDriver: true,
     }).start();
+    let timeoutId = setTimeout(() => {
+      setText(active ? 'Remover de sua lista' : 'Adicionar a sua lista');
+    }, 500);
+    return () => clearTimeout(timeoutId);
   }, [active]);
 
   return (
     <TouchableOpacity
       onPress={onPress}
       style={[
-        swipeStyles.rightSwipeItem,
+        styles.swipe.rightSwipeItem,
         {
-          backgroundColor: active ? 'lightgoldenrodyellow' : 'steelblue',
+          backgroundColor: active ? yellow : tropical,
         },
       ]}
     >
+      <Text style={{...styles.swipe.text}}>{text}</Text>
       <Animated.View style={{transform: [{scale: scaleAnimation}]}}>
-        <Ionicons name="ios-bookmark" size={30} />
+        <Ionicons name="ios-bookmark" color={white} size={30} />
       </Animated.View>
     </TouchableOpacity>
   );
@@ -219,15 +209,15 @@ class Event extends React.PureComponent {
       await toggleFavorite(event, scheduleInDate.date);
       setTimeout(() => {
         this.swipeableRef.current.close();
-      }, 300);
+      }, 250);
     } else {
       this.setState({active: false});
       setTimeout(() => {
         this.swipeableRef.current.close();
         setTimeout(() => {
           toggleFavorite(event, scheduleInDate.date);
-        }, 300);
-      }, 300);
+        }, 250);
+      }, 250);
     }
   };
 
