@@ -22,11 +22,11 @@ const font = f => (weight = 'Medium') => `${f}-${weight}`;
 const helvetica = font('HelveticaNeue');
 
 const categoryColors = {
-  desenvolvimento: '#7fc7cf',
-  arquitetura: '#3a8bbb',
+  desenvolvimento: '#b1e8ed',
+  arquitetura: '#94ceca',
   'python-para-tudo': '#f5bc8b',
-  'data-science': '#ce9bc4',
-  pessoas: '#8b9ffc',
+  'data-science': '#ddb6c6',
+  pessoas: '#e5e5e5',
   default: 'gray',
 };
 
