@@ -144,7 +144,7 @@ export const EventTypes = (event, date, isFavorite) => {
     ['Keynote']: (
       <>
         <View style={styles.title.container}>
-          <Text style={styles.title.text}>{event.details.name}</Text>
+          <Text style={styles.title.text}>Keynote: {event.details.name}</Text>
         </View>
         <View style={styles.footer.container}>
           <Location>{event.location}</Location>

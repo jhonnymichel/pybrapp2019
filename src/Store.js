@@ -11,8 +11,7 @@ import styles from 'app/styles';
 import AsyncStorage from '@react-native-community/async-storage';
 import rnTextSize from 'react-native-text-size';
 import PushNotification from 'react-native-push-notification';
-import PushNotificationIOS from '@react-native-community/push-notification-ios';
-import {tryStatement} from '@babel/types';
+import upperFirst from 'lodash/upperFirst';
 
 PushNotification.configure({
   // (required) Called when a remote or local notification is opened or received
@@ -191,15 +190,43 @@ class Store extends React.Component {
   }
 
   getNotificationContent(event) {
-    if (event.details.eventType === 'Eventos Fixos') {
+    if (['coffee', 'lunch'].includes(event.details.eventType)) {
       return {
-        title: `${event.summary}`,
+        title: `${upperFirst(event.summary)}`,
         message: 'Começa em 5 minutos.',
       };
     }
 
+    if (['Lightning Talks'].includes(event.details.eventType)) {
+      return {
+        title: `${upperFirst(event.summary)}`,
+        message: `Começam em 5 minutos na ${event.location}.`,
+      };
+    }
+
+    if (['keynote'].includes(event.details.eventType)) {
+      return {
+        title: `Keynote: ${upperFirst(event.details.name)}`,
+        message: `Começa em 5 minutos na ${event.location}.`,
+      };
+    }
+
+    if (event.summary === 'Credenciamento') {
+      return {
+        title: `Credenciamento`,
+        message: `Começa em 5 minutos no ${event.location}.`,
+      };
+    }
+
+    if (event.summary.startsWith('Abertura da Python')) {
+      return {
+        title: `${upperFirst(event.summary)}`,
+        message: `Começa em 5 minutos na ${event.location}.`,
+      };
+    }
+
     return {
-      title: `${event.details.eventType}: ${event.summary}`,
+      title: `${upperFirst(event.details.eventType)}: ${event.summary}`,
       message: `Começa em 5 minutos na ${event.location}`,
     };
   }
