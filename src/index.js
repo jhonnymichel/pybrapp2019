@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import {createAppContainer} from 'react-navigation';
 // import ReactDOM from 'react-dom';
-import Store from './Store';
+import Store, {StoreContext} from './Store';
 import styles from 'app/styles';
 import Schedule from './components/Schedule';
 import Now from './components/Now';
@@ -61,6 +61,14 @@ const Loading = ({message}) => {
   );
 };
 
+const LoadingView = () => (
+  <View style={styles.body}>
+    <SafeAreaView style={{flex: 1}}>
+      <Loading message="Carregando..." />
+    </SafeAreaView>
+  </View>
+);
+
 class ScheduleManager extends React.Component {
   getSchedule() {
     const {apiKey, calendarId} = CALENDAR_CONFIG;
@@ -106,18 +114,14 @@ class ScheduleManager extends React.Component {
 
   render() {
     if (!this.state.data) {
-      return (
-        <View style={styles.body}>
-          <SafeAreaView style={{flex: 1}}>
-            <Loading message="Carregando..." />
-          </SafeAreaView>
-        </View>
-      );
+      return <LoadingView />;
     }
 
     return (
       <Store data={this.state.data}>
-        <App />
+        <StoreContext.Consumer>
+          {store => (store.isInitialState ? <LoadingView /> : <App />)}
+        </StoreContext.Consumer>
       </Store>
     );
   }
