@@ -420,6 +420,31 @@ const emptyList = StyleSheet.create({
   },
 });
 
+const errorMessage = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  text: {
+    color: lightBlue,
+    fontSize: 20,
+    textAlign: 'center',
+  },
+  button: {
+    padding: 20,
+    backgroundColor: white,
+    borderRadius: 40,
+  },
+  buttonText: {
+    fontSize: 20,
+    fontFamily: helvetica('Bold'),
+    textAlign: 'center',
+    color: darkBlue,
+  },
+});
+
 const tableHeader = StyleSheet.create({
   wrapper: {
     padding: 10,
@@ -572,4 +597,5 @@ export default {
   swipe,
   now,
   logo,
+  errorMessage,
 };

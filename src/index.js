@@ -1,6 +1,13 @@
 import {CALENDAR_CONFIG} from './config';
 import React from 'react';
-import {Text, SafeAreaView, View, Animated, Easing} from 'react-native';
+import {
+  Text,
+  SafeAreaView,
+  View,
+  Animated,
+  Easing,
+  TouchableOpacity,
+} from 'react-native';
 import {createAppContainer} from 'react-navigation';
 // import ReactDOM from 'react-dom';
 import Store, {StoreContext} from './Store';
@@ -10,7 +17,10 @@ import Now from './components/Now';
 import Tabs from './components/Tabs';
 import AsyncStorage from '@react-native-community/async-storage';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import {white} from './styles';
+import {white, lightBlue} from './styles';
+import EmptyList from './components/EmptyList';
+
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 // import Now from './components/Now';
 
@@ -61,6 +71,28 @@ const LoadingView = () => (
     </SafeAreaView>
   </View>
 );
+// import Loading from 'img/loading.svg';
+
+const ErrorMessage = ({message}) => (
+  <View style={styles.errorMessage.container}>
+    <Ionicons name="ios-calendar" size={200} color={lightBlue} />
+    <Text style={styles.errorMessage.text}>{message}</Text>
+  </View>
+);
+
+const ErrorLoading = ({retry}) => (
+  <View style={styles.body}>
+    <ErrorMessage
+      dark
+      message="Houve um erro ao carregar os dados. verifique sua conexão com a internet."
+    />
+    <View style={styles.now.buttonContainer}>
+      <TouchableOpacity onPress={retry} style={styles.errorMessage.button}>
+        <Text style={styles.errorMessage.buttonText}>Tentar de novo</Text>
+      </TouchableOpacity>
+    </View>
+  </View>
+);
 
 class ScheduleManager extends React.Component {
   getSchedule() {
@@ -92,6 +124,8 @@ class ScheduleManager extends React.Component {
           const cached = await AsyncStorage.getItem('cachedSchedule');
           if (cached) {
             resolve(JSON.parse(cached));
+          } else {
+            resolve({isError: true});
           }
         });
     });
@@ -100,12 +134,24 @@ class ScheduleManager extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
-    this.getSchedule().then(data => {
-      this.setState({data});
-    });
+    this.loadData();
   }
 
+  loadData = () => {
+    this.getSchedule().then(data => {
+      if (data.isError) {
+        this.setState({isError: true});
+      } else {
+        this.setState({data, isError: false});
+      }
+    });
+  };
+
   render() {
+    if (this.state.isError) {
+      return <ErrorLoading retry={this.loadData} />;
+    }
+
     if (!this.state.data) {
       return <LoadingView />;
     }
