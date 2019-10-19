@@ -19,6 +19,7 @@
 		35DD165C65195E02F3C40577 /* libPods-pybr2019.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB01A8FCBB92052990754FC5 /* libPods-pybr2019.a */; };
 		5FAFEABDACA3B695157FFA08 /* libPods-pybr2019-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F207A942F2B4D79B572CA2D3 /* libPods-pybr2019-tvOSTests.a */; };
 		617934ADC620F567FDD63071 /* libPods-pybr2019Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F394608B1C8AEB635AB6609D /* libPods-pybr2019Tests.a */; };
+		83E2C645235AA4B3007E4DC9 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83E2C644235AA4B3007E4DC9 /* Launch Screen.storyboard */; };
 		CF777D6E5B205988EA9C28F6 /* libPods-pybr2019-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EE0AD6A5760A97FCAD10D50 /* libPods-pybr2019-tvOS.a */; };
 /* End PBXBuildFile section */
 
@@ -112,6 +113,7 @@
 		7C31D2B97E164813B3543150 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-Regular.ttf"; path = "../assets/fonts/Nunito-Regular.ttf"; sourceTree = "<group>"; };
 		7D6930A2652B4E308634F837 /* bgevento.jpg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = bgevento.jpg; path = ../assets/img/bgevento.jpg; sourceTree = "<group>"; };
 		7E6AF70F609C4455B14BD5C2 /* keynote_pic_4.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = keynote_pic_4.png; path = ../assets/img/keynote_pic_4.png; sourceTree = "<group>"; };
+		83E2C644235AA4B3007E4DC9 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		861F7247408558901E5F6C86 /* Pods-pybr2019-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pybr2019-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-pybr2019-tvOSTests/Pods-pybr2019-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8B2CCCD6D09F4C08B70629DF /* Nunito-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-ExtraBoldItalic.ttf"; path = "../assets/fonts/Nunito-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
 		934B954931F84731AAC601F3 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-Bold.ttf"; path = "../assets/fonts/Nunito-Bold.ttf"; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 		13B07FAE1A68108700A75B9A /* pybr2019 */ = {
 			isa = PBXGroup;
 			children = (
+				83E2C644235AA4B3007E4DC9 /* Launch Screen.storyboard */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -521,6 +524,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83E2C645235AA4B3007E4DC9 /* Launch Screen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 			);

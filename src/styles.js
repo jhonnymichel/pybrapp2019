@@ -210,8 +210,8 @@ const emptyMessage = StyleSheet.create({
     marginTop: 20,
   },
   text: {
-    fontFamily: helvetica(),
-    fontSize: 14,
+    fontFamily: helvetica('Bold'),
+    fontSize: 16,
     textAlign: 'center',
     color: darkBlue,
   },

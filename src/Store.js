@@ -233,13 +233,13 @@ class Store extends React.Component {
 
   async scheduleNotification(event, date) {
     PushNotification.requestPermissions();
-    const tzDate = moment().tz('America/Sao_Paulo');
+    const tzDate = moment(date).tz('America/Sao_Paulo');
     const id = String(await this.getId(event.id));
     PushNotification.localNotificationSchedule({
       id,
       userInfo: {id},
       ...this.getNotificationContent(event),
-      date: tzDate.add(20, 'seconds').toDate(),
+      date: tzDate.subtract(5, 'minutes').toDate(),
     });
   }
 
