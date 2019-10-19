@@ -199,9 +199,18 @@ const FavoriteButton = React.memo(({active, onPress}) => {
   );
 });
 
-class Event extends React.PureComponent {
+class Event extends React.Component {
   swipeableRef = React.createRef(null);
   state = {active: true};
+
+  shouldComponentUpdate(nextProps) {
+    const {isFavorite} = this.props;
+    if (isFavorite !== nextProps.isFavorite) {
+      return true;
+    }
+
+    return false;
+  }
 
   onFavoriteButtonPress = async () => {
     const {event, scheduleInDate, toggleFavorite, currentPage} = this.props;
@@ -255,7 +264,20 @@ class Event extends React.PureComponent {
   }
 }
 
-class Events extends React.PureComponent {
+class Events extends React.Component {
+  shouldComponentUpdate(nextProps) {
+    const {favorites, scheduleInDate, isLastItem} = this.props;
+    if (
+      nextProps.favorites.length !== favorites.length ||
+      scheduleInDate.length !== nextProps.scheduleInDate.length ||
+      isLastItem !== nextProps.isLastItem
+    ) {
+      return true;
+    }
+
+    return false;
+  }
+
   render() {
     const {
       scheduleInDate,

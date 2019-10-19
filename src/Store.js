@@ -72,11 +72,12 @@ class Store extends React.Component {
     );
     await AsyncStorage.setItem('favoriteTalks', JSON.stringify(validFavorites));
 
-    const timeWidth = (await rnTextSize.measure({
-      text: '88h88',
-      fontFamily: styles.time.text.fontFamily,
-      fontSize: styles.time.text.fontSize,
-    })).width;
+    const timeWidth =
+      (await rnTextSize.measure({
+        text: '88h88',
+        fontFamily: styles.time.text.fontFamily,
+        fontSize: styles.time.text.fontSize,
+      })).width + styles.time.container.paddingLeft;
     const calendarData = await this.reduceCalendarData(
       this.props.data,
       timeWidth,
