@@ -38,44 +38,9 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string/>
-	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
-	<key>UIRequiredDeviceCapabilities</key>
-	<array>
-		<string>armv7</string>
-	</array>
-	<key>UISupportedInterfaceOrientations</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
-	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
+	<string></string>
 	<key>UIAppFonts</key>
 	<array>
-		<string>AdventPro-Bold.ttf</string>
-		<string>AdventPro-ExtraLight.ttf</string>
-		<string>AdventPro-Light.ttf</string>
-		<string>AdventPro-Medium.ttf</string>
-		<string>AdventPro-Regular.ttf</string>
-		<string>AdventPro-SemiBold.ttf</string>
-		<string>AdventPro-Thin.ttf</string>
-		<string>Nunito-Black.ttf</string>
-		<string>Nunito-BlackItalic.ttf</string>
-		<string>Nunito-Bold.ttf</string>
-		<string>Nunito-BoldItalic.ttf</string>
-		<string>Nunito-ExtraBold.ttf</string>
-		<string>Nunito-ExtraBoldItalic.ttf</string>
-		<string>Nunito-ExtraLight.ttf</string>
-		<string>Nunito-ExtraLightItalic.ttf</string>
-		<string>Nunito-Italic.ttf</string>
-		<string>Nunito-Light.ttf</string>
-		<string>Nunito-LightItalic.ttf</string>
-		<string>Nunito-Regular.ttf</string>
-		<string>Nunito-SemiBold.ttf</string>
-		<string>Nunito-SemiBoldItalic.ttf</string>
 		<string>AntDesign.ttf</string>
 		<string>Entypo.ttf</string>
 		<string>EvilIcons.ttf</string>
@@ -93,5 +58,22 @@
 		<string>SimpleLineIcons.ttf</string>
 		<string>Zocial.ttf</string>
 	</array>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>armv7</string>
+	</array>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleLightContent</string>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+	</array>
+	<key>UIUserInterfaceStyle</key>
+	<string>light</string>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 </dict>
 </plist>

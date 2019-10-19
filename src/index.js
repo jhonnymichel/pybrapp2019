@@ -1,13 +1,6 @@
 import {CALENDAR_CONFIG} from './config';
 import React from 'react';
-import {
-  Text,
-  SafeAreaView,
-  View,
-  StyleSheet,
-  Animated,
-  Easing,
-} from 'react-native';
+import {Text, SafeAreaView, View, Animated, Easing} from 'react-native';
 import {createAppContainer} from 'react-navigation';
 // import ReactDOM from 'react-dom';
 import Store, {StoreContext} from './Store';
