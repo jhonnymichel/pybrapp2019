@@ -13,6 +13,9 @@ import rnTextSize from 'react-native-text-size';
 import PushNotification from 'react-native-push-notification';
 import upperFirst from 'lodash/upperFirst';
 
+export const StoreContext = React.createContext();
+const screenWidth = Math.round(Dimensions.get('window').width);
+
 PushNotification.configure({
   // (required) Called when a remote or local notification is opened or received
   onNotification: function(notification) {
@@ -26,21 +29,13 @@ PushNotification.configure({
     alert: true,
     sound: true,
   },
-
-  // Should the initial notification be popped automatically
-  // default: true
-  popInitialNotification: true,
-
   /**
    * (optional) default: true
    * - Specified if permissions (ios) and token (android and ios) will requested or not,
    * - if not, you must call PushNotificationsHandler.requestPermissions() later
    */
-  //requestPermissions: true,
+  requestPermissions: false,
 });
-
-export const StoreContext = React.createContext();
-const screenWidth = Math.round(Dimensions.get('window').width);
 
 class Store extends React.Component {
   constructor(props) {
