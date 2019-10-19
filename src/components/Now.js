@@ -11,7 +11,6 @@ import {
 } from 'react-native';
 import moment from 'moment-timezone';
 import {StoreContext} from 'app/Store';
-import DaySeparator from './DaySeparator';
 import styles from 'app/styles';
 import {getFormattedTime} from 'app/utils';
 import Logo from '../../assets/img/logo_python_brasil-03.png';
@@ -103,13 +102,13 @@ class Now extends React.Component {
   }
 
   static getNow(days) {
-    //('2019-10-24T10:20')
-    const today = moment('2019-10-24T10:20')
+    //()
+    const today = moment()
       .tz('America/Sao_Paulo')
       .date();
     const day = days[today];
     if (day) {
-      const currentDate = moment('2019-10-24T10:20')
+      const currentDate = moment()
         .tz('America/Sao_Paulo')
         .toDate()
         .getTime();
@@ -130,12 +129,12 @@ class Now extends React.Component {
   }
 
   static getNext(days) {
-    const today = moment('2019-10-24T10:20')
+    const today = moment()
       .tz('America/Sao_Paulo')
       .date();
     const day = days[today];
     if (day) {
-      const currentDate = moment('2019-10-24T10:20')
+      const currentDate = moment()
         .tz('America/Sao_Paulo')
         .toDate()
         .getTime();
