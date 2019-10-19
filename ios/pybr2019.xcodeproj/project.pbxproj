@@ -8,12 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* pybr2019Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* pybr2019Tests.m */; };
-		0304CAB342E34321BA4D6B41 /* Nunito-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F4358F411BBB4AC692CFE124 /* Nunito-ExtraLightItalic.ttf */; };
-		031EB5566F9F49A6BED981A9 /* AdventPro-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 54234E82FD3D41FF8FB6B4BC /* AdventPro-ExtraLight.ttf */; };
 		056A3A4B5FEA4BAD809DE833 /* btnticket.svg in Resources */ = {isa = PBXBuildFile; fileRef = A55C98C294B74EC4839098EB /* btnticket.svg */; };
 		07EDC1DFE0E94F8F9E65207A /* pybr_twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C8142DA41CB4332BA672A89 /* pybr_twitter.png */; };
 		08E8EB8BD14E4051927A0CFF /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E3515DC81D3481D8BCFF8CD /* icon.png */; };
-		0E690E9A55F54935A2D7505F /* Nunito-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD23E18B259340389A651112 /* Nunito-BlackItalic.ttf */; };
 		105F666F4870451DA881407C /* loading.svg in Resources */ = {isa = PBXBuildFile; fileRef = 949A80FC69C449238560B269 /* loading.svg */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
@@ -21,29 +18,23 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		16D5FEDA5B9847319158A9C2 /* Python14-Logo Forte Reis Magos.svg in Resources */ = {isa = PBXBuildFile; fileRef = 3B2FCDE3C43A48B68C6CB330 /* Python14-Logo Forte Reis Magos.svg */; };
 		17047184773C47D2A039CADB /* logo_horizontal.svg in Resources */ = {isa = PBXBuildFile; fileRef = 0B0918DDC124427896E05A4F /* logo_horizontal.svg */; };
-		19BADF40345946FDA7A53499 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 934B954931F84731AAC601F3 /* Nunito-Bold.ttf */; };
 		1BE8AC1B591741B6A1E86273 /* keynote_star.svg in Resources */ = {isa = PBXBuildFile; fileRef = 2F2CE802F5004BCEA70A0027 /* keynote_star.svg */; };
 		1D78843686FC4ABC9A24BD9C /* keynote_pic_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2A9EE8E723844E6B89447918 /* keynote_pic_2.jpg */; };
 		1FBEFF1214674D6F8DB1805B /* Python14-Logo Forte Reis Magos-02.svg in Resources */ = {isa = PBXBuildFile; fileRef = B1119C1E8AAB47C593F9E770 /* Python14-Logo Forte Reis Magos-02.svg */; };
-		223E4116EFC84BFD9914248C /* AdventPro-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD80E8A4D1B349DA8307AF6E /* AdventPro-Light.ttf */; };
 		26C2804BED874ECAA849F1FE /* holiday-inn.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = BE639289C6564C189D4F7B16 /* holiday-inn.jpeg */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* pybr2019Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* pybr2019Tests.m */; };
-		2FE7090EBAA8443A9AB22ED2 /* Nunito-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3293AF6B36FC477C83F56C25 /* Nunito-LightItalic.ttf */; };
 		35DD165C65195E02F3C40577 /* libPods-pybr2019.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB01A8FCBB92052990754FC5 /* libPods-pybr2019.a */; };
 		3BAA255E668D410C8939DAE8 /* holiday-inn.png in Resources */ = {isa = PBXBuildFile; fileRef = 21C1143747F648E384489EB6 /* holiday-inn.png */; };
 		3CE00A950D9A47A09E1808F7 /* keynote_pic_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E6AF70F609C4455B14BD5C2 /* keynote_pic_4.png */; };
 		408630BC8E5C42D18AAAD5E2 /* pybr_facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = B1A325CF56FA4A0CA3533688 /* pybr_facebook.png */; };
-		40E9EB1FADC64F4CACFC3C52 /* AdventPro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18CC71FBD9A74446AEC35F5F /* AdventPro-Bold.ttf */; };
 		426DAD164CBC4E2198DB0C49 /* logo-sebrae.svg in Resources */ = {isa = PBXBuildFile; fileRef = 5B00BE21E5A94A0D9D03987C /* logo-sebrae.svg */; };
-		431A572ACF064BD1BC1F7E78 /* AdventPro-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 034B15A651BA46E0AADC657A /* AdventPro-SemiBold.ttf */; };
 		44F14F942D544D80885A9532 /* Python14-Icon Facebook.svg in Resources */ = {isa = PBXBuildFile; fileRef = 423C119ED40246559B7F1B4D /* Python14-Icon Facebook.svg */; };
 		4517332CFAA8493284639F5D /* icon-right.svg in Resources */ = {isa = PBXBuildFile; fileRef = 4C2E91B4A4654B9FA80CFF2A /* icon-right.svg */; };
 		455806BF9C65449889EF859C /* Forte-Outlines.svg in Resources */ = {isa = PBXBuildFile; fileRef = DA49731F70D24046842B9ED3 /* Forte-Outlines.svg */; };
 		49499868BB794A4CB4546188 /* logo-mangailabs.svg in Resources */ = {isa = PBXBuildFile; fileRef = F574539991E74EA3A3F70A1C /* logo-mangailabs.svg */; };
-		4BB55BA93D544B1289834368 /* Nunito-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1FB82A52BC31450291D4E16D /* Nunito-SemiBoldItalic.ttf */; };
 		5C0C26B9D1F84C87A93847FC /* logo-facebook.svg in Resources */ = {isa = PBXBuildFile; fileRef = 7009BFED2C0944C880898202 /* logo-facebook.svg */; };
 		5DA5B5FB2EDF4E3AB10093BC /* empty.svg in Resources */ = {isa = PBXBuildFile; fileRef = 107668CDA7A146F39245A2BC /* empty.svg */; };
 		5FAFEABDACA3B695157FFA08 /* libPods-pybr2019-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F207A942F2B4D79B572CA2D3 /* libPods-pybr2019-tvOSTests.a */; };
@@ -52,13 +43,7 @@
 		6AE0823CD62D4BF39C2AE32E /* Python14-Icon Twitter.svg in Resources */ = {isa = PBXBuildFile; fileRef = 425D2ACD21794D8A8DF2C3CB /* Python14-Icon Twitter.svg */; };
 		6C8382B8C7E54602B53BC6A5 /* logo-cabotelecom.svg in Resources */ = {isa = PBXBuildFile; fileRef = 45FBEDB2775C456A90CA5C42 /* logo-cabotelecom.svg */; };
 		726881B01EC24FBD8E2B7EB8 /* Python14-MapaRN-cinza.svg in Resources */ = {isa = PBXBuildFile; fileRef = 11DF475498DE4CC697010F68 /* Python14-MapaRN-cinza.svg */; };
-		79981F6ACA8D4D8290DDE677 /* Nunito-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6D11337682A24340B1C93F7F /* Nunito-BoldItalic.ttf */; };
-		7A04CAB3551845F2B361A7CB /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C31D2B97E164813B3543150 /* Nunito-Regular.ttf */; };
-		7D224E79AFA84C1CACFDB5E9 /* AdventPro-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 941FB0EA745E483B8DCD5D67 /* AdventPro-Medium.ttf */; };
-		7D89F12E167C4A469FAFD950 /* Nunito-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8B2CCCD6D09F4C08B70629DF /* Nunito-ExtraBoldItalic.ttf */; };
-		7F44C427FC43455EA8D6B4B8 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 991FA93DC9E144B8B154C614 /* Nunito-SemiBold.ttf */; };
 		861BB7EB1E8341669C600C37 /* logo-evolux.svg in Resources */ = {isa = PBXBuildFile; fileRef = 3ABD6511CF0045EEB399CDFC /* logo-evolux.svg */; };
-		873DC8111E454714AEC12CBE /* Nunito-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4AFCB9E4F23D44C5B3288728 /* Nunito-Italic.ttf */; };
 		88816365F2FB4807ACD93821 /* keynote_pic_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 6291C05F17E54898B7546C4A /* keynote_pic_1.png */; };
 		89E3C1ADB9FD43C48DEC86C2 /* closebutton-01.svg in Resources */ = {isa = PBXBuildFile; fileRef = D0922F93F5A2463C9985BC5C /* closebutton-01.svg */; };
 		8EF12521E0D34DA9B9C61317 /* favicon.ico in Resources */ = {isa = PBXBuildFile; fileRef = 0F9EC92410AC40CF8DEA893E /* favicon.ico */; };
@@ -66,27 +51,21 @@
 		9F02B2F7911544D988F6821F /* logo-labcodes.svg in Resources */ = {isa = PBXBuildFile; fileRef = 0250DAC86A0F477EA24538F9 /* logo-labcodes.svg */; };
 		AC820F9FBF634A9E8433DE09 /* logo-psf.svg in Resources */ = {isa = PBXBuildFile; fileRef = D26CBF06D4FC44E49E8254AD /* logo-psf.svg */; };
 		B4F6D066B3664AE9B6D489FA /* Python14-Icon Youtube.svg in Resources */ = {isa = PBXBuildFile; fileRef = 242A27AEAF0047F88E3D67E5 /* Python14-Icon Youtube.svg */; };
-		B90324ACEFFE43FC89EC9E03 /* Nunito-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A360969911F543718E689A39 /* Nunito-Light.ttf */; };
 		BEEE237A1E80450BB4083DD3 /* hamburguer menu-01.svg in Resources */ = {isa = PBXBuildFile; fileRef = E0B101C7570749F887519397 /* hamburguer menu-01.svg */; };
 		BF65A4D629074449B15EF8EE /* schedule_picture-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F31B388C8A34481D90707007 /* schedule_picture-1.jpg */; };
 		C409C347BAB1412C8B8046BB /* Python14-MapaRN-branco.svg in Resources */ = {isa = PBXBuildFile; fileRef = 3DE7942C098345599E2FAF2A /* Python14-MapaRN-branco.svg */; };
 		C477D8491DFE44FA9E3DD810 /* map_pin.svg in Resources */ = {isa = PBXBuildFile; fileRef = 779BC55B992C46E6917F5540 /* map_pin.svg */; };
 		C9E3588CFD984D5DAE008D84 /* Mapa_RN_Logo.svg in Resources */ = {isa = PBXBuildFile; fileRef = 0EDA6B6658B24D74AE0341AA /* Mapa_RN_Logo.svg */; };
 		CABBAF47F62344D391DE985F /* Python14-Cobras-Transparente.svg in Resources */ = {isa = PBXBuildFile; fileRef = 07B2E975647D4604AD78357E /* Python14-Cobras-Transparente.svg */; };
-		CBA39601FF50480CB27030B1 /* AdventPro-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0951FED5E0794D6B85E89EC0 /* AdventPro-Thin.ttf */; };
 		CF777D6E5B205988EA9C28F6 /* libPods-pybr2019-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EE0AD6A5760A97FCAD10D50 /* libPods-pybr2019-tvOS.a */; };
 		D11D4874216148209246E96E /* bgevento.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7D6930A2652B4E308634F837 /* bgevento.jpg */; };
 		D13960D8BD9F4AF98A41951D /* icon-cross.svg in Resources */ = {isa = PBXBuildFile; fileRef = 4B88FFE28E0A4D27B9800E21 /* icon-cross.svg */; };
 		D31AC9A4FE924AD19667B3EF /* holiday-inn.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2A4FB54EF6C9413B9023A5F6 /* holiday-inn.jpg */; };
 		D696093CA9544903A5C59AF7 /* Python14-MapaRN-cinza-30.svg in Resources */ = {isa = PBXBuildFile; fileRef = E44C9EECD4EA41A18EE0AA99 /* Python14-MapaRN-cinza-30.svg */; };
 		D7354B8E9FBC4157BE08854F /* Python14-Cobras-MenuHeader.svg in Resources */ = {isa = PBXBuildFile; fileRef = AA0053CF1AA14DC490E12BF0 /* Python14-Cobras-MenuHeader.svg */; };
-		D9C2E6A8CC624260BA68A499 /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F28FDAB33E146CBAE48F67D /* Nunito-ExtraBold.ttf */; };
 		DAAAC3CA231F422586AAD0ED /* flag_ng.svg in Resources */ = {isa = PBXBuildFile; fileRef = 990551C8F36C4A27A10BAB17 /* flag_ng.svg */; };
-		DC1AA3ED5EBF41BCAB792641 /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 629253274DFD4775B99F15A7 /* Nunito-Black.ttf */; };
-		DC96F2F192564982A24D8DA9 /* Nunito-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F8EBF6400D3440A4AC7A91CC /* Nunito-ExtraLight.ttf */; };
 		E2932DD9B1764520A4004D5E /* logo-globo.svg in Resources */ = {isa = PBXBuildFile; fileRef = 109BBE6A438B48D8A0FFD437 /* logo-globo.svg */; };
 		EC789BF107A04844A77F9C4B /* icon-calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = A5DA9358CC5F4EAA8667C52C /* icon-calendar.png */; };
-		EEDC20A7E113467EA2CCFB37 /* AdventPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 30FA111C501540468A9949F0 /* AdventPro-Regular.ttf */; };
 		F5D75FE73ACD401987C8EBBD /* Python14-Cobras-amarelo.svg in Resources */ = {isa = PBXBuildFile; fileRef = 23C81B9CA3544F9C93C2D7E6 /* Python14-Cobras-amarelo.svg */; };
 		FA2ACE1F2FED4D0C82A9A1B0 /* keynote_pic_3.png in Resources */ = {isa = PBXBuildFile; fileRef = A639304734DE44C09A3F2A39 /* keynote_pic_3.png */; };
 		FC59FB8AD55E49DF8BD9D4BF /* Python14-NomedoEvento.svg in Resources */ = {isa = PBXBuildFile; fileRef = 38A9399390214324BC77AAA3 /* Python14-NomedoEvento.svg */; };
@@ -642,27 +621,6 @@
 				726881B01EC24FBD8E2B7EB8 /* Python14-MapaRN-cinza.svg in Resources */,
 				FC59FB8AD55E49DF8BD9D4BF /* Python14-NomedoEvento.svg in Resources */,
 				BF65A4D629074449B15EF8EE /* schedule_picture-1.jpg in Resources */,
-				40E9EB1FADC64F4CACFC3C52 /* AdventPro-Bold.ttf in Resources */,
-				031EB5566F9F49A6BED981A9 /* AdventPro-ExtraLight.ttf in Resources */,
-				223E4116EFC84BFD9914248C /* AdventPro-Light.ttf in Resources */,
-				7D224E79AFA84C1CACFDB5E9 /* AdventPro-Medium.ttf in Resources */,
-				EEDC20A7E113467EA2CCFB37 /* AdventPro-Regular.ttf in Resources */,
-				431A572ACF064BD1BC1F7E78 /* AdventPro-SemiBold.ttf in Resources */,
-				CBA39601FF50480CB27030B1 /* AdventPro-Thin.ttf in Resources */,
-				DC1AA3ED5EBF41BCAB792641 /* Nunito-Black.ttf in Resources */,
-				0E690E9A55F54935A2D7505F /* Nunito-BlackItalic.ttf in Resources */,
-				19BADF40345946FDA7A53499 /* Nunito-Bold.ttf in Resources */,
-				79981F6ACA8D4D8290DDE677 /* Nunito-BoldItalic.ttf in Resources */,
-				D9C2E6A8CC624260BA68A499 /* Nunito-ExtraBold.ttf in Resources */,
-				7D89F12E167C4A469FAFD950 /* Nunito-ExtraBoldItalic.ttf in Resources */,
-				DC96F2F192564982A24D8DA9 /* Nunito-ExtraLight.ttf in Resources */,
-				0304CAB342E34321BA4D6B41 /* Nunito-ExtraLightItalic.ttf in Resources */,
-				873DC8111E454714AEC12CBE /* Nunito-Italic.ttf in Resources */,
-				B90324ACEFFE43FC89EC9E03 /* Nunito-Light.ttf in Resources */,
-				2FE7090EBAA8443A9AB22ED2 /* Nunito-LightItalic.ttf in Resources */,
-				7A04CAB3551845F2B361A7CB /* Nunito-Regular.ttf in Resources */,
-				7F44C427FC43455EA8D6B4B8 /* Nunito-SemiBold.ttf in Resources */,
-				4BB55BA93D544B1289834368 /* Nunito-SemiBoldItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
