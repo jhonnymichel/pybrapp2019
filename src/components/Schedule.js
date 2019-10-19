@@ -12,6 +12,7 @@ import SafeAreaView from 'react-native-safe-area-view';
 import {SectionList} from 'react-native';
 import sectionListGetItemLayout from 'react-native-section-list-get-item-layout';
 import {FilterBox, FilterModal} from './filters';
+import throttle from 'lodash/throttle';
 
 class Schedule extends React.Component {
   static contextType = StoreContext;
@@ -31,7 +32,7 @@ class Schedule extends React.Component {
     );
   };
 
-  changeHighlightedDay = ({viewableItems}) => {
+  changeHighlightedDay = throttle(({viewableItems}) => {
     const {isListEmpty} = this.context;
     if (isListEmpty) {
       return;
@@ -54,7 +55,7 @@ class Schedule extends React.Component {
         currentDay: lastItem.section.title,
       });
     }
-  };
+  }, 100);
 
   getItemLayout = sectionListGetItemLayout({
     // The height of the row with rowData at the given sectionIndex and rowIndex
