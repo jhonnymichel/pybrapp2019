@@ -99,7 +99,7 @@ class Store extends React.Component {
 
     const listHeaderTexts = {
       schedulePage:
-        'Arraste um evento para a esquerda para adicioná-lo à sua lista e receber notificações.',
+        'Arraste um evento para a esquerda para adicioná-lo à sua lista e receber notificações antes da palestra começar.',
       myListPage:
         'Arraste um evento para a esquerda para removê-lo de sua lista e cancelar notificações.',
     };
