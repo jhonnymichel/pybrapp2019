@@ -32,30 +32,34 @@ class Schedule extends React.Component {
     );
   };
 
-  changeHighlightedDay = throttle(({viewableItems}) => {
-    const {isListEmpty} = this.context;
-    if (isListEmpty) {
-      return;
-    }
-    let lastItem = viewableItems.pop();
-    let currentDay;
-    while (true) {
-      if (!lastItem) {
+  changeHighlightedDay = throttle(
+    ({viewableItems}) => {
+      const {isListEmpty} = this.context;
+      if (isListEmpty) {
         return;
       }
-      currentDay = lastItem.section.title;
-      if (lastItem.section.data.length) {
-        break;
-      }
+      let lastItem = viewableItems.pop();
+      let currentDay;
+      while (true) {
+        if (!lastItem) {
+          return;
+        }
+        currentDay = lastItem.section.title;
+        if (lastItem.section.data.length) {
+          break;
+        }
 
-      lastItem = viewableItems.pop();
-    }
-    if (currentDay !== this.state.currentDay) {
-      this.setState({
-        currentDay: lastItem.section.title,
-      });
-    }
-  }, 100);
+        lastItem = viewableItems.pop();
+      }
+      if (currentDay !== this.state.currentDay) {
+        this.setState({
+          currentDay: lastItem.section.title,
+        });
+      }
+    },
+    100,
+    {trailing: true},
+  );
 
   getItemLayout = sectionListGetItemLayout({
     // The height of the row with rowData at the given sectionIndex and rowIndex
