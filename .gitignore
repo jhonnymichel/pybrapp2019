@@ -2,3 +2,8 @@ node_modules/
 ios/build
 ios/Pods
 src/config.js
+android/.gradle
+android/app/build
+android/.idea
+android/local.properties
+*.keystore
