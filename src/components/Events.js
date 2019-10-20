@@ -58,7 +58,7 @@ const FavoriteBadge = ({isFavorite}) => {
   const isFirstRender = React.useRef({value: true});
 
   React.useLayoutEffect(() => {
-    let duration = 250;
+    let duration = 200;
     if (isFirstRender.current.value) {
       duration = 0;
       isFirstRender.current.value = false;
@@ -177,15 +177,20 @@ const FavoriteButton = React.memo(({active, onPress, isChanging}) => {
   React.useEffect(() => {
     Animated.timing(scaleAnimation, {
       toValue: active ? 1.5 : 1,
-      duration: 250,
+      duration: 200,
       easing: Easing.bezier(0.16, 0.53, 0.06, 1.36),
       useNativeDriver: true,
     }).start();
-    let timeoutId = setTimeout(() => {
+    if (!isChanging) {
       setText(active ? texts.active : texts.notActive);
-    }, 500);
-    return () => clearTimeout(timeoutId);
+    }
   }, [active]);
+
+  React.useEffect(() => {
+    if (!isChanging) {
+      setText(active ? texts.active : texts.notActive);
+    }
+  }, [isChanging]);
 
   return (
     <TouchableOpacity
@@ -234,36 +239,40 @@ class Event extends React.Component {
     }
   }
 
-  onFavoriteButtonPress = async () => {
-    this.setState({
-      isChanging: true,
-    });
-
+  onClose = () => {
     const {event, scheduleInDate, toggleFavorite, currentPage} = this.props;
-    if (currentPage !== 'myListPage') {
-      await toggleFavorite(event, scheduleInDate.date);
-      let timeoutId = setTimeout(() => {
-        if (this.swipeableRef.current && this.swipeableRef.current.close) {
-          this.swipeableRef.current.close();
-        }
-        this.timeoutIds.splice(this.timeoutIds.indexOf(timeoutId), 1);
-        this.setState({
-          isChanging: false,
-        });
-      }, 250);
-    } else {
-      this.setState({active: false});
-      let timeoutId = setTimeout(() => {
-        if (this.swipeableRef.current && this.swipeableRef.current.close) {
-          this.swipeableRef.current.close();
-        }
-        this.timeoutIds.splice(this.timeoutIds.indexOf(timeoutId), 1);
-        timeoutId = setTimeout(() => {
-          toggleFavorite(event, scheduleInDate.date);
-          this.timeoutIds.splice(this.timeoutIds.indexOf(timeoutId), 1);
-        }, 250);
-      }, 250);
+    this.setState({isChanging: false});
+    if (currentPage === 'myListPage') {
+      toggleFavorite(event, scheduleInDate.date);
     }
+  };
+
+  onFavoriteButtonPress = () => {
+    this.setState(
+      {
+        isChanging: true,
+      },
+      async () => {
+        const {event, scheduleInDate, toggleFavorite, currentPage} = this.props;
+        if (currentPage !== 'myListPage') {
+          await toggleFavorite(event, scheduleInDate.date);
+          let timeoutId = setTimeout(() => {
+            if (this.swipeableRef.current && this.swipeableRef.current.close) {
+              this.swipeableRef.current.close();
+            }
+            this.timeoutIds.splice(this.timeoutIds.indexOf(timeoutId), 1);
+          }, 200);
+        } else {
+          this.setState({active: false});
+          let timeoutId = setTimeout(() => {
+            if (this.swipeableRef.current && this.swipeableRef.current.close) {
+              this.swipeableRef.current.close();
+            }
+            this.timeoutIds.splice(this.timeoutIds.indexOf(timeoutId), 1);
+          }, 200);
+        }
+      },
+    );
   };
 
   renderRightActions = () => {
@@ -289,6 +298,7 @@ class Event extends React.Component {
         rightThreshold={50}
         key={event.id}
         renderRightActions={this.renderRightActions}
+        onSwipeableClose={this.onClose}
       >
         <View style={{...styles.eventContainer, height: event.layout.height}}>
           {
