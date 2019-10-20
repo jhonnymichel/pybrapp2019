@@ -220,7 +220,7 @@ class Event extends React.Component {
     const {isChanging} = this.state;
     const {isFavorite} = this.props;
 
-    if (isChanging !== nextState.isFavorite) {
+    if (isChanging !== nextState.isChanging) {
       return true;
     }
 
