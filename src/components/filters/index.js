@@ -6,8 +6,9 @@ import {
   Text,
   Modal,
   Button,
+  Platform,
 } from 'react-native';
-import styles, {darkBlue, lightBlue, white} from 'app/styles';
+import styles, {darkBlue, white, lightBlue} from 'app/styles';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Debounce from 'app/components/Debounce';
 import Background from './Background';
@@ -143,7 +144,11 @@ export const FilterModal = ({visible, onRequestClose, store}) => (
           onChange={store.actions.onTypeFilterChange}
         />
         <View style={styles.filtersModal.footer}>
-          <Button title="Ok" color={white} onPress={onRequestClose} />
+          <Button
+            title="Ok"
+            color={Platform.OS === 'ios' ? white : lightBlue}
+            onPress={onRequestClose}
+          />
         </View>
       </View>
       <Background />

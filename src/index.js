@@ -55,7 +55,7 @@ const Loading = ({message}) => {
   }, []);
 
   return (
-    <View style={{...styles.emptyList.container, flex: 1}}>
+    <View style={{...styles.emptyList.container, justifyContent: 'center'}}>
       <Animated.View style={{transform: [{rotate: spin}]}}>
         <AntDesign name="loading2" size={100} color={white} />
       </Animated.View>

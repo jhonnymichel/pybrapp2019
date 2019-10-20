@@ -137,7 +137,7 @@ class Schedule extends React.Component {
             !store.favorites.length && (
               <EmptyList message="Você ainda não salvou nenhum evento à sua lista." />
             )}
-          {store.isListEmpty && (
+          {this.props.currentPage === 'schedulePage' && store.isListEmpty && (
             <EmptyList message="Nenhum resultado encontrado. Altere os termos de sua pesquisa e cheque os filtros aplicados." />
           )}
           {store.isError && (
