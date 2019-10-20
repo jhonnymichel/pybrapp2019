@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Platform} from 'react-native';
 
 const weights = [
   'Bold',
@@ -18,8 +18,7 @@ export const darkestBlue = '#25203b';
 export const tropical = '#f1ba91';
 export const tropicalDark = '#e86d4b';
 export const tropicalLight = '#ea8666';
-const font = f => (weight = 'Medium') => `${f}-${weight}`;
-const helvetica = font('HelveticaNeue');
+import getFont from './fonts/getFont';
 
 const categoryColors = {
   desenvolvimento: '#b1e8ed',
@@ -49,7 +48,7 @@ const categories = StyleSheet.create(
     {
       text: {
         textAlign: 'center',
-        fontFamily: helvetica(),
+        ...getFont(),
         fontSize: 10,
         color: '#102e46',
       },
@@ -62,18 +61,19 @@ const body = {
   padding: 10,
   height: '100%',
   backgroundColor: darkestBlue,
-  fontFamily: helvetica(),
+  ...getFont(),
 };
 
 const author = {
   color: tropicalLight,
-  fontFamily: helvetica(),
+  ...getFont(),
   fontSize: 14,
 };
 
 const authorTitle = {
   color: 'hsla(48,29%,97%,.6)',
-  fontFamily: helvetica('Light'),
+  ...getFont('Light'),
+  fontWeight: '100',
   fontSize: 14,
   paddingBottom: 8,
 };
@@ -83,7 +83,8 @@ const title = StyleSheet.create({
     flex: 1,
     color: darkBlue,
     fontSize: 16,
-    fontFamily: helvetica('Bold'),
+    ...getFont('Bold'),
+    fontWeight: 'bold',
   },
   container: {
     width: '100%',
@@ -114,7 +115,7 @@ const dateSeparator = {
 };
 
 const dateSeparatorText = {
-  fontFamily: helvetica('Bold'),
+  ...getFont('Bold'),
   color: darkestBlue,
   fontSize: 30,
   flex: 1,
@@ -197,7 +198,8 @@ const time = StyleSheet.create({
     alignItems: 'flex-end',
   },
   text: {
-    fontFamily: helvetica('Bold'),
+    ...getFont('Bold'),
+    fontWeight: 'bold',
     color: tropicalLight,
     fontSize: 16,
   },
@@ -210,7 +212,8 @@ const emptyMessage = StyleSheet.create({
     marginTop: 20,
   },
   text: {
-    fontFamily: helvetica('Bold'),
+    ...getFont('Bold'),
+    fontWeight: 'bold',
     fontSize: 16,
     textAlign: 'center',
     color: darkBlue,
@@ -228,7 +231,7 @@ const location = StyleSheet.create({
     paddingLeft: 5,
     color: lightBlue,
     fontSize: 12,
-    fontFamily: helvetica('Bold'),
+    ...getFont('Bold'),
     textTransform: 'uppercase',
   },
 });
@@ -249,19 +252,22 @@ const dayMenu = StyleSheet.create({
     paddingRight: 8,
   },
   text: {
-    fontFamily: helvetica('Bold'),
+    ...getFont('Bold'),
+    fontWeight: 'bold',
     fontSize: 22,
     color: white,
     textAlign: 'center',
   },
   textHighlight: {
-    fontFamily: helvetica('Bold'),
+    ...getFont('Bold'),
+    fontWeight: 'bold',
     fontSize: 22,
     color: yellow,
     textAlign: 'center',
   },
   textDisabled: {
-    fontFamily: helvetica('Bold'),
+    ...getFont('Bold'),
+    fontWeight: 'bold',
     fontSize: 22,
     color: white,
     opacity: 0.5,
@@ -307,9 +313,8 @@ const filters = StyleSheet.create({
   input: {
     flex: 1,
     color: lightBlue,
-    fontSize: 16,
-    fontFamily: helvetica('Light'),
-    height: 30,
+    fontSize: 10,
+    ...getFont('Light'),
   },
   button: {
     paddingLeft: 10,
@@ -324,7 +329,7 @@ const filters = StyleSheet.create({
     color: darkBlue,
     paddingLeft: 15,
     paddingRight: 15,
-    fontFamily: helvetica(),
+    ...getFont(),
   },
 });
 
@@ -379,13 +384,15 @@ const filtersModal = StyleSheet.create({
     borderWidth: 1,
   },
   checkboxText: {
-    fontFamily: helvetica('Bold'),
+    ...getFont('Bold'),
+    fontWeight: 'bold',
     fontSize: 16,
     color: white,
     textAlign: 'center',
   },
   checkboxTextEmpty: {
-    fontFamily: helvetica('Bold'),
+    ...getFont('Bold'),
+    fontWeight: 'bold',
     fontSize: 16,
     color: yellow,
     textAlign: 'center',
@@ -439,7 +446,8 @@ const errorMessage = StyleSheet.create({
   },
   buttonText: {
     fontSize: 20,
-    fontFamily: helvetica('Bold'),
+    ...getFont('Bold'),
+    fontWeight: 'bold',
     textAlign: 'center',
     color: darkBlue,
   },
@@ -459,7 +467,8 @@ const tableHeader = StyleSheet.create({
     backgroundColor: tropical,
   },
   text: {
-    fontFamily: helvetica('Bold'),
+    ...getFont('Bold'),
+    fontWeight: 'bold',
     color: darkBlue,
     fontSize: 16,
     textAlign: 'center',
@@ -490,7 +499,8 @@ const swipe = StyleSheet.create({
     textTransform: 'uppercase',
     paddingRight: 10,
     fontSize: 12,
-    fontFamily: helvetica('Bold'),
+    ...getFont('Bold'),
+    fontWeight: 'bold',
     color: darkBlue,
   },
   listItem: {
@@ -526,7 +536,8 @@ const now = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   timeText: {
-    fontFamily: helvetica('Bold'),
+    ...getFont('Bold'),
+    fontWeight: 'bold',
     fontSize: 25,
     lineHeight: 25,
     color: tropicalLight,
@@ -549,7 +560,8 @@ const now = StyleSheet.create({
   },
   buttonText: {
     fontSize: 20,
-    fontFamily: helvetica('Bold'),
+    ...getFont('Bold'),
+    fontWeight: 'bold',
     textAlign: 'center',
     color: white,
   },
