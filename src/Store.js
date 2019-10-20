@@ -148,7 +148,6 @@ class Store extends React.Component {
       favorites = [];
     }
 
-    console.log(favorites);
     return favorites;
   }
 
@@ -266,7 +265,6 @@ class Store extends React.Component {
       }
       await AsyncStorage.setItem('favoriteTalks', JSON.stringify(favorites));
       this.setState({favorites});
-      console.log(favorites);
       const message = isAdding
         ? 'Evento adicionado a sua lista!'
         : 'Evento removido da sua lista.';

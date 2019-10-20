@@ -162,7 +162,6 @@ class Now extends React.Component {
       },
       navigation,
     } = this.props;
-    console.log(this.props);
     return (
       <SafeAreaView style={styles.schedulePage.container}>
         <ScrollView style={styles.schedulePage.scrollView}>
