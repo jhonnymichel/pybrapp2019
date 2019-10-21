@@ -88,14 +88,15 @@ class Store extends React.Component {
 
     const timeWidth =
       (await rnTextSize.measure({
-        text: '88h88',
+        text: '00h00',
         fontFamily: styles.time.text.fontFamily,
         fontSize: styles.time.text.fontSize,
-      })).width + styles.time.container.paddingLeft;
+      })).width + 5; //paddingLeft
     const calendarData = await this.reduceCalendarData(
       this.props.data,
       timeWidth,
     );
+    console.log(timeWidth);
     const sectionHeaderHeight =
       (await rnTextSize.measure({
         text: 'Dia 99 - Tutorais',
@@ -395,7 +396,6 @@ class Store extends React.Component {
           eventContainer.paddingLeft -
           eventContainer.paddingRight -
           timeWidth -
-          time.paddingLeft -
           container.paddingLeft -
           container.paddingRight -
           ball.width -

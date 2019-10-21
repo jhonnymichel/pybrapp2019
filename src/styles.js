@@ -192,15 +192,14 @@ const timelineIllustration = StyleSheet.create({
 
 const time = StyleSheet.create({
   container: {
-    paddingLeft: 5,
     backgroundColor: white,
     zIndex: 999,
     alignItems: 'flex-end',
   },
   text: {
     ...getFont('Bold'),
-    fontWeight: 'bold',
     color: tropicalLight,
+    textAlign: 'right',
     fontSize: 16,
   },
 });
