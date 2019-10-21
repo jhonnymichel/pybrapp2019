@@ -159,7 +159,17 @@ class ScheduleManager extends React.Component {
     return (
       <Store data={this.state.data}>
         <StoreContext.Consumer>
-          {store => (store.isInitialState ? <LoadingView /> : <App />)}
+          {store =>
+            store.isInitialState ? (
+              <LoadingView />
+            ) : (
+              <App
+                ref={navigatorRef => {
+                  store.actions.setNavigator(navigatorRef);
+                }}
+              />
+            )
+          }
         </StoreContext.Consumer>
       </Store>
     );
