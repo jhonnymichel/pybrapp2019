@@ -6,11 +6,12 @@ import {
   Text,
   Modal,
   Button,
+  Platform,
 } from 'react-native';
-import styles, {darkBlue, lightBlue, white} from 'app/styles';
+import styles, {darkBlue, white, lightBlue} from 'app/styles';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Debounce from 'app/components/Debounce';
-import {BlurView} from '@react-native-community/blur';
+import Background from './Background';
 
 export const FilterBox = ({value, onChange, onClick}) => (
   <View style={styles.filters.container}>
@@ -143,10 +144,14 @@ export const FilterModal = ({visible, onRequestClose, store}) => (
           onChange={store.actions.onTypeFilterChange}
         />
         <View style={styles.filtersModal.footer}>
-          <Button title="Ok" color={white} onPress={onRequestClose} />
+          <Button
+            title="Ok"
+            color={Platform.OS === 'ios' ? white : lightBlue}
+            onPress={onRequestClose}
+          />
         </View>
       </View>
-      <BlurView style={styles.absolute} blurType="light" blurAmount={5} />
+      <Background />
     </View>
   </Modal>
 );

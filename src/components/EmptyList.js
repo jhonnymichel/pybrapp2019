@@ -7,7 +7,7 @@ import {lightBlue} from '../styles';
 
 const EmptyList = ({message}) => (
   <View style={styles.emptyList.container}>
-    <Ionicons name="ios-calendar" size={200} color={lightBlue} />
+    <Ionicons name="ios-calendar" size={100} color={lightBlue} />
     <Text style={styles.emptyList.text}>{message}</Text>
   </View>
 );

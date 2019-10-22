@@ -12,34 +12,31 @@ import AsyncStorage from '@react-native-community/async-storage';
 import rnTextSize from 'react-native-text-size';
 import PushNotification from 'react-native-push-notification';
 import upperFirst from 'lodash/upperFirst';
+import {NavigationActions} from 'react-navigation';
 
 export const StoreContext = React.createContext();
 const screenWidth = Math.round(Dimensions.get('window').width);
 
-PushNotification.configure({
-  // (required) Called when a remote or local notification is opened or received
-  onNotification: function(notification) {
-    console.log('NOTIFICATION:', notification);
-
-    // process the notification
-  },
-
-  // IOS ONLY (optional): default: all - Permissions to register.
-  permissions: {
-    alert: true,
-    sound: true,
-  },
-  /**
-   * (optional) default: true
-   * - Specified if permissions (ios) and token (android and ios) will requested or not,
-   * - if not, you must call PushNotificationsHandler.requestPermissions() later
-   */
-  requestPermissions: false,
-});
-
 class Store extends React.Component {
   constructor(props) {
     super(props);
+
+    PushNotification.configure({
+      // (required) Called when a remote or local notification is opened or received
+      onNotification: this.onNotification,
+
+      // IOS ONLY (optional): default: all - Permissions to register.
+      permissions: {
+        alert: true,
+        sound: true,
+      },
+      /**
+       * (optional) default: true
+       * - Specified if permissions (ios) and token (android and ios) will requested or not,
+       * - if not, you must call PushNotificationsHandler.requestPermissions() later
+       */
+      requestPermissions: false,
+    });
 
     this.state = {
       days: {},
@@ -53,6 +50,7 @@ class Store extends React.Component {
     };
 
     this.actions = {
+      setNavigator: this.setNavigator,
       onCategoryFilterChange: this.onFilterChange.bind(this, 'categoryFilter'),
       onTypeFilterChange: this.onFilterChange.bind(this, 'typeFilter'),
       filterDays: this.filterDays.bind(this),
@@ -63,6 +61,22 @@ class Store extends React.Component {
       checkSearchMatch: this.checkSearchMatch.bind(this),
     };
   }
+
+  setNavigator = navigatorRef => {
+    this.navigator = navigatorRef;
+  };
+
+  onNotification = notification => {
+    console.log('NOTIFICATION:', notification);
+    if (this.navigator && notification.userInteraction) {
+      this.navigator.dispatch(
+        NavigationActions.navigate({
+          routeName: 'Agora',
+        }),
+      );
+    }
+    // process the notification
+  };
 
   async componentDidMount() {
     const favorites = await this.getFavorites();
@@ -148,7 +162,6 @@ class Store extends React.Component {
       favorites = [];
     }
 
-    console.log(favorites);
     return favorites;
   }
 
@@ -231,6 +244,7 @@ class Store extends React.Component {
     PushNotification.requestPermissions();
     const tzDate = moment(date).tz('America/Sao_Paulo');
     const id = String(await this.getId(event.id));
+    console.log('will notificate');
     PushNotification.localNotificationSchedule({
       id,
       userInfo: {id},
@@ -266,7 +280,6 @@ class Store extends React.Component {
       }
       await AsyncStorage.setItem('favoriteTalks', JSON.stringify(favorites));
       this.setState({favorites});
-      console.log(favorites);
       const message = isAdding
         ? 'Evento adicionado a sua lista!'
         : 'Evento removido da sua lista.';

@@ -91,7 +91,7 @@ class Now extends React.Component {
         now: Now.getNow(this.props.store.fullSchedule),
         next: Now.getNext(this.props.store.fullSchedule),
       });
-    }, 5 * 60 * 1000);
+    }, 1000 * 60);
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -162,7 +162,6 @@ class Now extends React.Component {
       },
       navigation,
     } = this.props;
-    console.log(this.props);
     return (
       <SafeAreaView style={styles.schedulePage.container}>
         <ScrollView style={styles.schedulePage.scrollView}>
