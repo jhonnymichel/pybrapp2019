@@ -67,7 +67,6 @@ class Store extends React.Component {
   };
 
   onNotification = notification => {
-    console.log('NOTIFICATION:', notification);
     if (this.navigator && notification.userInteraction) {
       this.navigator.dispatch(
         NavigationActions.navigate({
@@ -96,7 +95,6 @@ class Store extends React.Component {
       this.props.data,
       timeWidth,
     );
-    console.log(timeWidth);
     const sectionHeaderHeight =
       (await rnTextSize.measure({
         text: 'Dia 99 - Tutorais',
@@ -578,7 +576,6 @@ class Store extends React.Component {
     const isListEmpty =
       !days.isError && every(filteredDays, day => !day.length);
 
-    0;
     return (
       <StoreContext.Provider
         value={{
