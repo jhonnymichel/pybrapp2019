@@ -67,7 +67,6 @@ class Store extends React.Component {
   };
 
   onNotification = notification => {
-    console.log('NOTIFICATION:', notification);
     if (this.navigator && notification.userInteraction) {
       this.navigator.dispatch(
         NavigationActions.navigate({
@@ -88,10 +87,10 @@ class Store extends React.Component {
 
     const timeWidth =
       (await rnTextSize.measure({
-        text: '88h88',
+        text: '00h00',
         fontFamily: styles.time.text.fontFamily,
         fontSize: styles.time.text.fontSize,
-      })).width + styles.time.container.paddingLeft;
+      })).width + 5; //paddingLeft
     const calendarData = await this.reduceCalendarData(
       this.props.data,
       timeWidth,
@@ -395,7 +394,6 @@ class Store extends React.Component {
           eventContainer.paddingLeft -
           eventContainer.paddingRight -
           timeWidth -
-          time.paddingLeft -
           container.paddingLeft -
           container.paddingRight -
           ball.width -
@@ -578,7 +576,6 @@ class Store extends React.Component {
     const isListEmpty =
       !days.isError && every(filteredDays, day => !day.length);
 
-    0;
     return (
       <StoreContext.Provider
         value={{

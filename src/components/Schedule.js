@@ -147,7 +147,7 @@ class Schedule extends React.Component {
             <SectionList
               sections={daysForSectionView}
               ref={this.sectionList}
-              initialNumToRender={2}
+              initialNumToRender={3}
               renderItem={this.renderDay}
               onViewableItemsChanged={this.changeHighlightedDay}
               getItemLayout={this.getItemLayout}
