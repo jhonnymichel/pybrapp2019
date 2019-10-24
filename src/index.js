@@ -18,19 +18,77 @@ import Tabs from './components/Tabs';
 import AsyncStorage from '@react-native-community/async-storage';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {white, lightBlue} from './styles';
-import EmptyList from './components/EmptyList';
+import DetailsScreen from './components/DetailsScreen';
+import {createStackNavigator} from 'react-navigation-stack';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 // import Now from './components/Now';
 
+const ScheduleScreen = createAppContainer(
+  createStackNavigator(
+    {
+      Main: {
+        screen: props => <Schedule currentPage="schedulePage" {...props} />,
+        navigationOptions: {
+          headerShown: false,
+        },
+      },
+      Details: {
+        screen: DetailsScreen,
+      },
+    },
+    {
+      initialRouteName: 'Main',
+    },
+  ),
+);
+
+const MyListScreen = createAppContainer(
+  createStackNavigator(
+    {
+      Main: {
+        screen: props => <Schedule currentPage="myListPage" {...props} />,
+        navigationOptions: {
+          headerShown: false,
+        },
+      },
+      Details: {
+        screen: DetailsScreen,
+      },
+    },
+    {
+      initialRouteName: 'Main',
+    },
+  ),
+);
+
+const NowScreen = createAppContainer(
+  createStackNavigator(
+    {
+      Main: {
+        screen: Now,
+        navigationOptions: {
+          headerShown: false,
+        },
+      },
+      Details: {
+        screen: DetailsScreen,
+      },
+    },
+    {
+      initialRouteName: 'Main',
+    },
+  ),
+);
+
 const AppNavigator = Tabs({
-  Agora: Now,
+  Agora: NowScreen,
   Programação: {
-    screen: () => <Schedule currentPage="schedulePage" />,
+    screen: ScheduleScreen,
   },
   'Minha lista': {
-    screen: () => <Schedule currentPage="myListPage" />,
+    screen: MyListScreen,
   },
 });
 

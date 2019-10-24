@@ -1,86 +1,14 @@
 import React from 'react';
-import {
-  View,
-  TouchableOpacity,
-  Text,
-  StyleSheet,
-  Animated,
-  Easing,
-} from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import {getFormattedTime} from 'app/utils';
-import styles, {lightBlue, yellow, tropical, white} from 'app/styles';
+import {View, Text, TouchableWithoutFeedback} from 'react-native';
+import styles from 'app/styles';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
+import Category from './Category';
+import FavoriteBadge from './FavoriteBadge';
+import FavoriteButton from './FavoriteButton';
+import Location from './Location';
+import getEventType from './getEventType';
 
-function getEventType(type) {
-  const types = {
-    'Eventos Fixos': ['lunch', 'coffee'],
-    Palestra: ['talk'],
-    Tutorial: ['tutorial'],
-    Keynote: ['keynote'],
-    Lightning: ['Lightning Talks'],
-  };
-
-  for (let t of Object.keys(types)) {
-    const rawTypes = types[t];
-    if (rawTypes.includes(type)) {
-      return t;
-    }
-  }
-
-  return 'Eventos Fixos';
-}
-
-const Location = ({children}) => (
-  <View style={styles.location.container}>
-    <Ionicons name="ios-pin" size={17} color={lightBlue} />
-    <Text style={styles.location.text}>{children}</Text>
-  </View>
-);
-
-const Category = ({event}) =>
-  event.details.category ? (
-    <View style={styles.flexOne}>
-      <View
-        style={
-          styles.categories[
-            event.details.category.toLowerCase().replace(/\s/g, '-')
-          ] || styles.categories.default
-        }
-      >
-        <Text style={styles.categories.text}>{event.details.category}</Text>
-      </View>
-    </View>
-  ) : null;
-
-const FavoriteBadge = ({isFavorite}) => {
-  const [fade] = React.useState(new Animated.Value(0));
-  const isFirstRender = React.useRef({value: true});
-
-  React.useLayoutEffect(() => {
-    let duration = 200;
-    if (isFirstRender.current.value) {
-      duration = 0;
-      isFirstRender.current.value = false;
-    }
-
-    Animated.timing(fade, {
-      toValue: Number(isFavorite),
-      duration,
-      delay: duration,
-      useNativeDriver: true,
-    }).start();
-  }, [isFavorite]);
-  return (
-    <Animated.View style={{marginLeft: 'auto', opacity: fade}}>
-      <View style={styles.eventDetails.badge}>
-        <Ionicons name="ios-bookmark" size={30} color={yellow} />
-      </View>
-    </Animated.View>
-  );
-};
-
-export const EventTypes = (event, date, isFavorite) => {
+const EventTypes = (event, date, isFavorite) => {
   return {
     ['Lightning']: (
       <>
@@ -163,54 +91,6 @@ export const EventTypes = (event, date, isFavorite) => {
   };
 };
 
-const FavoriteButton = React.memo(({active, onPress, isChanging}) => {
-  const [scaleAnimation] = React.useState(new Animated.Value(1));
-  const texts = {
-    active: 'Remover de sua lista',
-    notActive: 'Adicionar a sua lista',
-  };
-
-  const [text, setText] = React.useState(
-    active ? texts.active : texts.notActive,
-  );
-
-  React.useEffect(() => {
-    Animated.timing(scaleAnimation, {
-      toValue: active ? 1.5 : 1,
-      duration: 200,
-      easing: Easing.bezier(0.16, 0.53, 0.06, 1.36),
-      useNativeDriver: true,
-    }).start();
-    if (!isChanging) {
-      setText(active ? texts.active : texts.notActive);
-    }
-  }, [active]);
-
-  React.useEffect(() => {
-    if (!isChanging) {
-      setText(active ? texts.active : texts.notActive);
-    }
-  }, [isChanging]);
-
-  return (
-    <TouchableOpacity
-      disabled={isChanging}
-      onPress={onPress}
-      style={[
-        styles.swipe.rightSwipeItem,
-        {
-          backgroundColor: active ? yellow : tropical,
-        },
-      ]}
-    >
-      <Text style={{...styles.swipe.text}}>{text}</Text>
-      <Animated.View style={{transform: [{scale: scaleAnimation}]}}>
-        <Ionicons name="ios-bookmark" color={white} size={30} />
-      </Animated.View>
-    </TouchableOpacity>
-  );
-});
-
 class Event extends React.Component {
   swipeableRef = React.createRef(null);
   state = {active: true, isChanging: false};
@@ -291,7 +171,7 @@ class Event extends React.Component {
   };
 
   render() {
-    const {event, scheduleInDate, isFavorite} = this.props;
+    const {event, scheduleInDate, isFavorite, onPress} = this.props;
     return (
       <Swipeable
         ref={this.swipeableRef}
@@ -300,71 +180,20 @@ class Event extends React.Component {
         renderRightActions={this.renderRightActions}
         onSwipeableClose={this.onClose}
       >
-        <View style={{...styles.eventContainer, height: event.layout.height}}>
-          {
-            EventTypes(event, scheduleInDate.date, isFavorite)[
-              getEventType(event.details.eventType)
-            ]
-          }
-        </View>
+        <TouchableWithoutFeedback
+          onPress={() => onPress(event, scheduleInDate.date)}
+        >
+          <View style={{...styles.eventContainer, height: event.layout.height}}>
+            {
+              EventTypes(event, scheduleInDate.date, isFavorite)[
+                getEventType(event.details.eventType)
+              ]
+            }
+          </View>
+        </TouchableWithoutFeedback>
       </Swipeable>
     );
   }
 }
 
-class Events extends React.Component {
-  shouldComponentUpdate(nextProps) {
-    const {favorites, scheduleInDate, isLastItem} = this.props;
-    if (
-      nextProps.favorites.length !== favorites.length ||
-      scheduleInDate.events.length !== nextProps.scheduleInDate.events.length ||
-      isLastItem !== nextProps.isLastItem
-    ) {
-      return true;
-    }
-
-    return false;
-  }
-
-  render() {
-    const {
-      scheduleInDate,
-      favorites,
-      toggleFavorite,
-      currentPage,
-      timeWidth,
-      isLastItem,
-      hideTimeline,
-    } = this.props;
-
-    return (
-      <View style={styles.scheduleContainer}>
-        {!hideTimeline && (
-          <>
-            <View style={{...styles.time.container, width: timeWidth}}>
-              <Text style={styles.time.text}>
-                {getFormattedTime(scheduleInDate.date)}
-              </Text>
-            </View>
-            <View style={styles.timelineIllustration.container}>
-              <View style={styles.timelineIllustration.ball} />
-              {!isLastItem && <View style={styles.timelineIllustration.line} />}
-            </View>
-          </>
-        )}
-        <View style={styles.dayContainer}>
-          {scheduleInDate.events.map(event => (
-            <Event
-              key={event.id}
-              {...{scheduleInDate, toggleFavorite, currentPage}}
-              isFavorite={favorites.includes(event.id)}
-              event={event}
-            />
-          ))}
-        </View>
-      </View>
-    );
-  }
-}
-
-export default Events;
+export default Event;

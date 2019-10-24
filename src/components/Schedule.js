@@ -3,7 +3,7 @@ import {View, Text, ScrollView, Button} from 'react-native';
 import map from 'lodash/map';
 import DayMenu from './DayMenu';
 import DaySeparator from './DaySeparator';
-import Events from './Events';
+import Events from './events';
 import EmptyList from './EmptyList';
 import {getFormattedTime} from 'app/utils';
 import {StoreContext} from '../Store';
@@ -22,6 +22,7 @@ class Schedule extends React.Component {
   renderDay = events => {
     return (
       <Events
+        openEventDetails={this.openEventDetails}
         timeWidth={this.context.timeWidth}
         currentPage={this.props.currentPage}
         favorites={this.context.favorites}
@@ -32,34 +33,38 @@ class Schedule extends React.Component {
     );
   };
 
-  changeHighlightedDay = throttle(
-    ({viewableItems}) => {
-      const {isListEmpty} = this.context;
-      if (isListEmpty) {
+  openEventDetails = (event, date) => {
+    const {navigation} = this.props;
+    navigation.navigate('Details', {
+      event,
+      date,
+    });
+  };
+
+  changeHighlightedDay = throttle(({viewableItems}) => {
+    const {isListEmpty} = this.context;
+    if (isListEmpty) {
+      return;
+    }
+    let lastItem = viewableItems.pop();
+    let currentDay;
+    while (true) {
+      if (!lastItem) {
         return;
       }
-      let lastItem = viewableItems.pop();
-      let currentDay;
-      while (true) {
-        if (!lastItem) {
-          return;
-        }
-        currentDay = lastItem.section.title;
-        if (lastItem.section.data.length) {
-          break;
-        }
+      currentDay = lastItem.section.title;
+      if (lastItem.section.data.length) {
+        break;
+      }
 
-        lastItem = viewableItems.pop();
-      }
-      if (currentDay !== this.state.currentDay) {
-        this.setState({
-          currentDay: lastItem.section.title,
-        });
-      }
-    },
-    100,
-    {trailing: true},
-  );
+      lastItem = viewableItems.pop();
+    }
+    if (currentDay !== this.state.currentDay) {
+      this.setState({
+        currentDay: lastItem.section.title,
+      });
+    }
+  }, 100);
 
   getItemLayout = sectionListGetItemLayout({
     // The height of the row with rowData at the given sectionIndex and rowIndex
@@ -91,6 +96,7 @@ class Schedule extends React.Component {
   };
 
   render() {
+    console.log('ae cassinao', this.props);
     const store = this.context;
     let days = store.days;
     if (this.props.currentPage === 'myListPage') {

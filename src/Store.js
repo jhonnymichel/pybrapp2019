@@ -79,7 +79,7 @@ class Store extends React.Component {
 
   async componentDidMount() {
     const favorites = await this.getFavorites();
-    const learnedToFavorite = await AsyncStorage.getItem('learnedToFavorite');
+    const learnedToFavorite = await AsyncStorage.getItem('learnedToUseTheApp');
     const validFavorites = favorites.filter(id =>
       this.props.data.items.find(i => i.id === id),
     );
@@ -108,9 +108,9 @@ class Store extends React.Component {
 
     const listHeaderTexts = {
       schedulePage:
-        'Arraste um evento para a esquerda para adicioná-lo à sua lista e receber notificações antes da palestra começar.',
+        'Pressione em um evento para ler sua descrição. Arraste um evento para a esquerda para adicioná-lo à sua lista e receber notificações antes da palestra começar.',
       myListPage:
-        'Arraste um evento para a esquerda para removê-lo de sua lista e cancelar notificações.',
+        'Pressione em um evento para ler sua descrição. Arraste um evento para a esquerda para removê-lo de sua lista e cancelar notificações.',
     };
 
     const listHeaderMeasurements = {
@@ -264,7 +264,7 @@ class Store extends React.Component {
   }
 
   toggleFavorite = async (event, date) => {
-    AsyncStorage.setItem('learnedToFavorite', JSON.stringify(true));
+    AsyncStorage.setItem('learnedToUseTheApp', JSON.stringify(true));
     const {id} = event;
     let isAdding = true;
     try {
@@ -323,6 +323,7 @@ class Store extends React.Component {
           date: new Date(startDateTime),
           summary: event.summary,
           location: event.location,
+          description: event.description,
           details: {},
         };
 
@@ -334,12 +335,14 @@ class Store extends React.Component {
             duration,
             description,
             requirements,
+            photo_url: photoUrl,
           } = event.extendedProperties.private;
 
           pybrEvent.details = {
             name,
             title,
             eventType,
+            photoUrl,
           };
 
           switch (eventType) {

@@ -1,5 +1,5 @@
 import React from 'react';
-import Events from './Events';
+import Events from './events';
 import {
   Text,
   View,
@@ -75,6 +75,14 @@ class Now extends React.Component {
     AppState.removeEventListener('change', this.setupInterval);
     this.setupInterval('inactive');
   }
+
+  openEventDetails = (event, date) => {
+    const {navigation} = this.props;
+    navigation.navigate('Details', {
+      event,
+      date,
+    });
+  };
 
   setupInterval = appState => {
     if (appState.match(/inactive|background/)) {
@@ -173,6 +181,7 @@ class Now extends React.Component {
             <View style={styles.dateSeparatorLine} />
           </View>
           <EventsOrEmpty
+            openEventDetails={this.openEventDetails}
             emptyMessage="Nada rolando agora :("
             scheduleInDate={this.state.now}
             favorites={favorites}
@@ -183,6 +192,7 @@ class Now extends React.Component {
             <View style={styles.dateSeparatorLine} />
           </View>
           <EventsOrEmpty
+            openEventDetails={this.openEventDetails}
             emptyMessage="Isso é tudo por hoje. Hora de curtir o happy hour!"
             scheduleInDate={this.state.next}
             favorites={favorites}

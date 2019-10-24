@@ -165,6 +165,48 @@ const eventContainerFavorite = {
   ...eventContainer,
 };
 
+const detailsScreen = StyleSheet.create({
+  wrapper: {
+    backgroundColor: white,
+    flex: 1,
+  },
+  container: {
+    padding: 10,
+    flex: 1,
+  },
+  title: {
+    ...title.text,
+    fontSize: 20,
+  },
+  titleContainer: {
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    justifyContent: 'flex-start',
+    paddingBottom: 5,
+  },
+  categoryContainer: {
+    alignItems: 'flex-start',
+    paddingBottom: 5,
+    marginLeft: -5,
+  },
+  descriptionContainer: {
+    paddingTop: 20,
+    paddingBottom: 100,
+  },
+  descriptionText: {
+    ...getFont(),
+    fontSize: 16,
+  },
+  favoriteButton: {
+    marginTop: 10,
+    borderRadius: 50,
+    padding: 10,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
+
 const timelineIllustration = StyleSheet.create({
   container: {
     marginTop: 3,
@@ -623,4 +665,5 @@ export default {
   now,
   logo,
   errorMessage,
+  detailsScreen,
 };
