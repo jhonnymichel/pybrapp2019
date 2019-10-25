@@ -152,6 +152,46 @@ const ErrorLoading = ({retry}) => (
   </View>
 );
 
+async function convertKeys(oldCal, newCal) {
+  let favorites;
+  try {
+    favorites = JSON.parse(await AsyncStorage.getItem('favoriteTalks')) || [];
+  } catch (e) {
+    favorites = [];
+  }
+
+  if (!favorites.length) {
+    return newCal;
+  }
+  const [firstFavorite] = favorites;
+  const isEqual = newCal.items.find(i => i.id === firstFavorite);
+  if (isEqual) {
+    return newCal;
+  }
+
+  favorites.forEach(favorite => {
+    const fav = oldCal.items.find(i => i.id === favorite);
+    if (!fav) return;
+    const sameEvent = newCal.items.find(
+      e =>
+        e.summary === fav.summary ||
+        e.description === fav.description ||
+        e.extendedProperties.category +
+          e.extendedProperties.type +
+          e.extendedProperties.author ===
+          fav.extendedProperties.category +
+            fav.extendedProperties.type +
+            fav.extendedProperties.author,
+    );
+
+    if (sameEvent) {
+      sameEvent.id = fav.id;
+    }
+  });
+
+  return newCal;
+}
+
 class ScheduleManager extends React.Component {
   getSchedule() {
     const {apiKey, calendarId} = CALENDAR_CONFIG;
@@ -173,6 +213,10 @@ class ScheduleManager extends React.Component {
         .then(async r => {
           if (!r.items || !r.items.length) {
             throw new Error('Calendar is crazy');
+          }
+          const cached = await AsyncStorage.getItem('cachedSchedule'); //await AsyncStorage.getItem('cachedSchedule');
+          if (cached) {
+            r = await convertKeys(JSON.parse(cached), r);
           }
           await AsyncStorage.setItem('cachedSchedule', JSON.stringify(r));
           resolve(r);
