@@ -121,9 +121,9 @@ class Event extends React.Component {
 
   onClose = () => {
     const {event, scheduleInDate, toggleFavorite, currentPage} = this.props;
-    this.setState({isChanging: false});
-    if (currentPage === 'myListPage') {
+    if (this.state.isChanging && currentPage === 'myListPage') {
       toggleFavorite(event, scheduleInDate.date);
+      this.setState({isChanging: false});
     }
   };
 
