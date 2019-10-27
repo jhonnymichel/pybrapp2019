@@ -8,6 +8,7 @@ class Events extends React.Component {
     const {favorites, scheduleInDate, isLastItem} = this.props;
     if (
       nextProps.favorites.length !== favorites.length ||
+      scheduleInDate.date !== nextProps.scheduleInDate.date ||
       scheduleInDate.events.length !== nextProps.scheduleInDate.events.length ||
       isLastItem !== nextProps.isLastItem
     ) {

@@ -100,6 +100,10 @@ class Event extends React.Component {
     const {isChanging} = this.state;
     const {isFavorite} = this.props;
 
+    if (nextProps.event.id !== this.props.event.id) {
+      return true;
+    }
+
     if (isChanging !== nextState.isChanging) {
       return true;
     }
